@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "808112953069",
+    "project_id": "intellectgame-a6872",
+    "storage_bucket": "intellectgame-a6872.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808112953069:android:1ed3d3dd17e1064d795ee4",
+        "android_client_info": {
+          "package_name": "com.geektech.intellect_memort"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808112953069-smm1d76os4n0qbuh9nucu0qquvcbclgk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geektech.intellect_memort",
+            "certificate_hash": "468ed4cccb3ee147af00630979b2ab0a96df4446"
+          }
+        },
+        {
+          "client_id": "808112953069-23g3nrcvbii1jah5lk9u7eheal75anqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw-nd0Fhvji-W-4Epitp45xgMcemCkvzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808112953069-23g3nrcvbii1jah5lk9u7eheal75anqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
