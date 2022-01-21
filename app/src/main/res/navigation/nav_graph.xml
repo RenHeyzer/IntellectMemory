@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.geektech.intellect_memort.ui.fragments.home.HomeFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/binaryNumbersFragment"
-        android:name="com.geektech.intellect_memort.ui.fragments.binarynumbers.BinaryNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.binarynumbers.BinaryNumbersFragment"
         android:label="fragment_binary_numbers"
         tools:layout="@layout/fragment_binary_numbers" />
     <fragment
         android:id="@+id/pictureFragment"
-        android:name="com.geektech.intellect_memort.ui.fragments.picture.PictureFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.PictureFragment"
         android:label="fragment_picture"
         tools:layout="@layout/fragment_picture" />
     <fragment
         android:id="@+id/playingCardsFragment"
-        android:name="com.geektech.intellect_memort.ui.fragments.playingcards.PlayingCardsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsFragment"
         android:label="fragment_playing_cards"
         tools:layout="@layout/fragment_playing_cards" />
     <fragment
         android:id="@+id/randomNumbersFragment"
-        android:name="com.geektech.intellect_memort.ui.fragments.randomnumbers.RandomNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.RandomNumbersFragment"
         android:label="fragment_random_numbers"
         tools:layout="@layout/fragment_random_numbers" />
 </navigation>

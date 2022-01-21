@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.ui.fragments.home
+package com.geektech.intellect_memort.presentation.ui.fragments.home
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController

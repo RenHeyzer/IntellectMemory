@@ -1,8 +1,8 @@
-package com.geektech.intellect_memort.ui.fragments.binarynumbers
+package com.geektech.intellect_memort.presentation.ui.fragments.home
 
 import com.geektech.intellect_memort.common.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
-class BinaryNumbersViewModel @Inject constructor() : BaseViewModel() {
+class HomeViewModel @Inject constructor() : BaseViewModel(){
 }

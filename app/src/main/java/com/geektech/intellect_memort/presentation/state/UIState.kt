@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.ui.fragments.state
+package com.geektech.intellect_memort.presentation.state
 
 sealed class UIState<T> {
     class Loading<T> : UIState<T>()
