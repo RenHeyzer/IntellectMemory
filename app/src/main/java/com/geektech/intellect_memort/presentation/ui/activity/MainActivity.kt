@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.ui.activity
+package com.geektech.intellect_memort.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

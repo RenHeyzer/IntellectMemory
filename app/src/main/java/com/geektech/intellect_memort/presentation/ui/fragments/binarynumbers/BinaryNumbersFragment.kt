@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.ui.fragments.binarynumbers
+package com.geektech.intellect_memort.presentation.ui.fragments.binarynumbers
 
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
