@@ -7,4 +7,5 @@
     <string name="random_numbers">Случайные цифры</string>
     <string name="binary_numbers">Бинарные числа</string>
     <string name="playing_cards">Игральные карты</string>
+    <string name="text_rating">Рейтинг</string>
 </resources>
