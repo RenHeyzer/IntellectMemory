@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4446AD"
+    android:background="@color/blue_dark"
     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -80,51 +80,89 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.10" />
+                app:layout_constraintGuide_percent="0.12" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/left_guidLine_cardView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.06" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/right_guidLine_cardView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.94" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_picture"
-                android:layout_width="match_parent"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
                 android:text="@string/text_picture"
+                android:textColor="@color/black"
+                android:textSize="30sp"
                 app:cornerRadius="20dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guideLine_horizontal_top" />
+                app:layout_constraintLeft_toLeftOf="@id/left_guidLine_cardView"
+                app:layout_constraintRight_toRightOf="@id/right_guidLine_cardView"
+                app:layout_constraintTop_toBottomOf="@id/guideLine_horizontal_top"
+                app:strokeColor="@color/blue_dark"
+                app:strokeWidth="5dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_random_numbers"
-                android:layout_width="match_parent"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:padding="20dp"
                 android:text="@string/random_numbers"
+                android:textColor="@color/black"
+                android:textSize="30sp"
                 app:cornerRadius="20dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_picture" />
+                app:layout_constraintLeft_toLeftOf="@id/left_guidLine_cardView"
+                app:layout_constraintRight_toRightOf="@id/right_guidLine_cardView"
+                app:layout_constraintTop_toBottomOf="@id/btn_picture"
+                app:strokeColor="@color/blue_dark"
+                app:strokeWidth="5dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_binary_random_numbers"
-                android:layout_width="match_parent"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:padding="20dp"
                 android:text="@string/binary_numbers"
+                android:textColor="@color/black"
+                android:textSize="30sp"
                 app:cornerRadius="20dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_random_numbers" />
+                app:layout_constraintLeft_toLeftOf="@id/left_guidLine_cardView"
+                app:layout_constraintRight_toRightOf="@id/right_guidLine_cardView"
+                app:layout_constraintTop_toBottomOf="@id/btn_random_numbers"
+                app:strokeColor="@color/blue_dark"
+                app:strokeWidth="5dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_playing_cards"
-                android:layout_width="match_parent"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:padding="20dp"
                 android:text="@string/playing_cards"
+                android:textColor="@color/black"
+                android:textSize="30sp"
                 app:cornerRadius="20dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_binary_random_numbers" />
+                app:layout_constraintLeft_toLeftOf="@id/left_guidLine_cardView"
+                app:layout_constraintRight_toRightOf="@id/right_guidLine_cardView"
+                app:layout_constraintTop_toBottomOf="@id/btn_binary_random_numbers"
+                app:strokeColor="@color/blue_dark"
+                app:strokeWidth="5dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
