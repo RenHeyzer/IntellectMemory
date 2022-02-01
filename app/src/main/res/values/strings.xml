@@ -7,4 +7,22 @@
     <string name="random_numbers">Случайные цифры</string>
     <string name="binary_numbers">Бинарные числа</string>
     <string name="playing_cards">Игральные карты</string>
+    <string name="switch_text_on">РУС</string>
+    <string name="switch_text_off">EN</string>
+    <string name="sign_in_title_text">Форма Входа</string>
+    <string name="username_text_hint">Имя пользователя</string>
+    <string name="password_text_hint">Пароль</string>
+    <string name="sign_in_text_of_button">Войти</string>
+    <string name="edittext_error_message">Заполните поле!</string>
+    <string name="full_name_hint_text">Имя и фамилия</string>
+    <string name="teacher_hint_text">Учитель</string>
+    <string name="branch_hint_text">Филиал</string>
+    <string name="text_create">Создать</string>
+    <string name="title_create_user_text">Создать ученика</string>
+    <string name="location_hint_text">Страна и город</string>
+    <string name="list_of_students_title_text">Список учеников</string>
+    <string name="category_number_text">Место</string>
+    <string name="category_students_text">Участник</string>
+    <string name="category_school_text">Школа</string>
+    <string name="category_points_text">Баллы</string>
 </resources>
