@@ -98,8 +98,6 @@ dependencies {
     // To use only without reflection variants of viewBinding
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate"
 
-    //qr code scanner
-    implementation 'com.budiyev.android:code-scanner:2.1.0'
 
     // fire base
     implementation 'com.google.firebase:firebase-auth:21.0.1'
