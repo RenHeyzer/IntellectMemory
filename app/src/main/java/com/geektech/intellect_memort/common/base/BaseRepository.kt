@@ -29,7 +29,7 @@ abstract class BaseRepository {
     suspend fun addDocument(
         collection: CollectionReference,
         hashMap: HashMap<String, Any>,
-        title: String? = null
+        title: String? = null,
     ): Boolean {
         return try {
             if (title != null) {
@@ -54,5 +54,4 @@ abstract class BaseRepository {
             .document(id)
             .get()
             .await()
-
 }
