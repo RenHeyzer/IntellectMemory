@@ -7,6 +7,7 @@
     tools:context=".presentation.ui.fragments.randomnumbers.RandomNumbersFragment">
 
 
+
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
@@ -52,7 +53,7 @@
         android:maxLines="100"
         android:minLines="1"
         android:singleLine="false"
-        android:text="@string/text_select_quantity_numbers"
+        android:text="@string/time_to_remember_text"
         android:textAlignment="center"
         android:textColor="@color/black_65p"
         android:textSize="24sp"
@@ -63,8 +64,20 @@
         app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Минут"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+        app:layout_constraintTop_toBottomOf="@id/et_time" />
+
     <EditText
-        android:id="@+id/et_quantity_numbers"
+        android:id="@+id/et_time"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="@drawable/background_oval_for_edit_text"
