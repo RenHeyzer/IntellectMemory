@@ -16,7 +16,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override val binding by viewBinding(FragmentHomeBinding::bind)
     override val viewModel: HomeViewModel by viewModels()
 
-
     override fun setupListeners() {
         setUpBtnPictureListener()
         setUpBtnRandomNumberListener()
