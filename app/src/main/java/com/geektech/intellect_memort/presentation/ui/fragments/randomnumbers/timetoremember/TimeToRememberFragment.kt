@@ -1,5 +1,6 @@
 package com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.timetoremember
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.geektech.intellect_memort.common.extension.hideKeyboard
+import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
+import com.geektech.intellect_memort.common.extension.visible
 import com.geektech.intellect_memort.databinding.FragmentTimeToRememberBinding
 
 
@@ -21,7 +24,7 @@ class TimeToRememberFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentTimeToRememberBinding.inflate(inflater, container, false)
         return binding.root
@@ -38,15 +41,23 @@ class TimeToRememberFragment : Fragment() {
                 if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() < 61) {
                     time = etTime.text.toString().toInt()
                     etTime.hideKeyboard()
-                    findNavController().navigate(
-                        TimeToRememberFragmentDirections.actionTimeToRememberFragmentToGameRandomNumbersFragment(
-                            args.quantityNumbers,
-                            time
-                        )
-                    )
+                    setUpBtnStartListener()
+                    binding.parentLayout.setBackgroundColor(Color.parseColor("#4446AD"))
+                    binding.btnStartr.visible()
                 }
             }
             false
+        }
+    }
+
+    private fun setUpBtnStartListener() {
+        binding.btnStartr.setOnSingleClickListener {
+            findNavController().navigate(
+                TimeToRememberFragmentDirections.actionTimeToRememberFragmentToGameRandomNumbersFragment(
+                    args.quantityNumbers,
+                    time
+                )
+            )
         }
     }
 
