@@ -19,7 +19,11 @@
         android:id="@+id/pictureFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.PictureFragment"
         android:label="fragment_picture"
-        tools:layout="@layout/fragment_picture" />
+        tools:layout="@layout/fragment_picture" >
+        <action
+            android:id="@+id/action_pictureFragment_to_pictureAmountFragment"
+            app:destination="@id/pictureAmountFragment" />
+    </fragment>
     <fragment
         android:id="@+id/playingCardsFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsFragment"
@@ -30,4 +34,28 @@
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.RandomNumbersFragment"
         android:label="fragment_random_numbers"
         tools:layout="@layout/fragment_random_numbers" />
+    <fragment
+        android:id="@+id/pictureAmountFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.PictureAmountFragment"
+        android:label="fragment_picture_amount"
+        tools:layout="@layout/fragment_picture_amount" >
+        <action
+            android:id="@+id/action_pictureAmountFragment_to_pictureListFragment"
+            app:destination="@id/pictureListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureListFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.PictureListFragment"
+        android:label="fragment_picture_list"
+        tools:layout="@layout/fragment_picture_list" >
+
+        <argument
+            android:name="firstNumber"
+            app:argType="integer" />
+        <argument
+            android:name="secondNumber"
+            app:argType="integer" />
+    </fragment>
+
+
 </navigation>
