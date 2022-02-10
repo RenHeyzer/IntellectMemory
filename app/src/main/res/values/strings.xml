@@ -7,4 +7,19 @@
     <string name="random_numbers">Случайные цифры</string>
     <string name="binary_numbers">Бинарные числа</string>
     <string name="playing_cards">Игральные карты</string>
+    <string name="picture_play_button">Играть</string>
+    <string name="picture_pao_button">PAO картины</string>
+    <string name="picture_pao_amount_text">Выбрать кол-во картин</string>
+    <string name="picture_amount_hint">До</string>
+    <string name="picture_amount_start">Начать</string>
+    <string name="picture_pao_list_previous">Предыдущий</string>
+    <string name="picture_pao_list_next">Следущий</string>
+    <string name="button_back">button back</string>
+    <string name="picture_play_game">Finish</string>
+    <string name="tt_mm">TT:MM</string>
+    <string name="picture_rv_item_imagfromlist">image from list</string>
+    <string name="picture_play_game_imageDesc">image for play fragment</string>
+    <string name="picture_play_time_text">Указать время для запоминания</string>
+    <string name="picture_play_text_next">Далее</string>
+    <string name="picture_play_amount_text">Выбрать количество картинок</string>
 </resources>
