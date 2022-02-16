@@ -3,6 +3,7 @@ package com.geektech.intellect_memort.common.base
 import com.geektech.intellect_memort.common.resource.Resource
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
@@ -21,15 +22,23 @@ abstract class BaseRepository {
         )
     }
 
-    suspend inline fun <reified T> fetchList(collection: CollectionReference) =
-        collection.get().await().documents.mapNotNull { doc ->
-            doc.toObject(T::class.java)
-        }
+    suspend inline fun <reified T> fetchList(
+        collection: CollectionReference,
+    ) = collection.get().await().documents.mapNotNull { doc ->
+        doc.toObject(T::class.java)
+    }
+
+    suspend inline fun <reified T> fetchSortedList(
+        orderCollection: Query,
+    ) = orderCollection.get().await().documents.mapNotNull { query ->
+        query.toObject(T::class.java)
+    }
+
 
     suspend fun addDocument(
         collection: CollectionReference,
         hashMap: HashMap<String, Any>,
-        title: String? = null
+        title: String? = null,
     ): Boolean {
         return try {
             if (title != null) {
@@ -54,5 +63,4 @@ abstract class BaseRepository {
             .document(id)
             .get()
             .await()
-
 }
