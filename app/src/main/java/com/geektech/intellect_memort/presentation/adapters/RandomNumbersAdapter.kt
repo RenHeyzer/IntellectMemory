@@ -1,6 +1,5 @@
 package com.geektech.intellect_memort.presentation.adapters
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,42 +24,40 @@ class RandomNumbersAdapter :
         BaseRecyclerViewHolder<ItemRandomNumberBinding, RandomNumbersModel>(
             binding
         ) {
-
         override fun onBind(item: RandomNumbersModel?) {
             binding.itemNumber.text = item?.numbers.toString()
             setOnItemNextClickListener()
         }
 
-        @SuppressLint("ResourceAsColor")
         private fun setOnItemNextClickListener() {
             when {
                 (absoluteAdapterPosition + 6) == lastPosition - 2 -> {
                     binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
-                    binding.itemNumber.setTextColor(R.color.white)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 (absoluteAdapterPosition + 6) == lastPosition - 3 -> {
                     binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
-                    binding.itemNumber.setTextColor(R.color.white)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 (absoluteAdapterPosition + 6) == lastPosition - 4 -> {
                     binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
-                    binding.itemNumber.setTextColor(R.color.white)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 (absoluteAdapterPosition + 6) == lastPosition - 5 -> {
                     binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
-                    binding.itemNumber.setTextColor(R.color.white)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 (absoluteAdapterPosition + 6) == lastPosition - 6 -> {
                     binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
-                    binding.itemNumber.setTextColor(R.color.white)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 (absoluteAdapterPosition + 6) == lastPosition - 7 -> {
                     binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
-                    binding.itemNumber.setTextColor(R.color.white)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 else -> {
                     binding.container.setBackgroundColor(Color.TRANSPARENT)
-                    binding.itemNumber.setTextColor(R.color.black)
+                    binding.itemNumber.setTextColor(Color.parseColor("#FF000000"))
                 }
             }
             Log.e("anime", "viewHolder:$lastPosition ")

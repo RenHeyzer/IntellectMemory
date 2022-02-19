@@ -6,7 +6,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import java.util.*
 
 abstract class BaseRepository {
 
@@ -29,7 +28,7 @@ abstract class BaseRepository {
     suspend fun addDocument(
         collection: CollectionReference,
         hashMap: HashMap<String, Any>,
-        title: String? = null
+        title: String? = null,
     ): Boolean {
         return try {
             if (title != null) {
