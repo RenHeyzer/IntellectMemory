@@ -2,7 +2,8 @@ package com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbe
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,6 +14,8 @@ import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentGameRandomNumbersBinding
 import com.geektech.intellect_memort.presentation.adapters.RandomNumbersAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GameRandomNumbersFragment :
@@ -20,7 +23,7 @@ class GameRandomNumbersFragment :
         R.layout.fragment_game_random_numbers
     ) {
     override val binding by viewBinding(FragmentGameRandomNumbersBinding::bind)
-    override val viewModel: GameRandomNumbersViewModel by viewModels()
+    override val viewModel: GameRandomNumbersViewModel by activityViewModels()
     private val args: GameRandomNumbersFragmentArgs by navArgs()
     private var row: Int = 7
     private var last: Int = 14
@@ -36,25 +39,26 @@ class GameRandomNumbersFragment :
         setUpBtnBack()
         setUpBtnNextAndBtnPreviousListener()
         setUpBtnFinish()
-
     }
 
     private fun setUpBtnFinish() {
         binding.btnFinish.setOnSingleClickListener {
-//            if (viewModel.list.lastOrNull { it.numbers < 0 } == null)
+            findNavController().navigate(R.id.action_gameRandomNumbersFragment_to_answerRandomNumbersFragment)
         }
     }
 
     override fun setupObserves() {
-        viewModel.randomNumbersState.observe(viewLifecycleOwner) {
-            adapter?.submitList(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.randomNumbersState.collect  {
+                adapter?.submitList(it)
+            }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpBtnNextAndBtnPreviousListener() {
         binding.btnNext.setOnSingleClickListener {
-            if (viewModel.list.lastIndex != args.quantitynumber) {
+            if (viewModel.list.size == adapter?.currentList?.size) {
                 row += 7
                 last += 7
                 adapter?.setNextAndPreviousItemRow(row, last)
@@ -65,7 +69,7 @@ class GameRandomNumbersFragment :
             }
         }
         binding.btnPrevious.setOnSingleClickListener {
-            if (row >= 7 && last >= 14) {
+            if (viewModel.list.lastIndex == adapter?.currentList?.lastIndex) {
                 row -= 7
                 last -= 7
                 adapter?.setNextAndPreviousItemRow(row, last)
