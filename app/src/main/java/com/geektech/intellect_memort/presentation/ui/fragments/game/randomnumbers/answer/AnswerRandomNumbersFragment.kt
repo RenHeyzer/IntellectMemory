@@ -3,6 +3,7 @@ package com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbe
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
@@ -11,10 +12,9 @@ import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentAnswerRandomNumbersBinding
 import com.geektech.intellect_memort.presentation.adapters.AnswerRandomNumbersAdapter
 import com.geektech.intellect_memort.presentation.models.RandomNumbersModel
+import com.geektech.intellect_memort.presentation.state.UIState
 import com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.GameRandomNumbersViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -59,13 +59,22 @@ class AnswerRandomNumbersFragment :
     }
 
     override fun setupObserves() {
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.randomNumbersState.collect {
-                list.addAll(it)
-//                adapter(it)
+            viewModel.randomNumbersState.subscribe {
+                when (it) {
+                    is UIState.Error -> {
+                        Log.e("anime", "Error RandomNumbers:${it.error} ")
+                    }
+                    is UIState.Loading -> {
+                        Log.e("anime", "Loading RandomNumbers $it")
+
+                    }
+                    is UIState.Success -> {
+                        Log.e("anime", "Success RandomNumbers:${it.data} ")
+                        adapter?.submitList(it.data)
+                    }
+                }
             }
         }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

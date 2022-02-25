@@ -4,7 +4,7 @@ import com.geektech.intellect_memort.domain.repositories.RandomNumbersRepository
 import javax.inject.Inject
 
 class RandomNumbersUseCase @Inject constructor(
-    private val repository: RandomNumbersRepository
+    private val repository: RandomNumbersRepository,
 ) {
-    suspend fun invoke(item:HashMap<String, Any>) = repository.addRandomNumbers(item)
+      operator fun invoke(quantity: Int) = repository.generateRandomNumbers(quantity)
 }

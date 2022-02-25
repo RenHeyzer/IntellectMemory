@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseRecyclerViewHolder
@@ -19,13 +19,11 @@ import com.geektech.intellect_memort.presentation.models.RandomNumbersModel
 
 class AnswerRandomNumbersAdapter(
     val list: ArrayList<RandomNumbersModel>,
-) : RecyclerView.Adapter<BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>>(
-) {
+) : ListAdapter<RandomNumbersModel, BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>>(
+    differCallback) {
     private var lastPosition: Int = 14
     private var rowLastPosition: Int = 7
 
-
-    override fun getItemCount(): Int = list.size
 
     inner class ViewHolder(binding: ItemAnswerNumbersBinding) :
         BaseRecyclerViewHolder<ItemAnswerNumbersBinding, RandomNumbersModel>(
@@ -150,38 +148,40 @@ class AnswerRandomNumbersAdapter(
         }
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
 
     override fun onBindViewHolder(
         holder: BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>,
         position: Int,
     ) {
         when (holder.itemViewType) {
-            R.layout.item_row -> holder.onBind(list[position])
+            R.layout.item_row -> getItem(position)?.let {
+                holder.onBind(it)
+            }
             R.layout.item_random_number -> {
-                holder.onBind(list[position])
+                getItem(position)?.let {
+                    holder.onBind(it)
+                }
                 holder.setIsRecyclable(false)
             }
         }
     }
 
-//    companion object {
-//        val differCallback = object : DiffUtil.ItemCallback<RandomNumbersModel>() {
-//            override fun areItemsTheSame(
-//                oldItem: RandomNumbersModel,
-//                newItem: RandomNumbersModel,
-//            ): Boolean {
-//                return oldItem == newItem
-//            }
-//
-//            override fun areContentsTheSame(
-//                oldItem: RandomNumbersModel,
-//                newItem: RandomNumbersModel,
-//            ): Boolean {
-//                return oldItem == newItem
-//            }
-//        }
-//    }
+    companion object {
+        val differCallback = object : DiffUtil.ItemCallback<RandomNumbersModel>() {
+            override fun areItemsTheSame(
+                oldItem: RandomNumbersModel,
+                newItem: RandomNumbersModel,
+            ): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(
+                oldItem: RandomNumbersModel,
+                newItem: RandomNumbersModel,
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
+
+    }
 }
