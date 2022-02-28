@@ -2,6 +2,10 @@ package com.geektech.intellect_memort.di
 
 import com.geektech.intellect_memort.data.repositories.RandomNumbersRepositoryImpl
 import com.geektech.intellect_memort.domain.repositories.RandomNumbersRepository
+import com.geektech.intellect_memort.data.repositories.CreateStudentsRepositoryImpl
+import com.geektech.intellect_memort.data.repositories.SignRepositoryImpl
+import com.geektech.intellect_memort.domain.repositories.CreateStudentsRepository
+import com.geektech.intellect_memort.domain.repositories.SignRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
@@ -15,4 +19,11 @@ object RepositoriesModule {
     @Provides
     fun provideRandomNumbersRepository(fireStore: FirebaseFirestore): RandomNumbersRepository =
         RandomNumbersRepositoryImpl(fireStore)
+
+    fun provideSignInRepository(fireStore: FirebaseFirestore): SignRepository =
+        SignRepositoryImpl(fireStore)
+
+    @Provides
+    fun provideCreateStudentsRepository(fireStore: FirebaseFirestore): CreateStudentsRepository =
+        CreateStudentsRepositoryImpl(fireStore)
 }

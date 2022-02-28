@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_in_graph"
+    app:startDestination="@id/listOfStudentsFragment">
+
+    <fragment
+        android:id="@+id/listOfStudentsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.students.list.ListOfStudentsFragment"
+        android:label="fragment_list_of_students"
+        tools:layout="@layout/fragment_list_of_students">
+        <action
+            android:id="@+id/action_listOfStudentsFragment_to_createStudentsFragment"
+            app:destination="@id/createStudentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createStudentsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.students.create.CreateStudentsFragment"
+        android:label="fragment_create_students"
+        tools:layout="@layout/fragment_create_students" />
+</navigation>

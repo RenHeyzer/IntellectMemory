@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-open class BaseViewModel @Inject constructor() : ViewModel(){
+open class BaseViewModel @Inject constructor() : ViewModel() {
 
     protected fun <T> MutableLiveData<UIState<T>>.subscribeTo(
         request: () -> Flow<Resource<T>>,

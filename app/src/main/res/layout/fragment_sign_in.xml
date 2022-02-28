@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.ui.fragments.registration.signin.SignInFragment">
+
+    <RadioGroup
+        android:id="@+id/switch_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/seventeen_dp"
+        android:layout_marginEnd="@dimen/eight_dp"
+        android:foreground="@drawable/radio_group_background"
+        android:orientation="horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/btn_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_left_selected"
+            android:button="@android:color/transparent"
+            android:text="@string/switch_text_off"
+            android:textAlignment="center"
+            android:textColor="@drawable/button_text_color" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/btn_russian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_right_selected"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:text="@string/switch_text_on"
+            android:textAlignment="center"
+            android:textColor="@drawable/button_text_color" />
+
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <TextView
+        android:id="@+id/sign_in_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/sign_in_title_text"
+        android:textColor="@color/near_black"
+        android:textSize="@dimen/thirty_sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@id/guideline1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.54" />
+
+    <LinearLayout
+        android:id="@+id/et_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginBottom="25dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_of_edittext"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/username_text_hint"
+                android:inputType="textPersonName"
+                android:padding="@dimen/fifteen_dp"
+                android:textColorHint="@color/light_gray" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            app:endIconDrawable="@drawable/custom_password_eye"
+            app:endIconTint="@color/black"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_of_edittext"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/password_text_hint"
+                android:inputType="textPassword"
+                android:padding="@dimen/fifteen_dp"
+                android:textColorHint="@color/light_gray" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="64dp"
+        android:background="@drawable/background_of_button"
+        android:fontFamily="@font/montserrat"
+        android:paddingVertical="@dimen/fifteen_dp"
+        android:text="@string/sign_in_text_of_button"
+        android:textColor="@color/white"
+        android:textSize="@dimen/eighteen_sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
