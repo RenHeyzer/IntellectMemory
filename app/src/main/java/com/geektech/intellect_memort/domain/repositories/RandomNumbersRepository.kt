@@ -6,5 +6,10 @@ import com.geektech.intellect_memort.presentation.state.UIState
 import kotlinx.coroutines.flow.Flow
 
 interface RandomNumbersRepository {
-     fun generateRandomNumbers(quantity:Int): Flow<Resource<List<RandomNumbersModel>>>
+
+     fun generateRandomNumbers(): Flow<Resource<List<RandomNumbersModel>>>
+
+     suspend fun uploadRandomNumbers(quantity:Int)
+
+     suspend fun deleteDocuments()
 }

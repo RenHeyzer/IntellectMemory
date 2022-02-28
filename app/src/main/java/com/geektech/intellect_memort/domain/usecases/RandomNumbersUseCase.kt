@@ -6,5 +6,5 @@ import javax.inject.Inject
 class RandomNumbersUseCase @Inject constructor(
     private val repository: RandomNumbersRepository,
 ) {
-      operator fun invoke(quantity: Int) = repository.generateRandomNumbers(quantity)
+      operator fun invoke() = repository.generateRandomNumbers()
 }

@@ -29,7 +29,7 @@ class GameRandomNumbersFragment :
     override fun initialize() {
         adapter = RandomNumbersAdapter()
         binding.rvGameRandomNumber.adapter = adapter
-        viewModel.generateRandomNumbers(args.quantitynumber)
+        viewModel.uploadRandomNumbers(args.quantitynumber)
     }
 
     override fun setupListeners() {
@@ -89,6 +89,7 @@ class GameRandomNumbersFragment :
     @SuppressLint("RestrictedApi")
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.deleteRandomNumbers()
         adapter = null
     }
 }
