@@ -2,6 +2,7 @@ package com.geektech.intellect_memort.presentation.ui.fragments.registration.sig
 
 import android.app.Dialog
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
@@ -70,8 +71,10 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                         it.data.forEach { admin ->
                             when {
                                 password.isEmpty() && username.isEmpty() -> {
-                                    inputUsername.error = getString(R.string.edittext_error_message)
-                                    inputPassword.error = getString(R.string.edittext_error_message)
+                                    inputUsername.error =
+                                        getString(R.string.edittext_error_message)
+                                    inputPassword.error =
+                                        getString(R.string.edittext_error_message)
                                     dialogProgressbar?.dismiss()
                                 }
                                 username == admin?.fullName && password == admin.password -> {
@@ -108,7 +111,13 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                                     dialogProgressbar?.dismiss()
                                 }
                                 username == student?.fullName && password == student.password -> {
+                                    Log.e("anime", "studentId: ${student.id}")
                                     notAdmin()
+                                    preferences.userId = student.id
+                                    Log.e("anime", "userId: ${preferences.userId}")
+                                    Toast.makeText(requireContext(),
+                                        "${preferences.userId}",
+                                        Toast.LENGTH_LONG).show()
                                     dialogProgressbar?.dismiss()
                                     mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
                                     wasOpen()

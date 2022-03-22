@@ -4,6 +4,7 @@ import com.geektech.intellect_memort.common.base.IBaseDiffModel
 
 data class StudentsModel(
 
+    val id: String? = null,
     val fullName: String? = null,
     override val password: String? = null,
     val teacher: String? = null,

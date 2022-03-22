@@ -35,7 +35,6 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
-
     protected fun <T> MutableStateFlow<UIState<T>>.subscribeTo(
         request: () -> Flow<Resource<T>>,
     ) {
@@ -55,4 +54,5 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
+
 }

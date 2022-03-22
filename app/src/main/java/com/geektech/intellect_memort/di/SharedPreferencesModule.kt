@@ -2,6 +2,7 @@ package com.geektech.intellect_memort.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.geektech.intellect_memort.common.utils.LocaleHelper
 import com.geektech.intellect_memort.data.local.sharedpreferences.PreferencesHelper
 import dagger.Module
 import dagger.Provides
@@ -23,4 +24,6 @@ object SharedPreferencesModule {
     @Provides
     fun provideName(preferences: SharedPreferences) = PreferencesHelper(preferences)
 
+    @Provides
+    fun provideLocaleHelper(preferencesHelper: PreferencesHelper) = LocaleHelper(preferencesHelper)
 }

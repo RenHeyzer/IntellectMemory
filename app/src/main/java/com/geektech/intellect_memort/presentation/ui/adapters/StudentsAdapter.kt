@@ -38,11 +38,11 @@ class StudentsAdapter :
         binding: ItemStudentsBinding,
     ) : BaseRecyclerViewHolder<ItemStudentsBinding, StudentsModel>(binding) {
 
-        override fun onBind(item: StudentsModel) = with(binding) {
+        override fun onBind(item: StudentsModel?) = with(binding) {
             itemNumber.text = absoluteAdapterPosition.plus(1).toString()
-            itemFullName.text = item.fullName
-            itemSchool.text = item.branch
-            itemPoint.text = item.points.toString()
+            itemFullName.text = item?.fullName
+            itemSchool.text = item?.branch
+            itemPoint.text = item?.points.toString()
         }
     }
 }
