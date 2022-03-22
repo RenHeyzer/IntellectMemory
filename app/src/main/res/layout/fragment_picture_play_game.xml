@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.picture.game.PicturePlayGame">
+    tools:context=".presentation.ui.fragments.picture.game.gameplay.PicturePlayGame">
 
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/button_back"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_toolbar"
         app:layout_constraintStart_toStartOf="@id/guideline_left_toolbar"
-        app:layout_constraintTop_toTopOf="@id/guideline_top_toolbar"
-        android:contentDescription="@string/button_back" />
+        app:layout_constraintTop_toTopOf="@id/guideline_top_toolbar" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button"
         android:id="@+id/btn_finish"
+        style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:backgroundTint="@color/red"
         android:text="@string/picture_play_game"
-        android:textSize="7sp"
+        android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_toolbar"
         app:layout_constraintEnd_toEndOf="@id/guideline_right_toolbar"
@@ -44,13 +44,29 @@
         app:layout_constraintStart_toStartOf="@id/guideline_left_toolbar"
         app:layout_constraintTop_toTopOf="@id/guideline_top_toolbar" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14637482" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/images_list"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_button"
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom_toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_top_recycler"
         tools:listitem="@layout/picture_rv_item" />
 
     <com.google.android.material.button.MaterialButton
@@ -65,7 +81,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_btn"
         app:layout_constraintEnd_toEndOf="@id/guideline_center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom_button"
+        app:layout_constraintTop_toTopOf="@id/guideline_top_button"
 
         />
 
@@ -81,7 +97,22 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_center"
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom_button" />
+        app:layout_constraintTop_toTopOf="@id/guideline_top_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_finish_memorizing"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:backgroundTint="@color/teal"
+        android:text="@string/picture_play_btn_play"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:cornerRadius="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_center"
+        app:layout_constraintTop_toTopOf="@id/guideline_top_button" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_center"
@@ -91,7 +122,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_bottom_button"
+        android:id="@+id/guideline_top_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

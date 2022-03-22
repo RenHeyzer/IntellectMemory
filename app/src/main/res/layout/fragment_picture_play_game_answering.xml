@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.picture.game.PicturePlayGameAnswering">
+    tools:context=".presentation.ui.fragments.picture.game.answering.PicturePlayGameAnswering">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top_toolbar"
@@ -43,7 +43,7 @@
         app:layout_constraintGuide_percent="0.97" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_bottom_button"
+        android:id="@+id/guideline_top_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -68,9 +68,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_btn"
         app:layout_constraintEnd_toEndOf="@id/guideline_center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom_button"
-
-        />
+        app:layout_constraintTop_toTopOf="@id/guideline_top_button" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
@@ -84,7 +82,21 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_center"
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom_button" />
+        app:layout_constraintTop_toTopOf="@id/guideline_top_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/teal"
+        android:text="@string/picture_answering_results"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:cornerRadius="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_btn"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right_game"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_game"
+        app:layout_constraintTop_toTopOf="@id/guideline_top_button" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left_game"
@@ -107,28 +119,114 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
     <TextView
         android:id="@+id/number_of_list_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="1/4"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@id/guideline_right_toolbar"
         app:layout_constraintStart_toStartOf="@id/guideline_left_toolbar"
-        app:layout_constraintTop_toTopOf="@id/guideline_bottom_toolbar" />
+        app:layout_constraintTop_toTopOf="@id/guideline_bottom_toolbar"
+        tools:text="1/4" />
 
     <ImageView
-        android:scaleType="centerCrop"
+        android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
-        tools:src="@drawable/ic_launcher_background"
+        android:contentDescription="@string/picture_play_game_imageDesc"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_game_image"
         app:layout_constraintEnd_toEndOf="@+id/guideline_right_game"
         app:layout_constraintStart_toStartOf="@id/guideline_left_game"
         app:layout_constraintTop_toBottomOf="@id/number_of_list_position"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_game_image"
-        android:contentDescription="@string/picture_play_game_imageDesc" />
+        tools:src="@drawable/ic_launcher_background" />
 
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btn_first"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/black_border_rectangle"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_button_center"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_game"
+        app:layout_constraintTop_toTopOf="@id/guideline_button_top"
+        tools:text="first" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btn_second"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/black_border_rectangle"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_button_center"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right_game"
+        app:layout_constraintStart_toStartOf="@id/guideline_center"
+        app:layout_constraintTop_toTopOf="@id/guideline_button_top"
+        tools:text="second" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btn_third"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/black_border_rectangle"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_button_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_game"
+        app:layout_constraintTop_toBottomOf="@id/guideline_button_center"
+        tools:text="third" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/btn_fourth"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/black_border_rectangle"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_button_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right_game"
+        app:layout_constraintStart_toStartOf="@id/guideline_center"
+        app:layout_constraintTop_toBottomOf="@id/guideline_button_center"
+        tools:text="fourth" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
