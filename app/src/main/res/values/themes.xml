@@ -15,4 +15,8 @@
         <item name="android:windowLightStatusBar" tools:targetApi="o_mr1">true</item>
     </style>
 
+    <style name="AppTheme.Picker" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge" >
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

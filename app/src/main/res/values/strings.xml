@@ -20,6 +20,20 @@
     <string name="picture_rv_item_imagfromlist">image from list</string>
     <string name="picture_play_game_imageDesc">image for play fragment</string>
     <string name="picture_play_time_text">Указать время для запоминания</string>
-    <string name="picture_play_text_next">Далее</string>
+    <string name="picture_play_text_next">ДАЛЕЕ</string>
     <string name="picture_play_amount_text">Выбрать количество картинок</string>
+    <string name="picture_answering_results">К результатам</string>
+    <string name="Picture_btn_finish">ЗАВЕРШИТЬ</string>
+    <string name="picture_textview_results">Результат</string>
+    <string name="picture_results_tv_all_pictures">Всего картинок:</string>
+    <string name="picture_results_tv_correct">Отгадано:</string>
+    <string name="picture_results_tv_incorrect">Ошибся:</string>
+    <string name="picture_results_tv_time">Время:</string>
+    <string name="picture_play_btn_play">Играть</string>
+    <string name="picture_play_time_start">НАЧАТЬ</string>
+    <string name="picture_pao_amount_from">От</string>
+    <string name="picture_play_hint_00">00</string>
+    <string name="picture_play_time_minutes">Минут</string>
+
+    <string name="timer_template">%1$s:%2$s</string>
 </resources>
