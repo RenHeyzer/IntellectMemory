@@ -9,6 +9,7 @@ import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.utils.LocaleHelper
 import com.geektech.intellect_memort.data.local.sharedpreferences.PreferencesHelper
 import com.geektech.intellect_memort.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseAuth.getInstance().signInAnonymously()
         localeHelper.loadLocale(this)
         setUpNavigation()
     }

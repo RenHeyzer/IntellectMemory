@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout-v23/fragment_sign_in.xml" value="0.259375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_answer_random_numbers.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_create_students.xml" value="0.259375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_game_random_numbers.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_picture_play_game.xml" value="0.22432432432432434" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_flow.xml" value="0.259375" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_in.xml" value="0.259375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_answer_numbers.xml" value="0.72" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_random_number.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_row.xml" value="0.264" />

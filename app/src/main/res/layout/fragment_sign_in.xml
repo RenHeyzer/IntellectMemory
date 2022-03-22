@@ -46,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="176dp" />
+        app:layout_constraintGuide_percent="0.24213406" />
 
     <TextView
         android:id="@+id/sign_in_title"
@@ -66,14 +66,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="526dp" />
+        app:layout_constraintGuide_percent="0.7209302" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="336dp" />
+        app:layout_constraintGuide_percent="0.54" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.38987687" />
 
     <LinearLayout
         android:id="@+id/et_container"
@@ -83,7 +90,8 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline4">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_username"

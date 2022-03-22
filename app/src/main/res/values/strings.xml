@@ -33,4 +33,33 @@
     <string name="category_students_text">Участник</string>
     <string name="category_school_text">Школа</string>
     <string name="category_points_text">Баллы</string>
+    <string name="picture_play_button">Играть</string>
+    <string name="picture_pao_button">PAO картины</string>
+    <string name="picture_pao_amount_text">Выбрать кол-во картин</string>
+    <string name="picture_amount_hint">До</string>
+    <string name="picture_amount_start">Начать</string>
+    <string name="picture_pao_list_previous">Предыдущий</string>
+    <string name="picture_pao_list_next">Следущий</string>
+    <string name="button_back">button back</string>
+    <string name="picture_play_game">Finish</string>
+    <string name="tt_mm">TT:MM</string>
+    <string name="picture_rv_item_imagfromlist">image from list</string>
+    <string name="picture_play_game_imageDesc">image for play fragment</string>
+    <string name="picture_play_time_text">Указать время для запоминания</string>
+    <string name="picture_play_text_next">ДАЛЕЕ</string>
+    <string name="picture_play_amount_text">Выбрать количество картинок</string>
+    <string name="picture_answering_results">К результатам</string>
+    <string name="Picture_btn_finish">ЗАВЕРШИТЬ</string>
+    <string name="picture_textview_results">Результат</string>
+    <string name="picture_results_tv_all_pictures">Всего картинок:</string>
+    <string name="picture_results_tv_correct">Отгадано:</string>
+    <string name="picture_results_tv_incorrect">Ошибся:</string>
+    <string name="picture_results_tv_time">Время:</string>
+    <string name="picture_play_btn_play">Играть</string>
+    <string name="picture_play_time_start">НАЧАТЬ</string>
+    <string name="picture_pao_amount_from">От</string>
+    <string name="picture_play_hint_00">00</string>
+    <string name="picture_play_time_minutes">Минут</string>
+
+    <string name="timer_template">%1$s:%2$s</string>
 </resources>
