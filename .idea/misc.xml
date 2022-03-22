@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout-v23/fragment_sign_in.xml" value="0.259375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_answer_random_numbers.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_create_students.xml" value="0.259375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_game_random_numbers.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_picture_play_game.xml" value="0.22432432432432434" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_flow.xml" value="0.259375" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_in.xml" value="0.259375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_answer_numbers.xml" value="0.72" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_random_number.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_row.xml" value="0.264" />
@@ -60,24 +62,6 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_sign_in_flow.xml" value="0.259375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_students_flow.xml" value="0.27263157894736845" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/item_students.xml" value="0.264" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/drawable/black_border_rectangle.xml" value="0.2851851851851852" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3452502553626149" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/drawable/rectangle_picker.xml" value="0.3452502553626149" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_binary_numbers.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture.xml" value="0.33" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_amount.xml" value="0.22" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_game_results.xml" value="0.23333333333333334" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_list.xml" value="0.23333333333333334" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_play_amount.xml" value="0.33" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_play_count_down.xml" value="0.33177083333333335" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_play_game.xml" value="0.23333333333333334" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_play_game_answering.xml" value="0.3145833333333333" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_picture_play_time.xml" value="0.25" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_playing_cards.xml" value="0.2630208333333333" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/fragment_random_numbers.xml" value="0.2630208333333333" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/intellect_memory/app/src/main/res/layout/picture_rv_item.xml" value="0.5" />
       </map>
     </option>
   </component>

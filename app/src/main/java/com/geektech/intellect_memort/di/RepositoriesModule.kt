@@ -1,28 +1,11 @@
 package com.geektech.intellect_memort.di
 
-import com.geektech.intellect_memort.data.repositories.AnswerRandomNumbersRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.CreateStudentsRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.PictureRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.RandomNumbersRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.SignRepositoryImpl
-import com.geektech.intellect_memort.domain.repositories.AnswerRandomNumbersRepository
-import com.geektech.intellect_memort.domain.repositories.CreateStudentsRepository
-import com.geektech.intellect_memort.domain.repositories.PictureRepository
-import com.geektech.intellect_memort.domain.repositories.RandomNumbersRepository
-import com.geektech.intellect_memort.domain.repositories.SignRepository
+import com.geektech.intellect_memort.data.repositories.*
+import com.geektech.intellect_memort.domain.repositories.*
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import com.geektech.intellect_memort.data.repositories.AnswerRandomNumbersRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.CreateStudentsRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.RandomNumbersRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.SignRepositoryImpl
-import com.geektech.intellect_memort.domain.repositories.AnswerRandomNumbersRepository
-import com.geektech.intellect_memort.domain.repositories.CreateStudentsRepository
-import com.geektech.intellect_memort.domain.repositories.RandomNumbersRepository
-import com.geektech.intellect_memort.domain.repositories.SignRepository
 
 @Module
 @InstallIn(SingletonComponent::class)

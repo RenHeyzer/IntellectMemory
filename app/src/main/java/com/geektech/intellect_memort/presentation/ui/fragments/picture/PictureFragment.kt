@@ -25,5 +25,4 @@ class PictureFragment : BaseFragment<FragmentPictureBinding, PictureViewModel>(
             findNavController().navigate(R.id.picturePlayAmount)
         }
     }
-
 }
