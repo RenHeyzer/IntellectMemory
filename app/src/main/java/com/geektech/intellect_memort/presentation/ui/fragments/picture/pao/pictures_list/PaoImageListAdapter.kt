@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao
+package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.pictures_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.geektech.intellect_memort.databinding.PictureRvItemBinding
 import com.geektech.intellect_memort.domain.models.PictureImageModel
-import com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.PaoImageListAdapter.PaoImageViewHolder
+import com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.pictures_list.PaoImageListAdapter.PaoImageViewHolder
 
 
 class PaoImageListAdapter : ListAdapter<PictureImageModel, PaoImageViewHolder>(diffCallback) {
-
 
     private var onItemClickListener: ((PictureImageModel) -> Unit)? = null
 
@@ -28,6 +27,7 @@ class PaoImageListAdapter : ListAdapter<PictureImageModel, PaoImageViewHolder>(d
                 false))
     }
 
+
     override fun onBindViewHolder(holder: PaoImageViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
     }
@@ -40,6 +40,8 @@ class PaoImageListAdapter : ListAdapter<PictureImageModel, PaoImageViewHolder>(d
             Glide.with(binding.image)
                 .load(item.imageUrl)
                 .into(binding.image)
+            binding.title.text = item.id
+
         }
     }
 

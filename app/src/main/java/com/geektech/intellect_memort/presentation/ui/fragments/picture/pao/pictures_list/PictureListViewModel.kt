@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao
+package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.pictures_list
 
 import com.geektech.intellect_memort.common.base.BaseViewModel
 import com.geektech.intellect_memort.domain.models.PictureImageModel

@@ -21,6 +21,9 @@ class PictureFragment : BaseFragment<FragmentPictureBinding, PictureViewModel>(
         binding.btnPao.setOnClickListener {
             findNavController().navigate(R.id.pictureAmountFragment)
         }
+        binding.btnPlay.setOnClickListener {
+            findNavController().navigate(R.id.picturePlayAmount)
+        }
     }
 
 }

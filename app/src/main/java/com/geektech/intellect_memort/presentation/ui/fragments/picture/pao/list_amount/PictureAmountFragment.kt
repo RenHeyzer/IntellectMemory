@@ -1,6 +1,7 @@
-package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao
+package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.list_amount
 
 import android.util.Log
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,12 +13,13 @@ import com.geektech.intellect_memort.presentation.ui.fragments.picture.PictureVi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PictureAmountFragment : BaseFragment<FragmentPictureAmountBinding, PictureViewModel>(
+class PictureAmountFragment : BaseFragment<FragmentPictureAmountBinding, PictureAmountViewModel>(
     R.layout.fragment_picture_amount
 ) {
     override val binding by viewBinding(FragmentPictureAmountBinding::bind)
-    override val viewModel: PictureViewModel by viewModels()
+    override val viewModel: PictureAmountViewModel by viewModels()
 
+    // game vars
     private var firstImageNumber: Int = 0
     private var secondImageNumber: Int = 0
 
@@ -28,6 +30,7 @@ class PictureAmountFragment : BaseFragment<FragmentPictureAmountBinding, Picture
             if (it.toString().isNotEmpty()) {
                 firstImageNumber = it.toString().toInt()
             } else {
+                firstImageNumber = 0
                 Log.e("first_image_error", "error: ${it.toString()}")
             }
         }
@@ -36,6 +39,7 @@ class PictureAmountFragment : BaseFragment<FragmentPictureAmountBinding, Picture
             if (it.toString().isNotEmpty()) {
                 secondImageNumber = it.toString().toInt()
             } else {
+                secondImageNumber = 0
                 Log.e("second_image_error", "error: ${it.toString()}")
             }
         }
@@ -44,10 +48,14 @@ class PictureAmountFragment : BaseFragment<FragmentPictureAmountBinding, Picture
     override fun setupListeners() {
         super.setupListeners()
         binding.btnStart.setOnClickListener {
-            val passImageNumbers =
-                PictureAmountFragmentDirections.actionPictureAmountFragmentToPictureListFragment(
-                    firstImageNumber, secondImageNumber)
-            findNavController().navigate(passImageNumbers)
+            if (firstImageNumber < secondImageNumber) {
+                val passImageNumbers =
+                    PictureAmountFragmentDirections.actionPictureAmountFragmentToPictureListFragment(
+                        firstImageNumber, secondImageNumber)
+                findNavController().navigate(passImageNumbers)
+            } else {
+                Toast.makeText(requireContext(), "Ошибка ввода", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
