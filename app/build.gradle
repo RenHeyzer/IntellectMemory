@@ -147,4 +147,10 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
 
+    // Room
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
 }

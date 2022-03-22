@@ -6,26 +6,25 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.viewbinding.ViewBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.geektech.intellect_memort.R
-import com.geektech.intellect_memort.common.base.BaseRecyclerViewHolder
 import com.geektech.intellect_memort.databinding.ItemRandomNumberBinding
 import com.geektech.intellect_memort.databinding.ItemRowBinding
-import com.geektech.intellect_memort.presentation.models.RandomNumbersModel
+import com.geektech.intellect_memort.domain.models.RandomNumbersModel
 
 class RandomNumbersAdapter :
-    ListAdapter<RandomNumbersModel, BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>>(
+    ListAdapter<RandomNumbersModel, RecyclerView.ViewHolder>(
         differCallback
     ) {
     private var lastPosition: Int = 14
     private var rowLastPosition: Int = 7
 
-    inner class ViewHolder(binding: ItemRandomNumberBinding) :
-        BaseRecyclerViewHolder<ItemRandomNumberBinding, RandomNumbersModel>(
-            binding
+    inner class ViewHolder(private val binding: ItemRandomNumberBinding) :
+        RecyclerView.ViewHolder(
+            binding.root
         ) {
-        override fun onBind(item: RandomNumbersModel?) {
-            binding.itemNumber.text = item?.numbers.toString()
+        fun onBind(item: RandomNumbersModel?) {
+            binding.itemNumber.text = item?.number.toString()
             setOnItemNextClickListener()
         }
 
@@ -75,11 +74,11 @@ class RandomNumbersAdapter :
         }
     }
 
-    inner class RowViewHolder(binding: ItemRowBinding) :
-        BaseRecyclerViewHolder<ItemRowBinding, RandomNumbersModel>(
-            binding
+    inner class RowViewHolder(private val binding: ItemRowBinding) :
+        RecyclerView.ViewHolder(
+            binding.root
         ) {
-        override fun onBind(item: RandomNumbersModel?) {
+        fun onBind() {
             val rowPosition = absoluteAdapterPosition / 7
             binding.itemRow.text = rowPosition.plus(1).toString()
             setOnItemNextClickListener()
@@ -106,7 +105,7 @@ class RandomNumbersAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel> {
+    ): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
@@ -126,15 +125,19 @@ class RandomNumbersAdapter :
     }
 
     override fun onBindViewHolder(
-        holder: BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>,
+        holder: RecyclerView.ViewHolder,
         position: Int,
     ) {
         when (holder.itemViewType) {
-            R.layout.item_row -> getItem(position)?.let {
-                holder.onBind(it)
+            R.layout.item_row -> {
+                val rowViewHolder = holder as RowViewHolder
+                rowViewHolder.onBind()
             }
-            R.layout.item_random_number -> getItem(position)?.let {
-                holder.onBind(it)
+            R.layout.item_random_number -> {
+                val randomViewHolder = holder as ViewHolder
+                getItem(position)?.let {
+                    randomViewHolder.onBind(it)
+                }
             }
         }
 

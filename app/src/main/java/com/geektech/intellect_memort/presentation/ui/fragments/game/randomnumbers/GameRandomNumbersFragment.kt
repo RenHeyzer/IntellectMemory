@@ -2,7 +2,10 @@ package com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbe
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,6 +16,8 @@ import com.geektech.intellect_memort.databinding.FragmentGameRandomNumbersBindin
 import com.geektech.intellect_memort.presentation.adapters.RandomNumbersAdapter
 import com.geektech.intellect_memort.presentation.state.UIState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GameRandomNumbersFragment :
@@ -20,7 +25,7 @@ class GameRandomNumbersFragment :
         R.layout.fragment_game_random_numbers
     ) {
     override val binding by viewBinding(FragmentGameRandomNumbersBinding::bind)
-    override val viewModel: GameRandomNumbersViewModel by activityViewModels()
+    override val viewModel: GameRandomNumbersViewModel by viewModels()
     private val args: GameRandomNumbersFragmentArgs by navArgs()
     private var row: Int = 7
     private var last: Int = 14
@@ -29,7 +34,6 @@ class GameRandomNumbersFragment :
     override fun initialize() {
         adapter = RandomNumbersAdapter()
         binding.rvGameRandomNumber.adapter = adapter
-        viewModel.uploadRandomNumbers(args.quantitynumber)
     }
 
     override fun setupListeners() {
@@ -38,25 +42,43 @@ class GameRandomNumbersFragment :
         setUpBtnFinish()
     }
 
+    override fun setupRequests() {
+        viewModel.generateRandomNumbers(args.quantitynumber)
+        viewModel.randomNumbersState.subscribe {
+            when (it) {
+                is UIState.Error -> {
+                    Log.e("anime", "Error randomNumbers:${it.error} ")
+                }
+                is UIState.Loading -> {
+                    Log.e("anime", "Loading randomNumbers $it")
+                }
+                is UIState.Success -> {
+                    Log.e("anime", "Success randomNumbers:${it.data} ")
+                    if (viewModel.saveRandomNumbersState.value.isEmpty()) {
+                        viewModel.insertAllRandomNumbers(it.data)
+                    }
+                }
+            }
+        }
+        viewModel.getAllRandomNumbers()
+    }
+
     private fun setUpBtnFinish() {
+        val quantityNumber = args.quantitynumber
         binding.btnFinish.setOnSingleClickListener {
-            findNavController().navigate(R.id.action_gameRandomNumbersFragment_to_answerRandomNumbersFragment)
+            findNavController().navigate(
+                GameRandomNumbersFragmentDirections.actionGameRandomNumbersFragmentToAnswerRandomNumbersFragment(
+                    quantityNumber
+                )
+            )
         }
     }
 
     override fun setupObserves() {
-        viewModel.randomNumbersState.subscribe {
-            when (it) {
-                is UIState.Error -> {
-                    Log.e("anime", "Error RandomNumbers:${it.error} ")
-                }
-                is UIState.Loading -> {
-                    Log.e("anime", "Loading RandomNumbers $it")
-
-                }
-                is UIState.Success -> {
-                    Log.e("anime", "Success RandomNumbers:${it.data} ")
-                    adapter?.submitList(it.data)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.saveRandomNumbersState.collect {
+                    adapter?.submitList(it)
                 }
             }
         }
@@ -89,7 +111,6 @@ class GameRandomNumbersFragment :
     @SuppressLint("RestrictedApi")
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.deleteRandomNumbers()
         adapter = null
     }
 }

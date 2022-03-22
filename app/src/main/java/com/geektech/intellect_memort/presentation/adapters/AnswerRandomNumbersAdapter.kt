@@ -1,110 +1,169 @@
 package com.geektech.intellect_memort.presentation.adapters
 
-import android.annotation.SuppressLint
 import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseRecyclerViewHolder
-import com.geektech.intellect_memort.common.extension.disable
-import com.geektech.intellect_memort.common.extension.enable
 import com.geektech.intellect_memort.databinding.ItemAnswerNumbersBinding
 import com.geektech.intellect_memort.databinding.ItemRowBinding
-import com.geektech.intellect_memort.presentation.models.RandomNumbersModel
+import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
 
 class AnswerRandomNumbersAdapter(
-    val list: ArrayList<RandomNumbersModel>,
-) : ListAdapter<RandomNumbersModel, BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>>(
-    differCallback) {
-    private var lastPosition: Int = 14
-    private var rowLastPosition: Int = 7
+    val onInput: (position: Int, number: Int?) -> Unit,
+) : ListAdapter<AnswerNumbersModel, BaseRecyclerViewHolder<ViewBinding, AnswerNumbersModel>>(
+    differCallback
+) {
 
+    private var lastPosition: Int = 6
+    private var rowLastPosition: Int = 0
 
-    inner class ViewHolder(binding: ItemAnswerNumbersBinding) :
-        BaseRecyclerViewHolder<ItemAnswerNumbersBinding, RandomNumbersModel>(
-            binding
-        ) {
-        init {
-            binding.itemNumber.addTextChangedListener {
-                list.add(RandomNumbersModel(it.toString().toIntOrNull() ?: 0, 0))
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): BaseRecyclerViewHolder<ViewBinding, AnswerNumbersModel> {
+        val inflater = LayoutInflater.from(parent.context)
+        return when (viewType) {
+            R.layout.item_answer_numbers -> {
+                ViewHolder(
+                    ItemAnswerNumbersBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                    )
+                )
             }
-        }
-
-        override fun onBind(item: RandomNumbersModel?) {
-            setOnItemNextClickListener()
-        }
-
-        @SuppressLint("ResourceAsColor")
-        private fun setOnItemNextClickListener() {
-            when {
-                (absoluteAdapterPosition + 6) == lastPosition - 2 -> {
-                    binding.container.strokeColor = Color.parseColor("#4446AD")
-                    binding.itemNumber.setTextColor(Color.parseColor("#4446AD"))
-                    binding.itemNumber.enable()
-                }
-                (absoluteAdapterPosition + 6) == lastPosition - 3 -> {
-                    binding.container.strokeColor = Color.parseColor("#4446AD")
-                    binding.itemNumber.setTextColor(Color.parseColor("#4446AD"))
-                    binding.itemNumber.enable()
-                }
-                (absoluteAdapterPosition + 6) == lastPosition - 4 -> {
-                    binding.container.strokeColor = Color.parseColor("#4446AD")
-                    binding.itemNumber.setTextColor(Color.parseColor("#4446AD"))
-                    binding.itemNumber.enable()
-                }
-                (absoluteAdapterPosition + 6) == lastPosition - 5 -> {
-                    binding.container.strokeColor = Color.parseColor("#4446AD")
-                    binding.itemNumber.setTextColor(Color.parseColor("#4446AD"))
-                    binding.itemNumber.enable()
-                }
-                (absoluteAdapterPosition + 6) == lastPosition - 6 -> {
-                    binding.container.strokeColor = Color.parseColor("#4446AD")
-                    binding.itemNumber.setTextColor(Color.parseColor("#4446AD"))
-                    binding.itemNumber.enable()
-                }
-                (absoluteAdapterPosition + 6) == lastPosition - 7 -> {
-                    binding.container.strokeColor = Color.parseColor("#4446AD")
-                    binding.itemNumber.setTextColor(Color.parseColor("#4446AD"))
-                    binding.itemNumber.enable()
-                }
-                else -> {
-                    binding.container.strokeColor = Color.TRANSPARENT
-                    binding.itemNumber.setTextColor(R.color.black)
-                    binding.itemNumber.disable()
-                }
+            R.layout.item_row -> {
+                RowViewHolder(
+                    ItemRowBinding.inflate(
+                        inflater,
+                        parent,
+                        false
+                    )
+                )
             }
-            Log.e("anime", "viewHolder:$lastPosition ")
-
+            else -> {
+                throw IllegalAccessException("Invalid viewType provided")
+            }
         }
     }
 
-    fun setNextAndPreviousItemRow(row: Int, last: Int) {
-        if (rowLastPosition >= 7 && lastPosition >= 14) {
-            rowLastPosition = row
-            lastPosition = last
+    override fun onBindViewHolder(
+        holder: BaseRecyclerViewHolder<ViewBinding, AnswerNumbersModel>,
+        position: Int,
+    ) {
+        when (holder.itemViewType) {
+            R.layout.item_answer_numbers -> {
+                val viewHolder = holder as ViewHolder
+                viewHolder.onBind(getItem(position))
+            }
+            R.layout.item_row -> {
+                val rowViewHolder = holder as RowViewHolder
+                rowViewHolder.onBind(getItem(position))
+            }
+        }
+
+    }
+
+    inner class ViewHolder(
+        binding: ItemAnswerNumbersBinding,
+    ) : BaseRecyclerViewHolder<ItemAnswerNumbersBinding, AnswerNumbersModel>(
+        binding
+    ) {
+
+        init {
+            binding.itemNumber.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    onInput(
+                        absoluteAdapterPosition,
+                        binding.itemNumber.text.toString().toIntOrNull()
+                    )
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+
+            })
+        }
+
+        override fun onBind(item: AnswerNumbersModel?) {
+            this.setupItemHighlighting()
+            binding.apply {
+                enumeration.text = item?.id.toString()
+                itemNumber.setText(item?.answerNumber?.toString() ?: "")
+            }
+        }
+
+        private fun setupItemHighlighting() = with(binding) {
+            Log.e("promo", "setupItemHighlighting: $absoluteAdapterPosition")
+            when {
+                (absoluteAdapterPosition == lastPosition) -> {
+                    itemNumber.setTextColor(Color.BLUE)
+                    strokeMaterial.strokeColor = Color.BLUE
+                }
+                (absoluteAdapterPosition + 1 == lastPosition) -> {
+                    itemNumber.setTextColor(Color.BLUE)
+                    strokeMaterial.strokeColor = Color.BLUE
+                }
+                (absoluteAdapterPosition + 2 == lastPosition) -> {
+                    itemNumber.setTextColor(Color.BLUE)
+                    strokeMaterial.strokeColor = Color.BLUE
+                }
+                (absoluteAdapterPosition + 3 == lastPosition) -> {
+                    itemNumber.setTextColor(Color.BLUE)
+                    strokeMaterial.strokeColor = Color.BLUE
+                }
+                (absoluteAdapterPosition + 4 == lastPosition) -> {
+                    itemNumber.setTextColor(Color.BLUE)
+                    strokeMaterial.strokeColor = Color.BLUE
+                }
+                (absoluteAdapterPosition + 5 == lastPosition) -> {
+                    itemNumber.setTextColor(Color.BLUE)
+                    strokeMaterial.strokeColor = Color.BLUE
+                }
+                else -> {
+                    itemNumber.setTextColor(Color.BLACK)
+                    strokeMaterial.strokeColor = Color.TRANSPARENT
+                }
+            }
+        }
+    }
+
+    fun setNextAndPrevious(lastPosition: Int, rowLastPosition: Int, size: Int) {
+        if (this.lastPosition >= 6 && this.rowLastPosition >= 0) {
+            this.lastPosition = lastPosition
+            this.rowLastPosition = rowLastPosition
+            notifyItemRangeChanged(0, size)
         } else {
-            rowLastPosition = 7
-            lastPosition = 14
+            this.lastPosition = 6
+            this.rowLastPosition = 0
         }
     }
 
     inner class RowViewHolder(binding: ItemRowBinding) :
-        BaseRecyclerViewHolder<ItemRowBinding, RandomNumbersModel>(
+        BaseRecyclerViewHolder<ItemRowBinding, AnswerNumbersModel>(
             binding
         ) {
-        override fun onBind(item: RandomNumbersModel?) {
+
+        override fun onBind(item: AnswerNumbersModel?) {
             val rowPosition = absoluteAdapterPosition / 7
             binding.itemRow.text = rowPosition.plus(1).toString()
-            setOnItemNextClickListener()
+            this.setupItemHighlighting()
         }
 
-        private fun setOnItemNextClickListener() {
-            if ((absoluteAdapterPosition + 6) == rowLastPosition - 1) {
+        private fun setupItemHighlighting() {
+            if (absoluteAdapterPosition == rowLastPosition) {
                 binding.itemRow.setTextColor(Color.CYAN)
             } else {
                 binding.itemRow.setTextColor(Color.BLACK)
@@ -117,67 +176,22 @@ class AnswerRandomNumbersAdapter(
         return if ((position - 7) % 7 * 2 == 0) {
             R.layout.item_row
         } else {
-            R.layout.item_random_number
-        }
-    }
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
-    ): BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel> {
-        val inflater = LayoutInflater.from(parent.context)
-
-        return when (viewType) {
-
-            R.layout.item_row -> RowViewHolder(
-                ItemRowBinding.inflate(
-                    inflater,
-                    parent,
-                    false))
-
-            R.layout.item_random_number -> ViewHolder(
-                ItemAnswerNumbersBinding.inflate(
-                    inflater,
-                    parent,
-                    false
-                )
-            )
-            else -> {
-                throw IllegalAccessException("Invalid viewType provided")
-            }
-        }
-    }
-
-
-    override fun onBindViewHolder(
-        holder: BaseRecyclerViewHolder<ViewBinding, RandomNumbersModel>,
-        position: Int,
-    ) {
-        when (holder.itemViewType) {
-            R.layout.item_row -> getItem(position)?.let {
-                holder.onBind(it)
-            }
-            R.layout.item_random_number -> {
-                getItem(position)?.let {
-                    holder.onBind(it)
-                }
-                holder.setIsRecyclable(false)
-            }
+            R.layout.item_answer_numbers
         }
     }
 
     companion object {
-        val differCallback = object : DiffUtil.ItemCallback<RandomNumbersModel>() {
+        val differCallback = object : DiffUtil.ItemCallback<AnswerNumbersModel>() {
             override fun areItemsTheSame(
-                oldItem: RandomNumbersModel,
-                newItem: RandomNumbersModel,
+                oldItem: AnswerNumbersModel,
+                newItem: AnswerNumbersModel,
             ): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: RandomNumbersModel,
-                newItem: RandomNumbersModel,
+                oldItem: AnswerNumbersModel,
+                newItem: AnswerNumbersModel,
             ): Boolean {
                 return oldItem == newItem
             }

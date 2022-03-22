@@ -1,15 +1,18 @@
 package com.geektech.intellect_memort.domain.repositories
 
 import com.geektech.intellect_memort.common.resource.Resource
-import com.geektech.intellect_memort.presentation.models.RandomNumbersModel
-import com.geektech.intellect_memort.presentation.state.UIState
+import com.geektech.intellect_memort.domain.models.RandomNumbersModel
 import kotlinx.coroutines.flow.Flow
 
 interface RandomNumbersRepository {
 
-     fun generateRandomNumbers(): Flow<Resource<List<RandomNumbersModel>>>
+     fun generateRandomNumbers(quantitynumber: Int): Flow<Resource<List<RandomNumbersModel>>>
 
      suspend fun uploadRandomNumbers(quantity:Int)
 
-     suspend fun deleteDocuments()
+     fun getAllRandomNumbers(): Flow<List<RandomNumbersModel>>
+
+     suspend fun insertAllRandomNumbers(numbers: List<RandomNumbersModel>)
+
+     suspend fun deleteAllRandomNumbers()
 }

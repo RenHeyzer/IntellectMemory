@@ -26,4 +26,12 @@
     <string name="category_students_text">Participant</string>
     <string name="category_school_text">School</string>
     <string name="category_points_text">Points</string>
+    <string name="text_rating">Rating</string>
+    <string name="text_select_quantity_numbers">Choose quantity of numbers</string>
+    <string name="hint_quantity_numbers">00</string>
+    <string name="time_to_remember_text">Set time to remember</string>
+    <string name="text_button_previous">Previous</string>
+    <string name="text_button_next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="start_text">START</string>
 </resources>
