@@ -7,7 +7,7 @@ interface AnswerRandomNumbersRepository {
 
     fun getAllAnswerOfNumbers(): Flow<List<AnswerNumbersModel>>
 
-    suspend fun insertAnswerOfNumber(number: AnswerNumbersModel)
+    suspend fun insertAllAnswerOfNumbers(numbers: List<AnswerNumbersModel>)
 
     suspend fun deleteAllAnswerOfNumbers()
 
