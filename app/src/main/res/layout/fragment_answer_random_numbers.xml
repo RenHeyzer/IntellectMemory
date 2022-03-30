@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.game.randomnumbers.GameRandomNumbersFragment">
 
-
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fifteen_dp"
         android:src="@drawable/ic_arrow_back_24"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/guideline1_left"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ряд"
@@ -124,4 +124,18 @@
         app:layout_constraintLeft_toLeftOf="@id/guidLine2_center"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fifteen_dp"
+        android:layout_marginEnd="@dimen/twelve_dp"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/text_result"
+        android:textAllCaps="false"
+        android:textSize="@dimen/fourteen_sp"
+        app:cornerRadius="@dimen/ten_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
