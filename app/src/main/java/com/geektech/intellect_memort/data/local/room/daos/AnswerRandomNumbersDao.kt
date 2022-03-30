@@ -11,7 +11,7 @@ interface AnswerRandomNumbersDao {
     fun getAllAnswerOfNumbers(): Flow<List<AnswerNumbersModel>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAnswerOfNumber(numbers: AnswerNumbersModel)
+    suspend fun insertAllAnswerOfNumbers(numbers: List<AnswerNumbersModel>)
 
     @Delete
     suspend fun deleteAnswerOfNumber(number: AnswerNumbersModel)
