@@ -8,6 +8,6 @@ class InsertAnswerNumberUseCase @Inject constructor(
     private val repository: AnswerRandomNumbersRepository,
 ) {
 
-    suspend fun execute(numbers: AnswerNumbersModel) =
-        repository.insertAnswerOfNumber(numbers)
+    suspend fun execute(numbers: List<AnswerNumbersModel>) =
+        repository.insertAllAnswerOfNumbers(numbers)
 }
