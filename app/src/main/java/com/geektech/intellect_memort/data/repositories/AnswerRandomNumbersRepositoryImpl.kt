@@ -1,6 +1,5 @@
 package com.geektech.intellect_memort.data.repositories
 
-import android.util.Log
 import androidx.annotation.WorkerThread
 import com.geektech.intellect_memort.common.base.BaseRepository
 import com.geektech.intellect_memort.data.local.room.daos.AnswerRandomNumbersDao
@@ -17,9 +16,9 @@ class AnswerRandomNumbersRepositoryImpl @Inject constructor(
     override fun getAllAnswerOfNumbers() = dao.getAllAnswerOfNumbers()
 
     @WorkerThread
-    override suspend fun insertAnswerOfNumber(number: AnswerNumbersModel) =
+    override suspend fun insertAllAnswerOfNumbers(numbers: List<AnswerNumbersModel>) =
         withContext(Dispatchers.IO) {
-            dao.insertAnswerOfNumber(number)
+            dao.insertAllAnswerOfNumbers(numbers)
         }
 
     override suspend fun deleteAllAnswerOfNumbers() {
