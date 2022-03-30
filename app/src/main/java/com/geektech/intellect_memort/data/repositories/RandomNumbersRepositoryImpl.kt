@@ -1,6 +1,5 @@
 package com.geektech.intellect_memort.data.repositories
 
-import android.util.Log
 import androidx.annotation.WorkerThread
 import com.geektech.intellect_memort.common.base.BaseRepository
 import com.geektech.intellect_memort.common.constants.Constants
@@ -17,7 +16,6 @@ import kotlin.collections.ArrayList
 
 class RandomNumbersRepositoryImpl @Inject constructor(
     val fireStore: FirebaseFirestore,
-    private val preferences: PreferencesHelper,
     private val dao: RandomNumbersDao,
 ) : BaseRepository(), RandomNumbersRepository {
 
@@ -25,12 +23,9 @@ class RandomNumbersRepositoryImpl @Inject constructor(
 
     override fun generateRandomNumbers(quantitynumber: Int) = doRequest {
         val randomList: MutableList<RandomNumbersModel> = ArrayList()
-        var order = 1
         fetchList<RandomNumbersModel>(numbersCollection).shuffled().forEach {
             if (randomList.size <= quantitynumber) {
                 randomList.add(it)
-                Log.e("ranom", "number: $it, ${order++}")
-                Log.e("ranom", "randomList size: ${randomList.size}")
             }
         }
         return@doRequest randomList
@@ -43,19 +38,6 @@ class RandomNumbersRepositoryImpl @Inject constructor(
             addDocument(numbersCollection, hashMapOf("id" to id, "number" to it))
         }
     }
-
-//    override suspend fun deleteDocuments() {
-//        val batch = fireStore.batch()
-//        numbersCollection.document(preferences.userId.toString())
-//            .collection(Constants.CHILD_NUMBER_REFERENCE)
-//            .get()
-//            .await()
-//            .documents
-//            .forEach {
-//                batch.delete(it.reference)
-//            }
-//        batch.commit()
-//    }
 
     override fun getAllRandomNumbers() = dao.getAllRandomNumbers()
 
