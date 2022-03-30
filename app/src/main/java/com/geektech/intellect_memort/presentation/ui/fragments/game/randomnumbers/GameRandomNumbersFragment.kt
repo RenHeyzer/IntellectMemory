@@ -2,6 +2,7 @@ package com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbe
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +13,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
+import com.geektech.intellect_memort.common.extension.timer
 import com.geektech.intellect_memort.databinding.FragmentGameRandomNumbersBinding
 import com.geektech.intellect_memort.presentation.adapters.RandomNumbersAdapter
 import com.geektech.intellect_memort.presentation.state.UIState
@@ -34,6 +36,25 @@ class GameRandomNumbersFragment :
     override fun initialize() {
         adapter = RandomNumbersAdapter()
         binding.rvGameRandomNumber.adapter = adapter
+    }
+
+    override fun setupViews() {
+        setupTimer()
+        setupButtonPrevVisibility()
+    }
+
+    private fun setupTimer() {
+        timer(binding.txtTimer, args.time) {
+            findNavController().navigate(
+                GameRandomNumbersFragmentDirections.actionGameRandomNumbersFragmentToAnswerRandomNumbersFragment(
+                    args.quantitynumber
+                )
+            )
+        }.start()
+    }
+
+    private fun setupButtonPrevVisibility() {
+        binding.btnPrevious.isVisible = last != 14
     }
 
     override fun setupListeners() {
@@ -86,18 +107,21 @@ class GameRandomNumbersFragment :
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpBtnNextAndBtnPreviousListener() {
+        adapter?.setNextAndPreviousItemRow(row, last)
         binding.btnNext.setOnSingleClickListener {
             row += 7
             last += 7
+            binding.btnPrevious.isVisible = last != 14
             adapter?.setNextAndPreviousItemRow(row, last)
             adapter?.notifyDataSetChanged()
-            Log.e("anime", "Plus: $row")
+            Log.e("anime", "Plus: $last")
         }
         binding.btnPrevious.setOnSingleClickListener {
             row -= 7
             last -= 7
+            binding.btnPrevious.isVisible = last != 14
             adapter?.setNextAndPreviousItemRow(row, last)
-            Log.e("anime", "Minus: $row")
+            Log.e("anime", "Minus: $last")
             adapter?.notifyDataSetChanged()
         }
     }
@@ -108,7 +132,6 @@ class GameRandomNumbersFragment :
         }
     }
 
-    @SuppressLint("RestrictedApi")
     override fun onDestroyView() {
         super.onDestroyView()
         adapter = null
