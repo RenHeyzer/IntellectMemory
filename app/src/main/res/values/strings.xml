@@ -62,4 +62,12 @@
     <string name="picture_play_time_minutes">Минут</string>
 
     <string name="timer_template">%1$s:%2$s</string>
+    <string name="text_result">Result</string>
+    <string name="text_time_to_remember">Время запоминания:</string>
+    <string name="text_time_of_answers">Время ответов:</string>
+    <string name="exit_text">Вы уверены, что хотитите выйти? \n \nВсе ваши резултаты будут обнулены!</string>
+    <string name="exit_description">Все ваши результаты будут обнулены!</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+    <string name="text_warning">Предупреждение!</string>
 </resources>
