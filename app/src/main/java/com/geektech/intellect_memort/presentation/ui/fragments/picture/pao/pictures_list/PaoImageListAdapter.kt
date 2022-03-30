@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.geektech.intellect_memort.common.base.SBaseDiffUtilItemCallback
 import com.geektech.intellect_memort.databinding.PictureRvItemBinding
 import com.geektech.intellect_memort.domain.models.PictureImageModel
 import com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.pictures_list.PaoImageListAdapter.PaoImageViewHolder
 
 
-class PaoImageListAdapter : ListAdapter<PictureImageModel, PaoImageViewHolder>(diffCallback) {
+class PaoImageListAdapter : ListAdapter<PictureImageModel, PaoImageViewHolder>(
+    SBaseDiffUtilItemCallback()
+) {
 
     private var onItemClickListener: ((PictureImageModel) -> Unit)? = null
 
@@ -42,25 +45,6 @@ class PaoImageListAdapter : ListAdapter<PictureImageModel, PaoImageViewHolder>(d
                 .into(binding.image)
             binding.title.text = item.id
 
-        }
-    }
-
-
-    companion object {
-        val diffCallback = object : DiffUtil.ItemCallback<PictureImageModel>() {
-            override fun areItemsTheSame(
-                oldItem: PictureImageModel,
-                newItem: PictureImageModel,
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: PictureImageModel,
-                newItem: PictureImageModel,
-            ): Boolean {
-                return oldItem == newItem
-            }
         }
     }
 }
