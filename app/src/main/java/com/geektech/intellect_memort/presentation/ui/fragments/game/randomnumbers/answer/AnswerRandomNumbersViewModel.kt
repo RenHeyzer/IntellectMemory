@@ -4,13 +4,11 @@ import androidx.lifecycle.viewModelScope
 import com.geektech.intellect_memort.common.base.BaseViewModel
 import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
 import com.geektech.intellect_memort.domain.models.RandomNumbersModel
-import com.geektech.intellect_memort.domain.models.toAnswerNumbersModel
 import com.geektech.intellect_memort.domain.usecases.answernumbers.DeleteAllAnswerNumbersUseCase
 import com.geektech.intellect_memort.domain.usecases.answernumbers.DeleteAnswerNumberUseCase
 import com.geektech.intellect_memort.domain.usecases.answernumbers.GetAllAnswerNumbersUseCase
 import com.geektech.intellect_memort.domain.usecases.answernumbers.InsertAnswerNumberUseCase
 import com.geektech.intellect_memort.domain.usecases.randomnumbers.GetAllRandomNumbersUseCase
-import com.geektech.intellect_memort.presentation.state.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -45,8 +43,8 @@ class AnswerRandomNumbersViewModel @Inject constructor(
         }
     }
 
-    fun insertAnswerNumber(number: AnswerNumbersModel) = viewModelScope.launch {
-        insertAnswerNumberUseCase.execute(number)
+    fun insertAllAnswerOfNumbers(numbers: List<AnswerNumbersModel>) = viewModelScope.launch {
+        insertAnswerNumberUseCase.execute(numbers)
     }
 
     fun deleteAnswerNumber(number: AnswerNumbersModel) = viewModelScope.launch {
