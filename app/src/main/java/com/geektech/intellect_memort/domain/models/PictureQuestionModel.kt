@@ -8,5 +8,4 @@ data class PictureQuestionModel(
     val thirdAnswer : String?,
     val fourthAnswer : String?,
     val correctAnswer : String?,
-
 )
