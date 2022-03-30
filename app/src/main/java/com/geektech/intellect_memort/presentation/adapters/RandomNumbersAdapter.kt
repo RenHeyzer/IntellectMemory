@@ -8,13 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.intellect_memort.R
+import com.geektech.intellect_memort.common.base.BaseDiffUtilItemCallback
 import com.geektech.intellect_memort.databinding.ItemRandomNumberBinding
 import com.geektech.intellect_memort.databinding.ItemRowBinding
 import com.geektech.intellect_memort.domain.models.RandomNumbersModel
 
 class RandomNumbersAdapter :
     ListAdapter<RandomNumbersModel, RecyclerView.ViewHolder>(
-        differCallback
+        BaseDiffUtilItemCallback()
     ) {
     private var lastPosition: Int = 14
     private var rowLastPosition: Int = 7
@@ -95,7 +96,7 @@ class RandomNumbersAdapter :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if ((position - 7) % 7 * 2 == 0) {
+        return if (position % 7 * 2 == 0) {
             R.layout.item_row
         } else {
             R.layout.item_random_number
@@ -141,23 +142,5 @@ class RandomNumbersAdapter :
             }
         }
 
-    }
-
-    companion object {
-        val differCallback = object : DiffUtil.ItemCallback<RandomNumbersModel>() {
-            override fun areItemsTheSame(
-                oldItem: RandomNumbersModel,
-                newItem: RandomNumbersModel,
-            ): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(
-                oldItem: RandomNumbersModel,
-                newItem: RandomNumbersModel,
-            ): Boolean {
-                return oldItem == newItem
-            }
-        }
     }
 }

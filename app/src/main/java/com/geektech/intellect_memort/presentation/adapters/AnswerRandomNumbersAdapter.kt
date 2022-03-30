@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.R
+import com.geektech.intellect_memort.common.base.BaseDiffUtilItemCallback
 import com.geektech.intellect_memort.common.base.BaseRecyclerViewHolder
 import com.geektech.intellect_memort.databinding.ItemAnswerNumbersBinding
 import com.geektech.intellect_memort.databinding.ItemRowBinding
@@ -18,7 +19,7 @@ import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
 class AnswerRandomNumbersAdapter(
     val onInput: (position: Int, number: Int?) -> Unit,
 ) : ListAdapter<AnswerNumbersModel, BaseRecyclerViewHolder<ViewBinding, AnswerNumbersModel>>(
-    differCallback
+    BaseDiffUtilItemCallback()
 ) {
 
     private var lastPosition: Int = 6
@@ -144,7 +145,6 @@ class AnswerRandomNumbersAdapter(
         if (this.lastPosition >= 6 && this.rowLastPosition >= 0) {
             this.lastPosition = lastPosition
             this.rowLastPosition = rowLastPosition
-            notifyItemRangeChanged(0, size)
         } else {
             this.lastPosition = 6
             this.rowLastPosition = 0
@@ -178,24 +178,5 @@ class AnswerRandomNumbersAdapter(
         } else {
             R.layout.item_answer_numbers
         }
-    }
-
-    companion object {
-        val differCallback = object : DiffUtil.ItemCallback<AnswerNumbersModel>() {
-            override fun areItemsTheSame(
-                oldItem: AnswerNumbersModel,
-                newItem: AnswerNumbersModel,
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: AnswerNumbersModel,
-                newItem: AnswerNumbersModel,
-            ): Boolean {
-                return oldItem == newItem
-            }
-        }
-
     }
 }
