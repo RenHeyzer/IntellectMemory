@@ -1,10 +1,9 @@
 package com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.answer
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
@@ -14,8 +13,6 @@ import com.geektech.intellect_memort.databinding.FragmentAnswerRandomNumbersBind
 import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
 import com.geektech.intellect_memort.presentation.adapters.AnswerRandomNumbersAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AnswerRandomNumbersFragment :
@@ -40,7 +37,26 @@ class AnswerRandomNumbersFragment :
     }
 
     override fun setupListeners() {
+        setupBackClickListener()
         setUpBtnNextAndBtnPreviousListener()
+        setupFinishClickListener()
+    }
+
+    private fun setupBackClickListener() {
+        binding.btnBack.setOnSingleClickListener {
+            findNavController().navigate(
+                AnswerRandomNumbersFragmentDirections.actionAnswerRandomNumbersFragmentToExitDialogFragment()
+            )
+        }
+    }
+
+    private fun setupFinishClickListener() {
+        binding.btnResult.setOnSingleClickListener {
+            viewModel.insertAllAnswerOfNumbers(answerList)
+            findNavController().navigate(
+                AnswerRandomNumbersFragmentDirections.actionAnswerRandomNumbersFragmentToResultNumbersFragment()
+            )
+        }
     }
 
     override fun setupRequests() {
@@ -48,31 +64,29 @@ class AnswerRandomNumbersFragment :
     }
 
     override fun setupObserves() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.randomNumbersState.collect {
-                    it.forEach { model ->
-                        model.id?.let { id ->
-                            if (answerList.size <= args.size) {
-                                answerList.add(AnswerNumbersModel(id, null))
-                                identifierList.add(id)
-                            }
-                        }
-                    }
-                    if (answerList.isNotEmpty()) {
-                        adapter?.submitList(answerList)
+        viewModel.randomNumbersState.subscribeIdle {
+            it.forEach { model ->
+                model.id?.let { id ->
+                    if (answerList.size <= args.size) {
+                        answerList.add(AnswerNumbersModel(id, null))
+                        identifierList.add(id)
                     }
                 }
+            }
+            if (answerList.isNotEmpty()) {
+                adapter?.submitList(answerList)
             }
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setUpBtnNextAndBtnPreviousListener() {
         adapter?.setNextAndPrevious(lastPosition, rowLastPosition, args.size)
         binding.btnNext.setOnSingleClickListener {
             lastPosition += 7
             rowLastPosition += 7
             adapter?.setNextAndPrevious(lastPosition, rowLastPosition, args.size)
+            adapter?.notifyDataSetChanged()
             Log.e("promo", "Plus: $lastPosition")
         }
         binding.btnPrevious.setOnSingleClickListener {
@@ -80,6 +94,7 @@ class AnswerRandomNumbersFragment :
                 lastPosition -= 7
                 rowLastPosition -= 7
                 adapter?.setNextAndPrevious(lastPosition, rowLastPosition, args.size)
+                adapter?.notifyDataSetChanged()
                 Log.e("promo", "Minus: $lastPosition")
                 Log.e("promo", "Minus: $rowLastPosition")
             } else {
