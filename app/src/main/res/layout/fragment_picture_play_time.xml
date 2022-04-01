@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08" />
+        app:layout_constraintGuide_percent="0.09" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_guid_bottom"
@@ -90,7 +90,7 @@
                 android:id="@+id/timeField"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 app:boxStrokeWidth="2dp"
                 app:hintEnabled="false"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_picker"
@@ -101,7 +101,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/timeEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_picker"
                     android:gravity="center"
                     android:hint="@string/picture_play_hint_00"
