@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 navGraph.startDestination = R.id.signFlowFragment
             }
             false -> {
-                navGraph.startDestination = R.id.mainFlowFragment2
+                navGraph.startDestination = R.id.mainFlowFragment
             }
         }
         navController.graph = navGraph

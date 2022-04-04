@@ -1,13 +1,13 @@
 package com.geektech.intellect_memort.domain.models
 
+import com.geektech.intellect_memort.common.base.SBaseDiffModel
 import java.io.Serializable
 
 data class PictureImageModel(
-    val id: String? = null,
+    override val id: String? = null,
     val imageUrl: String? = null,
-)
+) : SBaseDiffModel
 
 data class PictureImagesList(
     val images: List<PictureImageModel>,
 ) : Serializable
-

@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
-import com.geektech.intellect_memort.common.extension.mainNavController
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.common.extension.showDialog
+import com.geektech.intellect_memort.common.extension.signNavController
 import com.geektech.intellect_memort.common.utils.Localization
 import com.geektech.intellect_memort.data.local.sharedpreferences.PreferencesHelper
 import com.geektech.intellect_memort.databinding.FragmentSignInBinding
@@ -80,7 +80,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                                 username == admin?.fullName && password == admin.password -> {
                                     isAdmin()
                                     dialogProgressbar?.dismiss()
-                                    mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
+                                    signNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment2)
                                     wasOpen()
                                 }
                                 else -> {
@@ -119,8 +119,15 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                                         "${preferences.userId}",
                                         Toast.LENGTH_LONG).show()
                                     dialogProgressbar?.dismiss()
-                                    mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
+                                    signNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment2)
                                     wasOpen()
+                                }
+                                username != student?.fullName || password != student.password -> {
+                                    inputUsername.error =
+                                        getString(R.string.error_input_correct_username)
+                                    inputPassword.error =
+                                        getString(R.string.error_text_input_correct_password)
+                                    dialogProgressbar?.dismiss()
                                 }
                                 else -> {
                                     dialogProgressbar?.dismiss()

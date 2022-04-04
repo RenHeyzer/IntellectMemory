@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sign_in_graph"
+    android:id="@+id/students_graph"
     app:startDestination="@id/listOfStudentsFragment">
 
     <fragment
@@ -13,10 +13,20 @@
         <action
             android:id="@+id/action_listOfStudentsFragment_to_createStudentsFragment"
             app:destination="@id/createStudentsFragment" />
+        <action
+            android:id="@+id/action_listOfStudentsFragment_to_signFlowFragment2"
+            app:destination="@id/signFlowFragment2"
+            app:popUpTo="@id/students_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/createStudentsFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.students.create.CreateStudentsFragment"
         android:label="fragment_create_students"
-        tools:layout="@layout/fragment_create_students" />
+        tools:layout="@layout/fragment_create_students"></fragment>
+    <fragment
+        android:id="@+id/signFlowFragment2"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.registration.SignFlowFragment"
+        android:label="fragment_sign_flow"
+        tools:layout="@layout/fragment_sign_flow" />
 </navigation>
