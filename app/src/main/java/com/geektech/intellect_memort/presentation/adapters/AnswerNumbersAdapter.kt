@@ -6,7 +6,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.R
@@ -16,7 +16,7 @@ import com.geektech.intellect_memort.databinding.ItemAnswerNumbersBinding
 import com.geektech.intellect_memort.databinding.ItemRowBinding
 import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
 
-class AnswerRandomNumbersAdapter(
+class AnswerNumbersAdapter(
     val onInput: (position: Int, number: Int?) -> Unit,
 ) : ListAdapter<AnswerNumbersModel, BaseRecyclerViewHolder<ViewBinding, AnswerNumbersModel>>(
     BaseDiffUtilItemCallback()
@@ -101,7 +101,6 @@ class AnswerRandomNumbersAdapter(
         override fun onBind(item: AnswerNumbersModel?) {
             this.setupItemHighlighting()
             binding.apply {
-                enumeration.text = item?.id.toString()
                 itemNumber.setText(item?.answerNumber?.toString() ?: "")
             }
         }
@@ -111,37 +110,44 @@ class AnswerRandomNumbersAdapter(
             when {
                 (absoluteAdapterPosition == lastPosition) -> {
                     itemNumber.setTextColor(Color.BLUE)
+                    itemNumber.isVisible = true
                     strokeMaterial.strokeColor = Color.BLUE
                 }
                 (absoluteAdapterPosition + 1 == lastPosition) -> {
                     itemNumber.setTextColor(Color.BLUE)
+                    itemNumber.isVisible = true
                     strokeMaterial.strokeColor = Color.BLUE
                 }
                 (absoluteAdapterPosition + 2 == lastPosition) -> {
                     itemNumber.setTextColor(Color.BLUE)
+                    itemNumber.isVisible = true
                     strokeMaterial.strokeColor = Color.BLUE
                 }
                 (absoluteAdapterPosition + 3 == lastPosition) -> {
                     itemNumber.setTextColor(Color.BLUE)
+                    itemNumber.isVisible = true
                     strokeMaterial.strokeColor = Color.BLUE
                 }
                 (absoluteAdapterPosition + 4 == lastPosition) -> {
                     itemNumber.setTextColor(Color.BLUE)
+                    itemNumber.isVisible = true
                     strokeMaterial.strokeColor = Color.BLUE
                 }
                 (absoluteAdapterPosition + 5 == lastPosition) -> {
                     itemNumber.setTextColor(Color.BLUE)
+                    itemNumber.isVisible = true
                     strokeMaterial.strokeColor = Color.BLUE
                 }
                 else -> {
                     itemNumber.setTextColor(Color.BLACK)
+                    itemNumber.isVisible = false
                     strokeMaterial.strokeColor = Color.TRANSPARENT
                 }
             }
         }
     }
 
-    fun setNextAndPrevious(lastPosition: Int, rowLastPosition: Int, size: Int) {
+    fun setNextAndPrevious(lastPosition: Int, rowLastPosition: Int) {
         if (this.lastPosition >= 6 && this.rowLastPosition >= 0) {
             this.lastPosition = lastPosition
             this.rowLastPosition = rowLastPosition
