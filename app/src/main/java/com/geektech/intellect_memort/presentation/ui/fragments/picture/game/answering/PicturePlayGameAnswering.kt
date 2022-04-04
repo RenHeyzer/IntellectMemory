@@ -27,15 +27,21 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
     override val viewModel: PicturePlayGameAnsweringViewModel by viewModels()
     private val args: PicturePlayGameAnsweringArgs by navArgs()
 
-    // game variables
-    private val newListOfImages = mutableListOf<PictureImageModel>()
-    private val listOfQuestions = mutableListOf<PictureQuestionModel>()
-    private val shownImagesNumber = 9
+    // size of image quiz
+    private val shownImagesNumber = 9 // starts from 0
+    private var sizeOfShownImages: Int = 0
+
+    // position vars
     private var currentImagePosition = 0
     private var mSelectedOptionId: String? = ""
-    private var sizeOfShownImages: Int = 0
-    private var correctAnswers: Int = 0
 
+    // list vars
+    private val listOfQuestions = mutableListOf<PictureQuestionModel>()
+    private var listOfAnswersForViewRandomized = mutableListOf<String?>()
+    private var listOfAnswers = mutableListOf<String?>()
+
+    // correct answers to submit
+    private var correctAnswers: Int = 0
 
     override fun initialize() {
         super.initialize()
@@ -55,24 +61,26 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
 
         binding.btnNext.setOnClickListener {
             if (currentImagePosition < sizeOfShownImages) {
-                checkCorrectAnswer()
+                listOfAnswers.add(mSelectedOptionId)
                 currentImagePosition++
                 imageQuestionSetup()
             }
         }
         binding.btnPrevious.setOnClickListener {
             if (currentImagePosition > 0) {
+                listOfAnswers.removeLast()
                 currentImagePosition--
                 imageQuestionSetup()
             }
         }
         binding.btnSubmit.setOnClickListener {
+            checkCorrectAnswer()
             findNavController().navigate(PicturePlayGameAnsweringDirections
                 .actionPicturePlayGameAnsweringToPictureGameResults(
-                    listOfQuestions.size,
-                    correctAnswers,
-                    listOfQuestions.size - correctAnswers,
-                    args.passedTime
+                    totalPictures = listOfQuestions.size,
+                    correctAnswers = correctAnswers,
+                    incorrectAnswers = listOfQuestions.size - correctAnswers,
+                    totalTime = args.passedTime
                 ))
         }
     }
@@ -82,19 +90,21 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
         when (v?.id) {
             R.id.btn_first -> {
                 selectedOptionView(binding.btnFirst,
-                    listOfQuestions[currentImagePosition].firstAnswer)
+                    listOfAnswersForViewRandomized[0]
+                )
             }
             R.id.btn_second -> {
                 selectedOptionView(binding.btnSecond,
-                    listOfQuestions[currentImagePosition].secondAnswer)
+                    listOfAnswersForViewRandomized[1])
             }
             R.id.btn_third -> {
                 selectedOptionView(binding.btnThird,
-                    listOfQuestions[currentImagePosition].thirdAnswer)
+                    listOfAnswersForViewRandomized[2]
+                )
             }
             R.id.btn_fourth -> {
                 selectedOptionView(binding.btnFourth,
-                    listOfQuestions[currentImagePosition].fourthAnswer)
+                    listOfAnswersForViewRandomized[3])
             }
         }
     }
@@ -102,34 +112,31 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
     // populating views with images
     private fun gameInitialization() {
         // images passed from PicturePlayGame fragment
-        val allPassedImagesWithinRange = args.imagesList.images.shuffled()
-        var allPassedImagesWithinRangeRandomized = args.imagesList.images
+        val allImages = args.imagesList.images.shuffled()
+        var allImagesRandomized = args.imagesList.images
         correctAnswers = 0
 
 
-        for (imageModel in 0..shownImagesNumber) {
-            newListOfImages.add(allPassedImagesWithinRange[imageModel])
-        }
-
-
-
         for (i in 0..shownImagesNumber) {
-            allPassedImagesWithinRangeRandomized = allPassedImagesWithinRangeRandomized.shuffled()
+            while (allImagesRandomized[1].id == allImages[i].id ||
+                allImagesRandomized[2].id == allImages[i].id ||
+                allImagesRandomized[3].id == allImages[i].id
+            ) {
+                allImagesRandomized =
+                    allImagesRandomized.shuffled()
+            }
             listOfQuestions.add(
                 PictureQuestionModel(
-                    imageModel = newListOfImages[i],
-                    correctAnswer = newListOfImages[i].id,
-                    firstAnswer = newListOfImages[i].id,
-                    secondAnswer = allPassedImagesWithinRangeRandomized[1].id,
-                    thirdAnswer = allPassedImagesWithinRangeRandomized[2].id,
-                    fourthAnswer = allPassedImagesWithinRangeRandomized[3].id
+                    imageModel = allImages[i],
+                    correctAnswer = allImages[i].id,
+                    firstAnswer = allImages[i].id,
+                    secondAnswer = allImagesRandomized[1].id,
+                    thirdAnswer = allImagesRandomized[2].id,
+                    fourthAnswer = allImagesRandomized[3].id
                 )
             )
         }
-
-
         imageQuestionSetup()
-
     }
 
     // setup for images by position(every click)
@@ -148,18 +155,19 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
             .load(currentImageModel.imageModel.imageUrl)
             .into(binding.image)
 
-        var randomizedListOfAnswers = mutableListOf<String?>()
-        randomizedListOfAnswers.add(currentImageModel.firstAnswer)
-        randomizedListOfAnswers.add(currentImageModel.secondAnswer)
-        randomizedListOfAnswers.add(currentImageModel.thirdAnswer)
-        randomizedListOfAnswers.add(currentImageModel.fourthAnswer)
+        // list of image id's(4) for one image model in question
+        listOfAnswersForViewRandomized.clear()
+        listOfAnswersForViewRandomized.add(currentImageModel.firstAnswer)
+        listOfAnswersForViewRandomized.add(currentImageModel.secondAnswer)
+        listOfAnswersForViewRandomized.add(currentImageModel.thirdAnswer)
+        listOfAnswersForViewRandomized.add(currentImageModel.fourthAnswer)
 
-        randomizedListOfAnswers = randomizedListOfAnswers.shuffled() as MutableList<String?>
+        listOfAnswersForViewRandomized = listOfAnswersForViewRandomized.shuffled() as MutableList<String?>
 
-        binding.btnFirst.text = randomizedListOfAnswers[0]
-        binding.btnSecond.text = randomizedListOfAnswers[1]
-        binding.btnThird.text = randomizedListOfAnswers[2]
-        binding.btnFourth.text = randomizedListOfAnswers[3]
+        binding.btnFirst.text = listOfAnswersForViewRandomized[0]
+        binding.btnSecond.text = listOfAnswersForViewRandomized[1]
+        binding.btnThird.text = listOfAnswersForViewRandomized[2]
+        binding.btnFourth.text = listOfAnswersForViewRandomized[3]
 
     }
 
@@ -188,9 +196,14 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
 
     // correct answer check
     private fun checkCorrectAnswer() {
-        val imageModel = listOfQuestions[currentImagePosition]
-        if (mSelectedOptionId.equals(imageModel.correctAnswer)) {
-            correctAnswers++
+        val localCorrectAnswersList = mutableListOf<String?>()
+        listOfQuestions.forEach {
+            localCorrectAnswersList.add(it.correctAnswer)
+        }
+        for (item in 0 until sizeOfShownImages) {
+            if (listOfAnswers[item] == (localCorrectAnswersList[item])) {
+                correctAnswers++
+            }
         }
     }
 
@@ -198,7 +211,7 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
     private fun showAlertDialog() {
         AlertDialog.Builder(requireContext()).setMessage("Выйти в главное меню?")
             .setPositiveButton("Да") { _, _ ->
-                Log.e("correct ", correctAnswers.toString(), )
+                Log.e("correct ", correctAnswers.toString())
                 findNavController().navigate(PicturePlayGameAnsweringDirections
                     .actionPicturePlayGameAnsweringToHomeFragment())
             }

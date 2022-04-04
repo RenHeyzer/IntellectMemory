@@ -27,8 +27,6 @@ class PictureGameResults :
         binding.textviewCorrectAnswers.text = args.correctAnswers.toString()
         binding.textviewIncorrectAnswers.text = args.incorrectAnswers.toString()
         binding.textviewTotalTime.text = args.totalTime
-
-
     }
 
     override fun setupListeners() {
@@ -37,9 +35,11 @@ class PictureGameResults :
         binding.btnFinish.setOnClickListener {
             findNavController().navigate(PictureGameResultsDirections.actionPictureGameResultsToHomeFragment())
         }
-
     }
 
+    override fun setupRequests() {
+        viewModel.passResults(args.correctAnswers)
+    }
 
     private fun navigationToMenu() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
