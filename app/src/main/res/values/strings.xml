@@ -62,4 +62,19 @@
     <string name="picture_play_time_minutes">Минут</string>
 
     <string name="timer_template">%1$s:%2$s</string>
+    <string name="text_result">Result</string>
+    <string name="text_time_to_remember">Время запоминания:</string>
+    <string name="text_time_of_answers">Время ответов:</string>
+    <string name="exit_text">Вы уверены, что хотитите выйти? \n \nВсе ваши результаты будут обнулены!</string>
+    <string name="exit_text_short">Вы уверены, что хотитите выйти?</string>
+    <string name="exit_description">Все ваши результаты будут обнулены!</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+    <string name="text_warning">Предупреждение!</string>
+    <string name="text_row">Ряд</string>
+    <string name="error_text_input_admissible_number">Введите допустимое число! От 1 до 1000!</string>
+    <string name="error_text_input_admissible_time">Введите допустимое время! До 60 мин.</string>
+    <string name="text_logout">Выход</string>
+    <string name="error_text_input_correct_password">Укажите верный пароль!</string>
+    <string name="error_input_correct_username">Укажите верное имя пользователя!</string>
 </resources>

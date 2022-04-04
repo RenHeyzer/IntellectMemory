@@ -3,8 +3,8 @@ package com.geektech.intellect_memort.di
 import android.content.Context
 import androidx.room.Room
 import com.geektech.intellect_memort.data.local.room.AppDatabase
-import com.geektech.intellect_memort.data.local.room.daos.AnswerRandomNumbersDao
-import com.geektech.intellect_memort.data.local.room.daos.RandomNumbersDao
+import com.geektech.intellect_memort.data.local.room.daos.AnswerNumbersDao
+import com.geektech.intellect_memort.data.local.room.daos.NumbersDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,10 +26,10 @@ object DatabaseModule {
         ).fallbackToDestructiveMigration().build()
 
     @Provides
-    fun provideRandomNumbersDao(appDatabase: AppDatabase): RandomNumbersDao =
+    fun provideRandomNumbersDao(appDatabase: AppDatabase): NumbersDao =
         appDatabase.randomNumbersDao()
 
     @Provides
-    fun provideAnswerRandomNumbersDao(appDatabase: AppDatabase): AnswerRandomNumbersDao =
+    fun provideAnswerRandomNumbersDao(appDatabase: AppDatabase): AnswerNumbersDao =
         appDatabase.answerRandomNumbersDao()
 }

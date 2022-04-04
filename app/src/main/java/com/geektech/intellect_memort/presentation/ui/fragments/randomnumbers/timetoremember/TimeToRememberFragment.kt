@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.extension.hideKeyboard
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.common.extension.visible
@@ -38,22 +39,34 @@ class TimeToRememberFragment : Fragment() {
     private fun setUpListeners() = with(binding) {
         etTime.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() < 61) {
+                if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() < 61
+                    && etTime.text.toString().toInt() > 0 && etTime.text[0].code != 0
+                ) {
                     time = etTime.text.toString().toInt()
                     etTime.hideKeyboard()
                     setUpBtnStartListener()
                     binding.parentLayout.setBackgroundColor(Color.parseColor("#4446AD"))
                     binding.btnStartr.visible()
+                } else {
+                    etTime.error = getString(R.string.error_text_input_admissible_time)
                 }
             }
             false
+        }
+        setupBtnBackClickListener()
+    }
+
+    private fun setupBtnBackClickListener() {
+        binding.btnBack.setOnSingleClickListener {
+            findNavController().navigateUp()
         }
     }
 
     private fun setUpBtnStartListener() {
         binding.btnStartr.setOnSingleClickListener {
             findNavController().navigate(
-                TimeToRememberFragmentDirections.actionTimeToRememberFragmentToGameRandomNumbersFragment(
+                TimeToRememberFragmentDirections.actionTimeToRememberFragmentToTimerFragment(
+                    args.isBinary,
                     args.quantityNumbers,
                     time
                 )

@@ -239,8 +239,6 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
 
         }
         timer?.start()
-
-
     }
 
     override fun onDestroyView() {

@@ -65,4 +65,17 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
             }
         }
     }
+
+    protected fun <T> StateFlow<T>.subscribeIdle(
+        state: Lifecycle.State = Lifecycle.State.STARTED,
+        action: (T) -> Unit,
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state) {
+                this@subscribeIdle.collect {
+                    action(it)
+                }
+            }
+        }
+    }
 }

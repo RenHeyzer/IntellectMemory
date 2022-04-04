@@ -1,6 +1,5 @@
 package com.geektech.intellect_memort.presentation.ui.fragments.students.create
 
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -14,8 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.HashSet
-import kotlin.random.Random
 
 @AndroidEntryPoint
 class CreateStudentsFragment : BaseFragment<FragmentCreateStudentsBinding, CreateStudentsViewModel>(
@@ -63,10 +60,10 @@ class CreateStudentsFragment : BaseFragment<FragmentCreateStudentsBinding, Creat
                     "teacher" to teacher,
                     "branch" to branch,
                     "location" to location,
-                    "points" to Random(1).nextInt(3000)
+                    "points" to 0
                 )
                 lifecycleScope.launch {
-                    viewModel.createStudent(student)
+                    viewModel.createStudent(student, userId)
                 }
                 findNavController().navigateUp()
             }
