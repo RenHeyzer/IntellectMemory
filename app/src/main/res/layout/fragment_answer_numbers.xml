@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.game.randomnumbers.GameRandomNumbersFragment">
+    tools:context=".presentation.ui.fragments.game.randomnumbers.GameNumbersFragment">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -15,7 +15,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/guideline1_left"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <Chronometer
         android:id="@+id/txt_timer"
@@ -47,6 +46,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginEnd="13dp"
         android:orientation="vertical"
+        android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -54,7 +54,6 @@
         app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top"
         app:spanCount="7"
         tools:listitem="@layout/item_answer_numbers" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1_left"
