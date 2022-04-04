@@ -2,16 +2,16 @@ package com.geektech.intellect_memort.data.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.geektech.intellect_memort.data.local.room.daos.AnswerRandomNumbersDao
-import com.geektech.intellect_memort.data.local.room.daos.RandomNumbersDao
+import com.geektech.intellect_memort.data.local.room.daos.AnswerNumbersDao
+import com.geektech.intellect_memort.data.local.room.daos.NumbersDao
 import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
-import com.geektech.intellect_memort.domain.models.RandomNumbersModel
+import com.geektech.intellect_memort.domain.models.NumbersModel
 
-@Database(entities = [RandomNumbersModel::class, AnswerNumbersModel::class],
-    version = 5,
+@Database(entities = [NumbersModel::class, AnswerNumbersModel::class],
+    version = 6,
     exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun randomNumbersDao(): RandomNumbersDao
-    abstract fun answerRandomNumbersDao(): AnswerRandomNumbersDao
+    abstract fun randomNumbersDao(): NumbersDao
+    abstract fun answerRandomNumbersDao(): AnswerNumbersDao
 }
