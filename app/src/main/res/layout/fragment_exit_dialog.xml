@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardCornerRadius="@dimen/fifteen_dp"
-    app:strokeColor="@color/purple_700"
+    app:strokeColor="@color/blue_dark"
     app:strokeWidth="5dp"
     tools:context=".presentation.ui.dialogs.exit.ExitDialogFragment">
 
@@ -51,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fifteen_dp"
+            android:backgroundTint="@color/blue_dark"
             android:fontFamily="@font/montserrat"
             android:text="@string/text_yes"
             app:cornerRadius="@dimen/ten_dp"
@@ -63,6 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fifteen_dp"
+            android:backgroundTint="@color/blue_dark"
             android:fontFamily="@font/montserrat"
             android:text="@string/text_no"
             app:cornerRadius="@dimen/ten_dp"
