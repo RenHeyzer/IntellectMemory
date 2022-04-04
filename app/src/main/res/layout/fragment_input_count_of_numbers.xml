@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.randomnumbers.RandomNumbersFragment">
-
+    tools:context=".presentation.ui.fragments.randomnumbers.InputCountOfNumbersFragment">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -62,7 +61,6 @@
         app:layout_constraintRight_toRightOf="@id/guidLine2_right"
         app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
 
-
     <EditText
         android:id="@+id/et_quantity_numbers"
         android:layout_width="0dp"
@@ -70,7 +68,9 @@
         android:background="@drawable/background_oval_for_edit_text"
         android:hint="@string/hint_quantity_numbers"
         android:imeOptions="actionDone"
+        android:maxLength="4"
         android:inputType="number"
+        android:paddingHorizontal="@dimen/ten_dp"
         android:singleLine="true"
         android:textAlignment="center"
         android:textSize="35sp"
