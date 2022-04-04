@@ -10,7 +10,7 @@ class CreateStudentsViewModel @Inject constructor(
     private val createStudent: CreateStudentsUseCase,
 ) : BaseViewModel() {
 
-    suspend fun createStudent(student: HashMap<String, Any>) {
-        createStudent.execute(student)
+    suspend fun createStudent(student: HashMap<String, Any>, id: String) {
+        createStudent.execute(student, id)
     }
 }
