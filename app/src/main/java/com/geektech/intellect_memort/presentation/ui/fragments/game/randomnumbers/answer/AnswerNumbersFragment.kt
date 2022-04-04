@@ -9,27 +9,27 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
-import com.geektech.intellect_memort.databinding.FragmentAnswerRandomNumbersBinding
+import com.geektech.intellect_memort.databinding.FragmentAnswerNumbersBinding
 import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
-import com.geektech.intellect_memort.presentation.adapters.AnswerRandomNumbersAdapter
+import com.geektech.intellect_memort.presentation.adapters.AnswerNumbersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AnswerRandomNumbersFragment :
-    BaseFragment<FragmentAnswerRandomNumbersBinding, AnswerRandomNumbersViewModel>(
-        R.layout.fragment_answer_random_numbers
+class AnswerNumbersFragment :
+    BaseFragment<FragmentAnswerNumbersBinding, AnswerNumbersViewModel>(
+        R.layout.fragment_answer_numbers
     ) {
-    override val binding by viewBinding(FragmentAnswerRandomNumbersBinding::bind)
-    override val viewModel: AnswerRandomNumbersViewModel by viewModels()
-    private val args: AnswerRandomNumbersFragmentArgs by navArgs()
-    private var adapter: AnswerRandomNumbersAdapter? = null
+    override val binding by viewBinding(FragmentAnswerNumbersBinding::bind)
+    override val viewModel: AnswerNumbersViewModel by viewModels()
+    private val args: AnswerNumbersFragmentArgs by navArgs()
+    private var adapter: AnswerNumbersAdapter? = null
     private val answerList: ArrayList<AnswerNumbersModel> = ArrayList()
     private val identifierList: ArrayList<Int> = ArrayList()
     private var lastPosition: Int = 6
     private var rowLastPosition: Int = 0
 
     override fun initialize() {
-        adapter = AnswerRandomNumbersAdapter(this::onInput)
+        adapter = AnswerNumbersAdapter(this::onInput)
         binding.apply {
             rvGameRandomNumber.adapter = adapter
             txtTimer.start()
@@ -45,7 +45,7 @@ class AnswerRandomNumbersFragment :
     private fun setupBackClickListener() {
         binding.btnBack.setOnSingleClickListener {
             findNavController().navigate(
-                AnswerRandomNumbersFragmentDirections.actionAnswerRandomNumbersFragmentToExitDialogFragment()
+                AnswerNumbersFragmentDirections.actionAnswerNumbersFragmentToExitDialogFragment(true)
             )
         }
     }
@@ -54,7 +54,10 @@ class AnswerRandomNumbersFragment :
         binding.btnResult.setOnSingleClickListener {
             viewModel.insertAllAnswerOfNumbers(answerList)
             findNavController().navigate(
-                AnswerRandomNumbersFragmentDirections.actionAnswerRandomNumbersFragmentToResultNumbersFragment()
+                AnswerNumbersFragmentDirections.actionAnswerNumbersFragmentToResultNumbersFragment(
+                    args.timeToRemember,
+                    binding.txtTimer.text.toString()
+                )
             )
         }
     }
@@ -81,22 +84,19 @@ class AnswerRandomNumbersFragment :
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpBtnNextAndBtnPreviousListener() {
-        adapter?.setNextAndPrevious(lastPosition, rowLastPosition, args.size)
+        adapter?.setNextAndPrevious(lastPosition, rowLastPosition)
         binding.btnNext.setOnSingleClickListener {
             lastPosition += 7
             rowLastPosition += 7
-            adapter?.setNextAndPrevious(lastPosition, rowLastPosition, args.size)
+            adapter?.setNextAndPrevious(lastPosition, rowLastPosition)
             adapter?.notifyDataSetChanged()
-            Log.e("promo", "Plus: $lastPosition")
         }
         binding.btnPrevious.setOnSingleClickListener {
             if (lastPosition >= 6 || rowLastPosition >= 0) {
                 lastPosition -= 7
                 rowLastPosition -= 7
-                adapter?.setNextAndPrevious(lastPosition, rowLastPosition, args.size)
+                adapter?.setNextAndPrevious(lastPosition, rowLastPosition)
                 adapter?.notifyDataSetChanged()
-                Log.e("promo", "Minus: $lastPosition")
-                Log.e("promo", "Minus: $rowLastPosition")
             } else {
                 lastPosition = 6
                 rowLastPosition = 0
@@ -106,7 +106,6 @@ class AnswerRandomNumbersFragment :
 
     private fun onInput(position: Int, number: Int?) {
         answerList[position].answerNumber = number
-        Log.e("perfect", "${identifierList[position]} \n $number")
     }
 
     override fun onDestroyView() {
