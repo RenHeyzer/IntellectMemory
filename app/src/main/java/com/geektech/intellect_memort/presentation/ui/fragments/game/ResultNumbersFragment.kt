@@ -38,13 +38,23 @@ class ResultNumbersFragment : BaseFragment<FragmentResultNumbersBinding, ResultN
 
     override fun setupListeners() {
         setupButtonFinish()
+        setupButtonBack()
     }
 
     private fun setupButtonFinish() {
         binding.btnFinish.setOnSingleClickListener {
             findNavController().navigate(
+                ResultNumbersFragmentDirections.actionResultNumbersFragmentToHomeFragment()
+            )
+        }
+    }
+
+    private fun setupButtonBack() {
+        binding.btnBack.setOnSingleClickListener {
+            findNavController().navigate(
                 ResultNumbersFragmentDirections.actionResultNumbersFragmentToExitDialogFragment(
-                    false)
+                    false
+                )
             )
         }
     }

@@ -75,4 +75,6 @@
     <string name="error_text_input_admissible_number">Введите допустимое число! От 1 до 1000!</string>
     <string name="error_text_input_admissible_time">Введите допустимое время! До 60 мин.</string>
     <string name="text_logout">Выход</string>
+    <string name="error_text_input_correct_password">Укажите верный пароль!</string>
+    <string name="error_input_correct_username">Укажите верное имя пользователя!</string>
 </resources>

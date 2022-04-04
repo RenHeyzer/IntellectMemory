@@ -289,6 +289,11 @@
         <action
             android:id="@+id/action_resultNumbersFragment_to_exitDialogFragment"
             app:destination="@id/exitDialogFragment" />
+        <action
+            android:id="@+id/action_resultNumbersFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <dialog
         android:id="@+id/exitDialogFragment"

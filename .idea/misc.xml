@@ -5,8 +5,13 @@
       <map>
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/background_of_button.xml" value="0.2382882882882883" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/background_oval_for_edit_text.xml" value="0.2382882882882883" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/button_left_selected.xml" value="0.2382882882882883" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/button_right_selected.xml" value="0.2382882882882883" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/ic_arrow_back_24.xml" value="0.2382882882882883" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2382882882882883" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/left_selected.xml" value="0.2382882882882883" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/right_selected.xml" value="0.2382882882882883" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/drawable/switch_thumb.xml" value="0.2382882882882883" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout-v23/fragment_sign_in.xml" value="0.259375" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/activity_main.xml" value="0.22432432432432434" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/dialog_progressbar.xml" value="0.22432432432432434" />
@@ -25,7 +30,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_random_numbers.xml" value="0.22432432432432434" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_result_numbers.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_flow.xml" value="0.259375" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_sign_in.xml" value="0.2" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/fragment_time_to_remember.xml" value="0.22432432432432434" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_answer_numbers.xml" value="0.2" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellectOfBeconIsZero/app/src/main/res/layout/item_random_number.xml" value="0.6" />
