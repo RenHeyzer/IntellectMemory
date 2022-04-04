@@ -5,16 +5,13 @@ import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface AnswerRandomNumbersDao {
+interface AnswerNumbersDao {
 
     @Query("SELECT * FROM answer_numbers_model")
     fun getAllAnswerOfNumbers(): Flow<List<AnswerNumbersModel>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAllAnswerOfNumbers(numbers: List<AnswerNumbersModel>)
-
-    @Delete
-    suspend fun deleteAnswerOfNumber(number: AnswerNumbersModel)
 
     @Query("DELETE FROM answer_numbers_model")
     suspend fun deleteAllAnswerOfNumbers()
