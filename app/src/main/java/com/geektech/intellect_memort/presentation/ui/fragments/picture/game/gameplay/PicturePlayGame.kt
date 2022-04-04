@@ -167,14 +167,8 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
 
 
     private fun showAlertDialog() {
-        AlertDialog.Builder(requireContext()).setMessage("Выйти в главное меню?")
-            .setPositiveButton("Да") { _, _ ->
-                timer?.cancel()
-                findNavController().navigate(PicturePlayGameDirections
-                    .actionPicturePlayGameToHomeFragment())
-            }
-            .setNegativeButton("Нет") { _, _ -> }
-            .show()
+        findNavController().navigate(PicturePlayGameDirections
+            .actionPicturePlayGameToExitDialogFragment())
     }
 
     private fun showAlertDialogFinish() {
@@ -244,7 +238,10 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
     override fun onDestroyView() {
         super.onDestroyView()
         imageAdapter = null
-
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        timer?.cancel()
+    }
 }
