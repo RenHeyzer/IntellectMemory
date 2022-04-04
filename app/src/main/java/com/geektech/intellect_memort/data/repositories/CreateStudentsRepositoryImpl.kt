@@ -12,7 +12,7 @@ class CreateStudentsRepositoryImpl @Inject constructor(
 
     private val studentsCollection = fireStore.collection(Constants.COLLECTION_STUDENTS)
 
-    override suspend fun createStudent(student: HashMap<String, Any>) = addDocument(
-        studentsCollection, student
+    override suspend fun createStudent(student: HashMap<String, Any>, id: String) = addDocument(
+        studentsCollection, student, id
     )
 }
