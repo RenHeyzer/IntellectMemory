@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentExitDialogBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ExitDialogFragment : DialogFragment() {
 
     private var binding: FragmentExitDialogBinding? = null
+    private val args by navArgs<ExitDialogFragmentArgs>()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = FragmentExitDialogBinding.inflate(LayoutInflater.from(context))
@@ -29,6 +32,13 @@ class ExitDialogFragment : DialogFragment() {
     }
 
     private fun initialize() {
+        binding?.apply {
+            if (args.withResults) {
+                dialogText.text = getString(R.string.exit_text)
+            } else {
+                dialogText.text = getString(R.string.exit_text_short)
+            }
+        }
     }
 
     private fun setupListeners() {
