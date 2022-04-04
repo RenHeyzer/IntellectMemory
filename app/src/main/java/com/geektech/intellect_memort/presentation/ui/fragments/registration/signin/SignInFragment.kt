@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
-import com.geektech.intellect_memort.common.extension.mainNavController
+import com.geektech.intellect_memort.common.extension.signNavController
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.common.extension.showDialog
 import com.geektech.intellect_memort.common.utils.Localization
@@ -80,7 +80,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                                 username == admin?.fullName && password == admin.password -> {
                                     isAdmin()
                                     dialogProgressbar?.dismiss()
-                                    mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
+                                    signNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment2)
                                     wasOpen()
                                 }
                                 else -> {
@@ -119,7 +119,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                                         "${preferences.userId}",
                                         Toast.LENGTH_LONG).show()
                                     dialogProgressbar?.dismiss()
-                                    mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
+                                    signNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment2)
                                     wasOpen()
                                 }
                                 else -> {

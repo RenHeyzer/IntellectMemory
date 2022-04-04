@@ -4,59 +4,65 @@ import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseDiffUtilItemCallback
 import com.geektech.intellect_memort.databinding.ItemRandomNumberBinding
 import com.geektech.intellect_memort.databinding.ItemRowBinding
-import com.geektech.intellect_memort.domain.models.RandomNumbersModel
+import com.geektech.intellect_memort.domain.models.NumbersModel
 
-class RandomNumbersAdapter :
-    ListAdapter<RandomNumbersModel, RecyclerView.ViewHolder>(
+class NumbersAdapter :
+    ListAdapter<NumbersModel, RecyclerView.ViewHolder>(
         BaseDiffUtilItemCallback()
     ) {
-    private var lastPosition: Int = 14
-    private var rowLastPosition: Int = 7
+    private var lastPosition: Int = 6
+    private var rowLastPosition: Int = 0
 
     inner class ViewHolder(private val binding: ItemRandomNumberBinding) :
         RecyclerView.ViewHolder(
             binding.root
         ) {
-        fun onBind(item: RandomNumbersModel?) {
+        fun onBind(item: NumbersModel?) {
             binding.itemNumber.text = item?.number.toString()
             setOnItemNextClickListener()
         }
 
         private fun setOnItemNextClickListener() {
             when {
-                (absoluteAdapterPosition + 6) == lastPosition - 2 -> {
-                    binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
+                absoluteAdapterPosition == lastPosition -> {
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#FF3EA7"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#FF3EA7")
                     binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
-                (absoluteAdapterPosition + 6) == lastPosition - 3 -> {
-                    binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
+                absoluteAdapterPosition + 1 == lastPosition -> {
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#FF3EA7"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#FF3EA7")
                     binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
-                (absoluteAdapterPosition + 6) == lastPosition - 4 -> {
-                    binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
+                absoluteAdapterPosition + 2 == lastPosition -> {
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#FF3EA7"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#FF3EA7")
                     binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
-                (absoluteAdapterPosition + 6) == lastPosition - 5 -> {
-                    binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
+                absoluteAdapterPosition + 3 == lastPosition -> {
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#FF3EA7"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#FF3EA7")
                     binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
-                (absoluteAdapterPosition + 6) == lastPosition - 6 -> {
-                    binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
+                absoluteAdapterPosition + 4 == lastPosition -> {
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#FF3EA7"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#FF3EA7")
                     binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
-                (absoluteAdapterPosition + 6) == lastPosition - 7 -> {
-                    binding.container.setBackgroundColor(Color.parseColor("#FF3EA7"))
+                absoluteAdapterPosition + 5 == lastPosition -> {
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#FF3EA7"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#FF3EA7")
                     binding.itemNumber.setTextColor(Color.parseColor("#FFFFFFFF"))
                 }
                 else -> {
-                    binding.container.setBackgroundColor(Color.TRANSPARENT)
+                    binding.strokeMaterial.setCardBackgroundColor(Color.parseColor("#DADADA"))
+                    binding.strokeMaterial.strokeColor = Color.parseColor("#DADADA")
                     binding.itemNumber.setTextColor(Color.parseColor("#FF000000"))
                 }
             }
@@ -65,13 +71,12 @@ class RandomNumbersAdapter :
     }
 
     fun setNextAndPreviousItemRow(row: Int, last: Int) {
-        if (rowLastPosition >= 7 && lastPosition >= 14) {
+        if (rowLastPosition >= 0 && lastPosition >= 6) {
             rowLastPosition = row
             lastPosition = last
-            notifyItemChanged(lastPosition, true)
         } else {
-            rowLastPosition = 7
-            lastPosition = 14
+            rowLastPosition = 0
+            lastPosition = 6
         }
     }
 
@@ -79,8 +84,8 @@ class RandomNumbersAdapter :
         RecyclerView.ViewHolder(
             binding.root
         ) {
-        fun onBind() {
-            val rowPosition = absoluteAdapterPosition / 7
+        fun onBind(position: Int) {
+            val rowPosition = position / 7
             binding.itemRow.text = rowPosition.plus(1).toString()
             setOnItemNextClickListener()
         }
@@ -132,7 +137,9 @@ class RandomNumbersAdapter :
         when (holder.itemViewType) {
             R.layout.item_row -> {
                 val rowViewHolder = holder as RowViewHolder
-                rowViewHolder.onBind()
+                if (position % 7 * 2 == 0) {
+                    rowViewHolder.onBind(position)
+                }
             }
             R.layout.item_random_number -> {
                 val randomViewHolder = holder as ViewHolder
@@ -141,6 +148,5 @@ class RandomNumbersAdapter :
                 }
             }
         }
-
     }
 }

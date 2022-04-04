@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_randomNumbersFragment"
+            app:destination="@id/inputCountOfNumbersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/binaryNumbersFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.binarynumbers.BinaryNumbersFragment"
@@ -33,24 +37,46 @@
         android:label="fragment_playing_cards"
         tools:layout="@layout/fragment_playing_cards" />
     <fragment
-        android:id="@+id/randomNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.RandomNumbersFragment"
+        android:id="@+id/inputCountOfNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.InputCountOfNumbersFragment"
         android:label="fragment_random_numbers"
-        tools:layout="@layout/fragment_random_numbers">
+        tools:layout="@layout/fragment_input_count_of_numbers">
         <action
             android:id="@+id/action_randomNumbersFragment_to_timeToRememberFragment"
             app:destination="@id/timeToRememberFragment" />
+        <argument
+            android:name="isBinary"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.timer.TimerFragment"
         android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer" />
+        tools:layout="@layout/fragment_timer">
+        <action
+            android:id="@+id/action_timerFragment_to_gameRandomNumbersFragment"
+            app:destination="@id/gameNumbersFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="isBinary"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="quantityNumbers"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="time"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
     <fragment
-        android:id="@+id/gameRandomNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.GameRandomNumbersFragment"
+        android:id="@+id/gameNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.GameNumbersFragment"
         android:label="fragment_game_random_numbers"
-        tools:layout="@layout/fragment_game_random_numbers">
+        tools:layout="@layout/fragment_game_numbers">
         <argument
             android:name="quantitynumber"
             android:defaultValue="-1"
@@ -60,16 +86,17 @@
             android:defaultValue="-1"
             app:argType="integer" />
         <action
-            android:id="@+id/action_gameRandomNumbersFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
-        <action
-            android:id="@+id/action_gameRandomNumbersFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            android:id="@+id/action_gameNumbersFragment_to_answerNumbersFragment"
+            app:destination="@id/answerNumbersFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="isBinary"
+            android:defaultValue="false"
+            app:argType="boolean" />
         <action
-            android:id="@+id/action_gameRandomNumbersFragment_to_answerRandomNumbersFragment"
-            app:destination="@id/answerRandomNumbersFragment" />
+            android:id="@+id/action_gameNumbersFragment_to_exitDialogFragment"
+            app:destination="@id/exitDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/timeToRememberFragment"
@@ -82,27 +109,40 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_timeToRememberFragment_to_gameRandomNumbersFragment"
-            app:destination="@id/gameRandomNumbersFragment"
+            app:destination="@id/gameNumbersFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_timeToRememberFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+        <argument
+            android:name="isBinary"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
-        android:id="@+id/answerRandomNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.answer.AnswerRandomNumbersFragment"
+        android:id="@+id/answerNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.answer.AnswerNumbersFragment"
         android:label="fragment_answer_random_numbers"
-        tools:layout="@layout/fragment_answer_random_numbers">
+        tools:layout="@layout/fragment_answer_numbers">
         <argument
             android:name="size"
             android:defaultValue="-1"
             app:argType="integer" />
         <action
-            android:id="@+id/action_answerRandomNumbersFragment_to_resultNumbersFragment"
-            app:destination="@id/resultNumbersFragment" />
+            android:id="@+id/action_answerNumbersFragment_to_resultNumbersFragment"
+            app:destination="@id/resultNumbersFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_answerRandomNumbersFragment_to_exitDialogFragment"
+            android:id="@+id/action_answerNumbersFragment_to_exitDialogFragment"
             app:destination="@id/exitDialogFragment" />
+        <argument
+            android:name="timeToRemember"
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/pictureAmountFragment"
@@ -171,6 +211,9 @@
         <argument
             android:name="timeNumber"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_picturePlayGame_to_exitDialogFragment"
+            app:destination="@id/exitDialogFragment" />
     </fragment>
 
 
@@ -234,7 +277,19 @@
         android:id="@+id/resultNumbersFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.ResultNumbersFragment"
         android:label="fragment_result_numbers"
-        tools:layout="@layout/fragment_result_numbers" />
+        tools:layout="@layout/fragment_result_numbers">
+        <argument
+            android:name="timeToRemember"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="timeToAnswer"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_resultNumbersFragment_to_exitDialogFragment"
+            app:destination="@id/exitDialogFragment" />
+    </fragment>
     <dialog
         android:id="@+id/exitDialogFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.dialogs.exit.ExitDialogFragment"
@@ -245,5 +300,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="withResults"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </dialog>
 </navigation>

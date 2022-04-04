@@ -9,6 +9,10 @@ import javax.inject.Singleton
 @Singleton
 class PreferencesHelper @Inject constructor(private val preferences: SharedPreferences) {
 
+    fun deleteField(string: String) {
+        preferences.edit().remove(string).apply()
+    }
+
     var isOpenSignUp: Boolean
         get() = preferences.getBoolean("signUp", true)
         set(value) = preferences.edit().putBoolean("signUp", value).apply()

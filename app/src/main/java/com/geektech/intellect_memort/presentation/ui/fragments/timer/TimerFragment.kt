@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.geektech.intellect_memort.databinding.FragmentTimerBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TimerFragment : Fragment() {
     private lateinit var binding: FragmentTimerBinding
+    private val args by navArgs<TimerFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +33,13 @@ class TimerFragment : Fragment() {
             }
 
             override fun onFinish() {
-                findNavController().navigateUp()
+                findNavController().navigate(
+                    TimerFragmentDirections.actionTimerFragmentToGameRandomNumbersFragment(
+                        args.quantityNumbers,
+                        args.time,
+                        args.isBinary
+                    )
+                )
             }
         }
         timer.start()

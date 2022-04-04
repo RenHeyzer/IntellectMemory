@@ -13,16 +13,18 @@ abstract class RepositoriesModule {
 
     @Binds
     abstract fun provideRandomNumbersRepository(
-        repositoryImpl: RandomNumbersRepositoryImpl,
-    ): RandomNumbersRepository
+        repositoryImpl: NumbersRepositoryImpl,
+    ): NumbersRepository
 
     @Binds
     abstract fun provideAnswerRandomNumbersRepository(
-        repositoryImpl: AnswerRandomNumbersRepositoryImpl,
-    ): AnswerRandomNumbersRepository
+        repositoryImpl: AnswerNumbersRepositoryImpl,
+    ): AnswerRandomRepository
 
     @Binds
-    abstract fun provideSignInRepository(repositoryImpl: SignRepositoryImpl): SignRepository
+    abstract fun provideSignInRepository(
+        repositoryImpl: SignRepositoryImpl
+    ): SignRepository
 
     @Binds
     abstract fun provideCreateStudentsRepository(
@@ -33,4 +35,9 @@ abstract class RepositoriesModule {
     abstract fun providePictureRepository(
         repositoryImpl: PictureRepositoryImpl
     ): PictureRepository
+
+    @Binds
+    abstract fun provideResultsRepository(
+        repositoryImpl: ResultsRepositoryImpl
+    ): ResultsRepository
 }
