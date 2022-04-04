@@ -31,13 +31,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private fun setUpBtnRandomNumberListener() {
         binding.btnRandomNumbers.setOnSingleClickListener {
-            findNavController().navigate(R.id.randomNumbersFragment)
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToRandomNumbersFragment(false)
+            )
         }
     }
 
     private fun setUpBtnBinaryNumbersListener() {
         binding.btnBinaryRandomNumbers.setOnSingleClickListener {
-            findNavController().navigate(R.id.binaryNumbersFragment)
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToRandomNumbersFragment(true)
+            )
         }
     }
 
