@@ -1,56 +1,46 @@
 package com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers
 
 import android.annotation.SuppressLint
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
+import com.geektech.intellect_memort.common.extension.correctNumber
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.common.extension.timer
-import com.geektech.intellect_memort.databinding.FragmentGameRandomNumbersBinding
-import com.geektech.intellect_memort.presentation.adapters.RandomNumbersAdapter
+import com.geektech.intellect_memort.databinding.FragmentGameNumbersBinding
+import com.geektech.intellect_memort.domain.models.NumbersModel
+import com.geektech.intellect_memort.presentation.adapters.NumbersAdapter
 import com.geektech.intellect_memort.presentation.state.UIState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class GameRandomNumbersFragment :
-    BaseFragment<FragmentGameRandomNumbersBinding, GameRandomNumbersViewModel>(
-        R.layout.fragment_game_random_numbers
+class GameNumbersFragment :
+    BaseFragment<FragmentGameNumbersBinding, GameNumbersViewModel>(
+        R.layout.fragment_game_numbers
     ) {
-    override val binding by viewBinding(FragmentGameRandomNumbersBinding::bind)
-    override val viewModel: GameRandomNumbersViewModel by viewModels()
-    private val args: GameRandomNumbersFragmentArgs by navArgs()
-    private var row: Int = 7
-    private var last: Int = 14
-    private var adapter: RandomNumbersAdapter? = null
+
+    override val binding by viewBinding(FragmentGameNumbersBinding::bind)
+    override val viewModel: GameNumbersViewModel by viewModels()
+    private val args: GameNumbersFragmentArgs by navArgs()
+    private var row: Int = 0
+    private var last: Int = 6
+    private var adapter: NumbersAdapter? = null
+    private var ascendingTimerAsString = ""
+    private var countDownTimer: CountDownTimer? = null
 
     override fun initialize() {
-        adapter = RandomNumbersAdapter()
+        adapter = NumbersAdapter()
         binding.rvGameRandomNumber.adapter = adapter
     }
 
     override fun setupViews() {
-        setupTimer()
         setupButtonPrevVisibility()
-    }
-
-    private fun setupTimer() {
-        timer(binding.txtTimer, args.time) {
-            findNavController().navigate(
-                GameRandomNumbersFragmentDirections.actionGameRandomNumbersFragmentToAnswerRandomNumbersFragment(
-                    args.quantitynumber
-                )
-            )
-        }.start()
     }
 
     private fun setupButtonPrevVisibility() {
@@ -63,8 +53,46 @@ class GameRandomNumbersFragment :
         setUpBtnFinish()
     }
 
+    private fun setUpBtnFinish() {
+        val quantityNumber = args.quantitynumber
+        binding.btnFinish.setOnSingleClickListener {
+            countDownTimer?.cancel()
+            findNavController().navigate(
+                GameNumbersFragmentDirections.actionGameNumbersFragmentToAnswerNumbersFragment(
+                    quantityNumber,
+                    ascendingTimerAsString
+                )
+            )
+        }
+    }
+
     override fun setupRequests() {
-        viewModel.generateRandomNumbers(args.quantitynumber)
+        val correctQuantity = args.quantitynumber.correctNumber()
+        Log.e("quantity", correctQuantity.toString())
+        if (args.isBinary) {
+            viewModel.generateBinaryNumbers(correctQuantity)
+        } else {
+            viewModel.generateRandomNumbers(correctQuantity)
+        }
+    }
+
+    private fun setupTimer() {
+        countDownTimer = timer(binding.txtTimer, args.time, {
+            ascendingTimerAsString = it
+        }, {
+            if (ascendingTimerAsString.isNotEmpty()) {
+                findNavController().navigate(
+                    GameNumbersFragmentDirections.actionGameNumbersFragmentToAnswerNumbersFragment(
+                        args.quantitynumber,
+                        ascendingTimerAsString
+                    )
+                )
+            }
+        })
+        countDownTimer?.start()
+    }
+
+    override fun setupObserves() {
         viewModel.randomNumbersState.subscribe {
             when (it) {
                 is UIState.Error -> {
@@ -78,30 +106,14 @@ class GameRandomNumbersFragment :
                     if (viewModel.saveRandomNumbersState.value.isEmpty()) {
                         viewModel.insertAllRandomNumbers(it.data)
                     }
+                    viewModel.getAllRandomNumbers()
+                    setupTimer()
                 }
             }
         }
-        viewModel.getAllRandomNumbers()
-    }
 
-    private fun setUpBtnFinish() {
-        val quantityNumber = args.quantitynumber
-        binding.btnFinish.setOnSingleClickListener {
-            findNavController().navigate(
-                GameRandomNumbersFragmentDirections.actionGameRandomNumbersFragmentToAnswerRandomNumbersFragment(
-                    quantityNumber
-                )
-            )
-        }
-    }
-
-    override fun setupObserves() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.saveRandomNumbersState.collect {
-                    adapter?.submitList(it)
-                }
-            }
+        viewModel.saveRandomNumbersState.subscribeIdle {
+            adapter?.submitList(it)
         }
     }
 
@@ -111,7 +123,6 @@ class GameRandomNumbersFragment :
         binding.btnNext.setOnSingleClickListener {
             row += 7
             last += 7
-            binding.btnPrevious.isVisible = last != 14
             adapter?.setNextAndPreviousItemRow(row, last)
             adapter?.notifyDataSetChanged()
             Log.e("anime", "Plus: $last")
@@ -119,7 +130,6 @@ class GameRandomNumbersFragment :
         binding.btnPrevious.setOnSingleClickListener {
             row -= 7
             last -= 7
-            binding.btnPrevious.isVisible = last != 14
             adapter?.setNextAndPreviousItemRow(row, last)
             Log.e("anime", "Minus: $last")
             adapter?.notifyDataSetChanged()
@@ -128,7 +138,10 @@ class GameRandomNumbersFragment :
 
     private fun setUpBtnBack() {
         binding.btnBack.setOnSingleClickListener {
-            findNavController().navigate(R.id.action_gameRandomNumbersFragment_to_homeFragment)
+            Log.e("sizing", "fragment: ${adapter?.itemCount}")
+            findNavController().navigate(
+                GameNumbersFragmentDirections.actionGameNumbersFragmentToExitDialogFragment(false)
+            )
         }
     }
 
