@@ -58,11 +58,41 @@ abstract class BaseRepository {
         }
     }
 
-    suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
-        collection
-            .document(id)
-            .get()
-            .await()
+    suspend fun updateDocument(
+        collection: CollectionReference,
+        hashMap: HashMap<String, Any>,
+        title: String? = null,
+    ): Boolean {
+        return try {
+            if (title != null) {
+                collection
+                    .document(title)
+                    .update(hashMap)
+                    .await()
+            } else {
+                collection
+                    .document()
+                    .update(hashMap)
+                    .await()
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    suspend fun getDocument(collection: CollectionReference, id: String?): DocumentSnapshot =
+        if (id != null) {
+            collection
+                .document(id)
+                .get()
+                .await()
+        } else {
+            collection
+                .document()
+                .get()
+                .await()
+        }
 
     suspend fun addChildDocument(
         mainCollection: CollectionReference,
@@ -92,3 +122,4 @@ abstract class BaseRepository {
         }
     }
 }
+
