@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/binaryNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.binarynumbers.BinaryNumbersFragment"
+        android:label="fragment_binary_numbers"
+        tools:layout="@layout/fragment_binary_numbers" />
+    <fragment
+        android:id="@+id/pictureFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.PictureFragment"
+        android:label="fragment_picture"
+        tools:layout="@layout/fragment_picture">
+        <action
+            android:id="@+id/action_pictureFragment_to_pictureAmountFragment"
+            app:destination="@id/pictureAmountFragment" />
+        <action
+            android:id="@+id/action_pictureFragment_to_picturePlayAmount"
+            app:destination="@id/picturePlayAmount" />
+    </fragment>
+    <fragment
+        android:id="@+id/playingCardsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsFragment"
+        android:label="fragment_playing_cards"
+        tools:layout="@layout/fragment_playing_cards" />
+    <fragment
+        android:id="@+id/randomNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.RandomNumbersFragment"
+        android:label="fragment_random_numbers"
+        tools:layout="@layout/fragment_random_numbers">
+        <action
+            android:id="@+id/action_randomNumbersFragment_to_timeToRememberFragment"
+            app:destination="@id/timeToRememberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.timer.TimerFragment"
+        android:label="fragment_timer"
+        tools:layout="@layout/fragment_timer" />
+    <fragment
+        android:id="@+id/gameRandomNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.GameRandomNumbersFragment"
+        android:label="fragment_game_random_numbers"
+        tools:layout="@layout/fragment_game_random_numbers">
+        <argument
+            android:name="quantitynumber"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="time"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameRandomNumbersFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+        <action
+            android:id="@+id/action_gameRandomNumbersFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_gameRandomNumbersFragment_to_answerRandomNumbersFragment"
+            app:destination="@id/answerRandomNumbersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeToRememberFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.timetoremember.TimeToRememberFragment"
+        android:label="fragment_time_to_remember"
+        tools:layout="@layout/fragment_time_to_remember">
+        <argument
+            android:name="quantityNumbers"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_timeToRememberFragment_to_gameRandomNumbersFragment"
+            app:destination="@id/gameRandomNumbersFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/answerRandomNumbersFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.answer.AnswerRandomNumbersFragment"
+        android:label="fragment_answer_random_numbers"
+        tools:layout="@layout/fragment_answer_random_numbers" >
+        <argument
+            android:name="size"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureAmountFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.list_amount.PictureAmountFragment"
+        android:label="fragment_picture_amount"
+        tools:layout="@layout/fragment_picture_amount">
+        <action
+            android:id="@+id/action_pictureAmountFragment_to_pictureListFragment"
+            app:destination="@id/pictureListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureListFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.pictures_list.PictureListFragment"
+        android:label="fragment_picture_list"
+        tools:layout="@layout/fragment_picture_list">
+
+        <argument
+            android:name="firstNumber"
+            app:argType="integer" />
+        <argument
+            android:name="secondNumber"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/picturePlayAmount"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.amount.PicturePlayAmount"
+        android:label="fragment_picture_play_amount"
+        tools:layout="@layout/fragment_picture_play_amount">
+
+        <action
+            android:id="@+id/action_picturePlayAmount_to_picturePlayTime"
+            app:destination="@id/picturePlayTime" />
+    </fragment>
+    <fragment
+        android:id="@+id/picturePlayCountDown"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.countdown.PicturePlayCountDown"
+        android:label="fragment_picture_play_count_down"
+        tools:layout="@layout/fragment_picture_play_count_down">
+        <action
+            android:id="@+id/action_picturePlayCountDown_to_picturePlayGame"
+            app:destination="@id/picturePlayGame"
+            />
+        <argument
+            android:name="rangeNumber"
+            app:argType="integer" />
+        <argument
+            android:name="timeNumber"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/picturePlayGame"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.gameplay.PicturePlayGame"
+        android:label="fragment_picture_play_game"
+        tools:layout="@layout/fragment_picture_play_game">
+        <action
+            android:id="@+id/action_picturePlayGame_to_picturePlayGameAnswering"
+            app:destination="@id/picturePlayGameAnswering" />
+        <action
+            android:id="@+id/action_picturePlayGame_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="rangeNumber"
+            app:argType="integer" />
+        <argument
+            android:name="timeNumber"
+            app:argType="integer" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/picturePlayGameAnswering"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.answering.PicturePlayGameAnswering"
+        android:label="fragment_picture_play_game_answering"
+        tools:layout="@layout/fragment_picture_play_game_answering">
+        <argument
+            android:name="imagesList"
+            app:argType="com.geektech.intellect_memort.domain.models.PictureImagesList" />
+        <action
+            android:id="@+id/action_picturePlayGameAnswering_to_pictureGameResults"
+            app:destination="@id/pictureGameResults" />
+        <action
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_picturePlayGameAnswering_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="passed_time"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/picturePlayTime"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.time.PicturePlayTime"
+        android:label="fragment_picture_play_time"
+        tools:layout="@layout/fragment_picture_play_time" >
+        <action
+            android:id="@+id/action_picturePlayTime_to_picturePlayCountDown"
+            app:destination="@id/picturePlayCountDown" />
+        <argument
+            android:name="rangeNumber"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureGameResults"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.results.PictureGameResults"
+        android:label="fragment_picture_game_results"
+        tools:layout="@layout/fragment_picture_game_results" >
+        <action
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_pictureGameResults_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="total_pictures"
+            app:argType="integer" />
+        <argument android:name="correct_answers"
+            app:argType="integer" />
+        <argument android:name="incorrect_answers"
+            app:argType="integer" />
+        <argument
+            android:name="total_time"
+            app:argType="string" />
+
+    </fragment>
+</navigation>
