@@ -6,7 +6,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import java.util.*
 
 abstract class BaseRepository {
 
@@ -54,4 +53,31 @@ abstract class BaseRepository {
             .document(id)
             .get()
             .await()
+
+    suspend inline fun <reified T> fetchListByField(
+        collection: CollectionReference,
+        typeClover: String,
+        typeBrick: String,
+        typePiqui: String,
+        typeRedHeard: String,
+    ) =
+        collection.get().await().documents.mapNotNull { doc ->
+            when (doc.get("type")) {
+                equals(typeClover == "clover") -> {
+                    doc.toObject(T::class.java)
+                }
+                equals(typeBrick == "brick") -> {
+                    doc.toObject(T::class.java)
+                }
+                equals(typePiqui == "piqui") -> {
+                    doc.toObject(T::class.java)
+                }
+                equals(typeRedHeard == "red_heart") -> {
+                    doc.toObject(T::class.java)
+                }
+                else -> {
+                    null
+                }
+            }
+        }
 }
