@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.playingcards.game.PlayingCardsGameFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_baseline_back_24"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_two"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline1_left"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/img_cards_1"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            tools:src="@drawable/ic_jean_victor_balin_card_carreau"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintStart_toEndOf="@id/guideline1_left"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_cards_2"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            tools:src="@drawable/ic_jean_victor_balin_card_trefle"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintEnd_toStartOf="@id/img_cards_3"
+            app:layout_constraintStart_toEndOf="@id/img_cards_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_cards_3"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            tools:src="@drawable/ic_jean_victor_balin_card_coeur"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintEnd_toStartOf="@id/guidLine2_end"
+            app:layout_constraintStart_toEndOf="@id/img_cards_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.89" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom_two"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.12" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:text="Следующий"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp"
+            app:layout_constraintLeft_toLeftOf="@id/guidLine2_center"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_previous"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:text="Предыдущий"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_center"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_next">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cards"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="6"
+                tools:itemCount="300"
+                tools:listitem="@layout/item_cards" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
