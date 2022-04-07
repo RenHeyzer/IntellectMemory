@@ -5,4 +5,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class PlayingCardsViewModel @Inject constructor() : BaseViewModel()
+class PlayingCardsViewModel @Inject constructor() : BaseViewModel() {
+
+}

@@ -9,7 +9,24 @@
         android:id="@+id/homeFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_binaryNumbersFragment"
+            app:destination="@id/binaryNumbersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_randomNumbersFragment"
+            app:destination="@id/randomNumbersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_playingCardsFragment"
+            app:destination="@id/playingCardsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_pictureFragment"
+            app:destination="@id/pictureFragment" />
+    </fragment>
     <fragment
         android:id="@+id/binaryNumbersFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.binarynumbers.BinaryNumbersFragment"
@@ -24,11 +41,73 @@
         android:id="@+id/playingCardsFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsFragment"
         android:label="fragment_playing_cards"
-        tools:layout="@layout/fragment_playing_cards" />
+        tools:layout="@layout/fragment_playing_cards">
+        <action
+            android:id="@+id/action_playingCardsFragment_to_chooseTheNumberOfCardsFragment"
+            app:destination="@id/chooseTheNumberOfCardsFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/randomNumbersFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.RandomNumbersFragment"
         android:label="fragment_random_numbers"
         tools:layout="@layout/fragment_random_numbers" />
+    <fragment
+        android:id="@+id/chooseTheNumberOfCardsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.choose.ChooseTheNumberOfCardsFragment"
+        android:label="fragment_choose_the_number_of_cards"
+        tools:layout="@layout/fragment_choose_the_number_of_cards">
+        <action
+            android:id="@+id/action_chooseTheNumberOfCardsFragment_to_playingCardsGameFragment"
+            app:destination="@id/playingCardsGameFragment" />
+        <argument
+            android:name="isbrick"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="ispiqui"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isredHeart"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isClover"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/playingCardsGameFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.game.PlayingCardsGameFragment"
+        android:label="fragment_playing_cards_game"
+        tools:layout="@layout/fragment_playing_cards_game">
+        <argument
+            android:name="time"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
+            android:name="numbersOfCards"
+            android:defaultValue="3"
+            app:argType="integer" />
+        <argument
+            android:name="isbrick"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="ispiqui"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isredHeart"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="isClover"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
 </navigation>

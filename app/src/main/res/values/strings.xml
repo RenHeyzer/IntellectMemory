@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">intellect_memort</string>
+    <string name="app_name">intellect_memory</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_game_text">Выбрать игру</string>
@@ -25,4 +25,9 @@
     <string name="category_students_text">Участник</string>
     <string name="category_school_text">Школа</string>
     <string name="category_points_text">Баллы</string>
+    <string name="text_choose">Выбрать</string>
+    <string name="rating_text">Рейтинг</string>
+    <string name="choose_playing_cards">Выбрать вид карт</string>
+    <string name="choose_the_numbers_of_cards">Выбрать кол-во карт</string>
+    <string name="txt_step">Далее</string>
 </resources>

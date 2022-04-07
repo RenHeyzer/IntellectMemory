@@ -6,4 +6,5 @@ object Constants {
     const val COLLECTION_ADMINS = "admins"
     const val LANGUAGE = "language"
     const val LANGUAGE_CODE = "language_code"
+    const val CARDS_COLLECTION = "imagesOfCards"
 }

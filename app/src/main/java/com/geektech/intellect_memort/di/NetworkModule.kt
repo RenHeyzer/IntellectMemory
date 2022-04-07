@@ -23,4 +23,5 @@ object NetworkModule {
     @Provides
     fun fetchFireStorage() = FirebaseStorage.getInstance()
 
+
 }

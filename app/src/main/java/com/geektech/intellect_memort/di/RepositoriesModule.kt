@@ -1,7 +1,9 @@
 package com.geektech.intellect_memort.di
 
+import com.geektech.intellect_memort.data.repositories.CardsRepositoryImpl
 import com.geektech.intellect_memort.data.repositories.CreateStudentsRepositoryImpl
 import com.geektech.intellect_memort.data.repositories.SignRepositoryImpl
+import com.geektech.intellect_memort.domain.repositories.CardsRepository
 import com.geektech.intellect_memort.domain.repositories.CreateStudentsRepository
 import com.geektech.intellect_memort.domain.repositories.SignRepository
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,4 +23,8 @@ object RepositoriesModule {
     @Provides
     fun provideCreateStudentsRepository(fireStore: FirebaseFirestore): CreateStudentsRepository =
         CreateStudentsRepositoryImpl(fireStore)
+
+    @Provides
+    fun provideCardsRepository(fireStore: FirebaseFirestore): CardsRepository =
+        CardsRepositoryImpl(fireStore)
 }

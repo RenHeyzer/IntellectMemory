@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.09" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -20,14 +20,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.76" />
+        app:layout_constraintGuide_percent="0.91" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_guid_bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.89" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_guid_top"
@@ -102,6 +102,7 @@
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/selector_clickable_button"
                 android:padding="20dp"
                 android:text="@string/text_picture"
                 android:textColor="@color/black"
@@ -119,6 +120,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:backgroundTint="@drawable/selector_clickable_button"
                 android:padding="20dp"
                 android:text="@string/random_numbers"
                 android:textColor="@color/black"
@@ -136,6 +138,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:backgroundTint="@drawable/selector_clickable_button"
                 android:padding="20dp"
                 android:text="@string/binary_numbers"
                 android:textColor="@color/black"
@@ -153,6 +156,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:backgroundTint="@drawable/selector_clickable_button"
                 android:padding="20dp"
                 android:text="@string/playing_cards"
                 android:textColor="@color/black"
@@ -169,15 +173,17 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_rating"
-        android:layout_width="240dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="30dp"
+        android:id="@+id/btn_choose"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#FFD156"
-        android:text="Рейтинг"
+        android:padding="20dp"
+        android:text="@string/rating_text"
         android:textColor="@color/white"
-        app:cornerRadius="50dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left_vertical"
+        app:layout_constraintRight_toRightOf="@id/guidLine_right_vertical"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
