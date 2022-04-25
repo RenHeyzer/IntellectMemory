@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface CardsRepository {
     fun fetchImageOfCards(
-        typeClover: String,
-        typeBrick: String,
-        typePiqui: String,
-        typeRedHeard: String,
+        typeClover: String?,
+        typeBrick: String?,
+        typePiqui: String?,
+        typeRedHeard: String?,
     ): Flow<Resource<List<CardsModel>>>
 }
