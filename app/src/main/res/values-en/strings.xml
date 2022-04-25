@@ -31,5 +31,15 @@
     <string name="choose_playing_cards">Choose the type of playing cards</string>
     <string name="choose_the_numbers_of_cards">Select number of cards</string>
     <string name="txt_step">Further</string>
+    <string name="text_start_game">To begin</string>
+    <string name="text_minutes">Minutes</string>
+    <string name="set_time_to_remember">Specify time
+for an answer</string>
+    <string name="_00">00</string>
+    <string name="text_seconds">seconds</string>
+    <string name="text_specify_time_to_memorize_one_card">Specify time to memorize one card</string>
+    <string name="timer_template">%1$s:%2$s</string>
+    <string name="txt_finish">Finish</string>
+
 
 </resources>
