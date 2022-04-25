@@ -3,6 +3,7 @@ package com.geektech.intellect_memort.common.base
 import com.geektech.intellect_memort.common.resource.Resource
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
@@ -54,30 +55,10 @@ abstract class BaseRepository {
             .get()
             .await()
 
-    suspend inline fun <reified T> fetchListByField(
-        collection: CollectionReference,
-        typeClover: String,
-        typeBrick: String,
-        typePiqui: String,
-        typeRedHeard: String,
-    ) =
+
+
+    suspend inline fun <reified T> fetchListByQuery(collection: Query) =
         collection.get().await().documents.mapNotNull { doc ->
-            when (doc.get("type")) {
-                equals(typeClover == "clover") -> {
-                    doc.toObject(T::class.java)
-                }
-                equals(typeBrick == "brick") -> {
-                    doc.toObject(T::class.java)
-                }
-                equals(typePiqui == "piqui") -> {
-                    doc.toObject(T::class.java)
-                }
-                equals(typeRedHeard == "red_heart") -> {
-                    doc.toObject(T::class.java)
-                }
-                else -> {
-                    null
-                }
-            }
+            doc.toObject(T::class.java)
         }
 }
