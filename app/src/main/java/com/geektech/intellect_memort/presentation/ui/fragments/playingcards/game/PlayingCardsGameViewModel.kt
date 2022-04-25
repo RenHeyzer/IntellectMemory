@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlayingCardsGameViewModel @Inject constructor(
-    private val useCase: FetchCardsUseCase,
+    private val fetchCardsUseCase: FetchCardsUseCase,
 ) : BaseViewModel() {
     private val _fetchCardsState = MutableStateFlow<UIState<List<CardsUI>>>(UIState.Loading())
     val fetchCardsState: StateFlow<UIState<List<CardsUI>>> = _fetchCardsState
@@ -23,8 +23,8 @@ class PlayingCardsGameViewModel @Inject constructor(
         typePiqui: String,
         typeRedHeard: String,
     ) {
-        useCase.invoke(typeClover, typeBrick, typePiqui, typeRedHeard)
-            .collectRequest(_fetchCardsState) { it ->
+        fetchCardsUseCase.invoke(typeClover, typeBrick, typePiqui, typeRedHeard)
+            .collectRequest(_fetchCardsState) {
                 it.shuffled().map {
                     it.toUI()
                 }
