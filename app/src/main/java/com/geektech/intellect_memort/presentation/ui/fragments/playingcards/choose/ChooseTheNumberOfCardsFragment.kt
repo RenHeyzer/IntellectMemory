@@ -55,12 +55,11 @@ class ChooseTheNumberOfCardsFragment : Fragment() {
                 txtMinuts.visibility = VISIBLE
                 etTime.visibility = VISIBLE
                 firstClick = true
-                btnFurther.text = "Начать"
             } else if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() < 61) {
                 time = etTime.text.toString().toInt()
                 etTime.hideKeyboard()
-                findNavController().navigateSafely(ChooseTheNumberOfCardsFragmentDirections.actionChooseTheNumberOfCardsFragmentToPlayingCardsGameFragment(
-                    time = time,
+                findNavController().navigateSafely(ChooseTheNumberOfCardsFragmentDirections.actionChooseTheNumberOfCardsFragmentToInputTimeForAnswerFragment(
+                    timeForMemoryCards = time,
                     numbersOfCards = txtChooseTheNumbersOfCardsMin.text.toString().toInt(),
                     isbrick = args.isbrick,
                     isredHeart = args.isredHeart,
