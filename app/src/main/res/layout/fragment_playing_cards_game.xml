@@ -22,48 +22,108 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageView
-            android:id="@+id/img_cards_1"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            tools:src="@drawable/ic_jean_victor_balin_card_carreau"
-            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-            app:layout_constraintStart_toEndOf="@id/guideline1_left"
+        <Chronometer
+            android:id="@+id/txt_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:countDown="true"
+            android:format="00:00"
+            android:textColor="#CF0101"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_bottom_two"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_right"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_cards_2"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            tools:src="@drawable/ic_jean_victor_balin_card_trefle"
-            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-            app:layout_constraintEnd_toStartOf="@id/img_cards_3"
-            app:layout_constraintStart_toEndOf="@id/img_cards_1"
-            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_item_cards_image_center"
+            android:layout_width="110dp"
+            android:layout_height="170dp"
+            app:cardBackgroundColor="#DADADA"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_for_recycler"
+            app:layout_constraintEnd_toEndOf="@id/guidLine2_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_for_recycler"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
 
-        <ImageView
-            android:id="@+id/img_cards_3"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            tools:src="@drawable/ic_jean_victor_balin_card_coeur"
-            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-            app:layout_constraintEnd_toStartOf="@id/guidLine2_end"
-            app:layout_constraintStart_toEndOf="@id/img_cards_2"
-            app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/item_cards_image_center"
+                android:layout_width="110dp"
+                android:layout_height="170dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_item_cards_image_left"
+            android:layout_width="110dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="16dp"
+            app:cardBackgroundColor="#DADADA"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_for_recycler"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_for_recycler"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+
+            <ImageView
+                android:id="@+id/item_cards_image_left"
+                android:layout_width="110dp"
+                android:layout_height="170dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_item_cards_image_right"
+            android:layout_width="110dp"
+            android:layout_height="170dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="#DADADA"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_for_recycler"
+            app:layout_constraintEnd_toEndOf="@id/guidLine2_end"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_for_recycler"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+
+            <ImageView
+                android:id="@+id/item_cards_image_right"
+                android:layout_width="110dp"
+                android:layout_height="170dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom_for_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.27" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidLine2_right"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.89" />
+            app:layout_constraintGuide_percent="0.90" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidLine2_end"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
+            app:layout_constraintGuide_percent="0.98" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.02" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidLine2_center"
@@ -84,6 +144,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top_for_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.06" />
 
 
@@ -92,14 +159,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.12" />
+            app:layout_constraintGuide_percent="0.10" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/horizontal_guid_top"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.30" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
@@ -142,6 +209,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_next">
 
+            <ProgressBar
+                android:id="@+id/loader_cards"
+                style="@android:style/Widget.Material.Light.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_cards"
@@ -156,6 +232,19 @@
                 tools:itemCount="300"
                 tools:listitem="@layout/item_cards" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_finish"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#5640D0"
+            android:text="@string/txt_finish"
+            android:visibility="gone"
+            app:cornerRadius="19dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidLine2_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
