@@ -6,6 +6,8 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable-v24/background_oval_for_edit_text.xml" value="0.1165" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/button_left_selected.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/cards_1.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_baseline_arrow_back_gray.xml" value="0.12" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_baseline_back_24.xml" value="0.12" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_cards.xml" value="0.5" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_cards_piqui_eight.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_cards_piqui_five.xml" value="0.1" />
@@ -21,18 +23,27 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_jean_victor_balin_card_coeur.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_jean_victor_balin_card_pique.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_jean_victor_balin_card_trefle.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_splash.xml" value="0.12" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_splash_screen.xml" value="0.12" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/ic_splash_screen_memory.xml" value="0.12" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/radio_group_background.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/selector_clickable_button.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/seltector_button.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/drawable/splash_screen.xml" value="0.12" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/dialog_progressbar.xml" value="0.14563106796116504" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_answer_playing_cards.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_binary_numbers.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_choose_the_number_of_cards.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_input_time_for_answer.xml" value="0.14749893116716545" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_picture.xml" value="0.1" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_playing_cards.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_playing_cards_game.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_playing_cards.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_playing_cards_game.xml" value="0.12" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/fragment_random_numbers.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/item_cards.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/item_multiple_cards.xml" value="0.14749893116716545" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/item_single_cards.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memort/app/src/main/res/layout/item_students.xml" value="0.12048192771084337" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memory/app/src/main/res/drawable/background_of_button.xml" value="0.2712820512820513" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/intellect_memory/app/src/main/res/drawable/background_of_edittext.xml" value="0.2712820512820513" />
