@@ -58,25 +58,25 @@
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.choose.ChooseTheNumberOfCardsFragment"
         android:label="fragment_choose_the_number_of_cards"
         tools:layout="@layout/fragment_choose_the_number_of_cards">
-        <action
-            android:id="@+id/action_chooseTheNumberOfCardsFragment_to_playingCardsGameFragment"
-            app:destination="@id/playingCardsGameFragment" />
         <argument
             android:name="isbrick"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="ispiqui"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="isredHeart"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="isClover"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_chooseTheNumberOfCardsFragment_to_inputTimeForAnswerFragment"
+            app:destination="@id/inputTimeForAnswerFragment" />
 
     </fragment>
     <fragment
@@ -89,25 +89,75 @@
             android:defaultValue="5"
             app:argType="integer" />
         <argument
+            android:name="timeForMemoryCard"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
             android:name="numbersOfCards"
             android:defaultValue="3"
             app:argType="integer" />
         <argument
             android:name="isbrick"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="ispiqui"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="isredHeart"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="isClover"
-            android:defaultValue="false"
-            app:argType="boolean" />
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_playingCardsGameFragment_to_answerPlayingCardsFragment"
+            app:destination="@id/answerPlayingCardsFragment" />
+        <action
+            android:id="@+id/action_playingCardsGameFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/main_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/inputTimeForAnswerFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.choose.InputTimeForAnswerFragment"
+        android:label="fragment_input_time_for_answer"
+        tools:layout="@layout/fragment_input_time_for_answer">
+        <argument
+            android:name="timeForMemoryCards"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
+            android:name="numbersOfCards"
+            android:defaultValue="3"
+            app:argType="integer" />
+        <argument
+            android:name="isbrick"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="ispiqui"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isredHeart"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isClover"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_inputTimeForAnswerFragment_to_playingCardsGameFragment"
+            app:destination="@id/playingCardsGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/answerPlayingCardsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.answer.AnswerPlayingCardsFragment"
+        android:label="fragment_answer_playing_cards"
+        tools:layout="@layout/fragment_answer_playing_cards" />
 
 </navigation>
