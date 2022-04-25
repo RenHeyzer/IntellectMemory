@@ -14,13 +14,16 @@ class CardsRepositoryImpl @Inject constructor(
 ) : BaseRepository(), CardsRepository {
     private val imagesCollection =
         fireStore.collection(Constants.CARDS_COLLECTION)
+    private val cardsCollection = fireStore.collection(Constants.CARDS_COLLECTION)
+        .document("cards")
 
     override fun fetchImageOfCards(
-        typeClover: String,
-        typeBrick: String,
-        typePiqui: String,
-        typeRedHeard: String,
+        typeClover: String?,
+        typeBrick: String?,
+        typePiqui: String?,
+        typeRedHeard: String?,
     ) = doRequest {
-        fetchList<CardsModel>(imagesCollection)
+        fetchListByQuery<CardsModel>(imagesCollection.whereIn("type",
+            listOf(typeClover, typeBrick, typePiqui, typeRedHeard)))
     }
 }
