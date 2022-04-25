@@ -1,13 +1,16 @@
 package com.geektech.intellect_memort.presentation.ui.fragments.playingcards.game
 
+import android.os.CountDownTimer
 import android.util.Log
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
+import com.geektech.intellect_memort.common.extension.*
 import com.geektech.intellect_memort.databinding.FragmentPlayingCardsGameBinding
 import com.geektech.intellect_memort.presentation.models.CardsUI
 import com.geektech.intellect_memort.presentation.state.UIState
@@ -23,28 +26,137 @@ class PlayingCardsGameFragment :
     override val viewModel: PlayingCardsGameViewModel by viewModels()
     private val args: PlayingCardsGameFragmentArgs by navArgs()
     private val adapter = CardsAdapter()
-    private var currentPosition: Int = 0
-    private val emptyList = ArrayList<CardsUI>()
+    private val listForMemory = ArrayList<CardsUI>()
+    private var defaultPositionInOneCard = 0
+    private var countDownTimer: CountDownTimer? = null
+    private var positionForCards = 0
     override fun initialize() {
+        bindItemCards()
         binding.rvCards.adapter = adapter
-        when (args.numbersOfCards) {
-            1 -> {
-                binding.imgCards1.visibility = GONE
-                binding.imgCards3.visibility = GONE
+    }
+
+    private fun bindItemCards() {
+        if (args.numbersOfCards == 1) {
+            binding.layoutItemCardsImageRight.visibility = View.GONE
+            binding.layoutItemCardsImageLeft.visibility = View.GONE
+        } else {
+            binding.layoutItemCardsImageLeft.visibility = View.VISIBLE
+            binding.layoutItemCardsImageRight.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setUpImageCards() = with(binding) {
+        if (args.numbersOfCards == 1) {
+            if (defaultPositionInOneCard != listForMemory.size && defaultPositionInOneCard != listForMemory.lastIndex) {
+                if (defaultPositionInOneCard > -1) {
+                    itemCardsImageCenter.loadUrlWithCoil(listForMemory[defaultPositionInOneCard].url.toString())
+                }
             }
-            3 -> {
-                binding.imgCards1.visibility = VISIBLE
-                binding.imgCards3.visibility = VISIBLE
+        } else {
+            if (positionForCards.plus(2) != listForMemory.size && positionForCards != listForMemory.lastIndex) {
+                itemCardsImageLeft.loadUrlWithCoil(listForMemory[positionForCards].url.toString())
+                itemCardsImageRight.loadUrlWithCoil(listForMemory[positionForCards.plus(1)].url.toString())
+                itemCardsImageCenter.loadUrlWithCoil(listForMemory[positionForCards.plus(2)].url.toString())
+            } else {
+                layoutItemCardsImageLeft.isVisible = false
+                layoutItemCardsImageRight.isVisible = false
+                itemCardsImageLeft.isVisible = false
+                itemCardsImageRight.isVisible = false
+                itemCardsImageCenter.loadUrlWithCoil(listForMemory[listForMemory.lastIndex].url.toString())
             }
         }
     }
 
-    override fun setupRequests() {
-        viewModel.fetchImageOfCards("clover", "", "", "")
+    override fun setupListeners() {
+        setUpBtnBack()
     }
 
-    override fun setupObserves() {
+
+    private fun setUpTimer(
+        arrayList: ArrayList<CardsUI>,
+        uiState: UIState.Success<List<CardsUI>>,
+        time: Int,
+    ) {
+
+        countDownTimer = timerInSeconds(
+            binding.txtTimer,
+            time.toLong(),
+            1000
+        ) {
+            if (args.numbersOfCards == 1) {
+                defaultPositionInOneCard++
+                if (defaultPositionInOneCard != uiState.data.size) {
+                    setUpImageCards()
+                    arrayList[defaultPositionInOneCard.minus(1)] =
+                        uiState.data[defaultPositionInOneCard.minus(1)]
+                    adapter.submitList(arrayList)
+                    adapter.notifyItemChanged(defaultPositionInOneCard.minus(1))
+                    countDownTimer?.start()
+                } else {
+                    binding.btnFinish.visibility = View.VISIBLE
+                    binding.btnFinish.setOnSingleClickListener {
+                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                    }
+                }
+            } else if (args.numbersOfCards == 3) {
+                if (positionForCards.minus(1) != uiState.data.lastIndex) {
+                    if (positionForCards.plus(2) != listForMemory.size && positionForCards != listForMemory.lastIndex) {
+                        positionForCards += 3
+                        setUpImageCards()
+                        arrayList[positionForCards.minus(1)] =
+                            uiState.data[positionForCards.minus(1)]
+                        arrayList[positionForCards.minus(2)] =
+                            uiState.data[positionForCards.minus(2)]
+                        arrayList[positionForCards.minus(3)] =
+                            uiState.data[positionForCards.minus(3)]
+                        adapter.submitList(arrayList)
+                        adapter.notifyItemChanged(positionForCards.minus(1))
+                        adapter.notifyItemChanged(positionForCards.minus(2))
+                        adapter.notifyItemChanged(positionForCards.minus(3))
+                        countDownTimer?.start()
+                    } else {
+                        arrayList[listForMemory.lastIndex] =
+                            uiState.data[listForMemory.lastIndex]
+                        adapter.submitList(arrayList)
+                        adapter.notifyItemChanged(listForMemory.lastIndex)
+                        binding.btnFinish.visibility = View.VISIBLE
+                        binding.btnFinish.setOnSingleClickListener {
+                            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                        }
+                    }
+                } else {
+                    binding.btnFinish.visibility = View.VISIBLE
+                    binding.btnFinish.setOnSingleClickListener {
+                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                    }
+                }
+            }
+        }
+        countDownTimer?.start()
+    }
+
+
+    private fun setUpBtnBack() {
+        binding.btnBack.setOnSingleClickListener {
+            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_homeFragment)
+        }
+        overrideOnBackPressed {
+            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_homeFragment)
+        }
+    }
+
+    override fun setupRequests() {
+        viewModel.fetchImageOfCards(
+            typeClover = args.isClover,
+            typeBrick = args.isbrick,
+            typePiqui = args.ispiqui,
+            typeRedHeard = args.isredHeart
+        )
+    }
+
+    override fun setupObserves() = with(binding) {
         viewModel.fetchCardsState.subscribe { uiState ->
+            loaderCards.isVisible = uiState is UIState.Loading
             when (uiState) {
                 is UIState.Error -> {
                     Log.e("anime", "Error Cards: ${uiState.error}")
@@ -53,11 +165,158 @@ class PlayingCardsGameFragment :
                     Log.e("anime", "Loading Cards: $uiState")
                 }
                 is UIState.Success -> {
+                    Log.e("anime", "Fetch Cards ${uiState.data}")
                     val arrayList = ArrayList<CardsUI>()
+                    listForMemory.addAll(uiState.data)
+                    uiState.data.forEach {
+                        arrayList.add(CardsUI("", id = it.id, ""))
+                        adapter.submitList(arrayList)
+                    }
+                    if (args.numbersOfCards == 3) {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                    } else {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                    }
+                    bindSetOnClickListenerBtnNextAndBtnPrevious(arrayList, uiState)
+                    setUpImageCards()
                 }
             }
-
         }
     }
+
+    private fun bindSetOnClickListenerBtnNextAndBtnPrevious(
+        arrayList: ArrayList<CardsUI>,
+        uiState: UIState.Success<List<CardsUI>>,
+    ) {
+        binding.btnNext.setOnSingleClickListener {
+            if (args.numbersOfCards == 1) {
+                defaultPositionInOneCard++
+                if (defaultPositionInOneCard != uiState.data.size) {
+                    arrayList[defaultPositionInOneCard.minus(1)] =
+                        uiState.data[defaultPositionInOneCard.minus(1)]
+                    adapter.submitList(arrayList)
+                    adapter.notifyItemChanged(defaultPositionInOneCard.minus(1))
+                    countDownTimer?.cancel()
+                    countDownTimer = null
+                    if (args.numbersOfCards == 3) {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                    } else {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                    }
+                } else {
+                    binding.btnFinish.visibility = View.VISIBLE
+                    binding.btnFinish.setOnSingleClickListener {
+                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                    }
+                }
+            } else if (args.numbersOfCards == 3) {
+                if (positionForCards.minus(1) <= uiState.data.lastIndex) {
+                    if (positionForCards.plus(2) != listForMemory.size && positionForCards != listForMemory.lastIndex) {
+                        Log.e("anime",
+                            "LAST INDEX ${listForMemory.lastIndex} LIST SIZE ${listForMemory.size} ADAPTER ITEM COUNT ${adapter.itemCount}")
+                        positionForCards += 3
+                        arrayList[positionForCards.minus(1)] =
+                            uiState.data[positionForCards.minus(1)]
+                        arrayList[positionForCards.minus(2)] =
+                            uiState.data[positionForCards.minus(2)]
+                        arrayList[positionForCards.minus(3)] =
+                            uiState.data[positionForCards.minus(3)]
+                        adapter.submitList(arrayList)
+                        adapter.notifyItemChanged(positionForCards.minus(1))
+                        adapter.notifyItemChanged(positionForCards.minus(2))
+                        adapter.notifyItemChanged(positionForCards.minus(3))
+                        countDownTimer = null
+                        countDownTimer?.cancel()
+                        if (args.numbersOfCards == 3) {
+                            setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        } else {
+                            setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        }
+
+                    } else {
+                        arrayList[listForMemory.lastIndex] =
+                            uiState.data[listForMemory.lastIndex]
+                        adapter.submitList(arrayList)
+                        adapter.notifyItemChanged(listForMemory.lastIndex)
+                        binding.btnFinish.visibility = View.VISIBLE
+                        binding.btnFinish.setOnSingleClickListener {
+                            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                        }
+                    }
+                } else {
+                    binding.btnFinish.visibility = View.VISIBLE
+                    binding.btnFinish.setOnSingleClickListener {
+                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                    }
+                }
+            }
+            setUpImageCards()
+        }
+        binding.btnPrevious.setOnSingleClickListener {
+            if (args.numbersOfCards == 1) {
+                if (defaultPositionInOneCard > -1) {
+                    defaultPositionInOneCard--
+                    arrayList[defaultPositionInOneCard] =
+                        CardsUI("", "", "")
+                    adapter.submitList(arrayList)
+                    adapter.notifyItemChanged(defaultPositionInOneCard)
+                    countDownTimer?.cancel()
+                    countDownTimer = null
+                    if (args.numbersOfCards == 3) {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                    } else {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                    }
+                    binding.btnPrevious.isClickable = true
+                } else {
+                    binding.btnPrevious.isClickable = false
+                    Log.e("anime", "Finish")
+                }
+            } else {
+                if (positionForCards.plus(2) != listForMemory.size && positionForCards != listForMemory.lastIndex) {
+                    Log.e("anime",
+                        "LAST INDEX ${listForMemory.lastIndex} LIST SIZE ${listForMemory.size} ADAPTER ITEM COUNT ${adapter.itemCount}")
+                    positionForCards += 3
+                    arrayList[positionForCards.minus(1)] =
+                        CardsUI("", "", "")
+                    arrayList[positionForCards.minus(2)] =
+                        CardsUI("", "", "")
+                    arrayList[positionForCards.minus(3)] =
+                        CardsUI("", "", "")
+                    adapter.submitList(arrayList)
+                    adapter.notifyItemChanged(positionForCards.minus(1))
+                    adapter.notifyItemChanged(positionForCards.minus(2))
+                    adapter.notifyItemChanged(positionForCards.minus(3))
+                    countDownTimer?.cancel()
+                    countDownTimer = null
+                    if (args.numbersOfCards == 3) {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                    } else {
+                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                    }
+                    binding.btnPrevious.isClickable = true
+                } else {
+                    binding.btnPrevious.isClickable = false
+                }
+            }
+            setUpImageCards()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        countDownTimer?.cancel()
+        countDownTimer = null
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        countDownTimer?.cancel()
+        countDownTimer = null
+    }
+
 }
+
+
+
 
