@@ -30,4 +30,14 @@
     <string name="choose_playing_cards">Выбрать вид карт</string>
     <string name="choose_the_numbers_of_cards">Выбрать кол-во карт</string>
     <string name="txt_step">Далее</string>
+    <string name="text_start_game">Начать</string>
+    <string name="text_minutes">Минут</string>
+    <string name="set_time_to_remember"> Указать время
+для ответа</string>
+    <string name="_00">00</string>
+    <string name="text_seconds">Секунд</string>
+    <string name="text_specify_time_to_memorize_one_card">Указать время для запоминания одной карты</string>
+    <string name="timer_template">%1$s:%2$s</string>
+    <string name="txt_finish">Завершить</string>
+
 </resources>
