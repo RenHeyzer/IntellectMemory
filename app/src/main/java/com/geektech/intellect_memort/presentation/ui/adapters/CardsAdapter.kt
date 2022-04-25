@@ -11,13 +11,12 @@ import com.geektech.intellect_memort.presentation.models.CardsUI
 
 
 class CardsAdapter : ListAdapter<CardsUI, CardsAdapter.ViewHolder>(DifferCards) {
+
     inner class ViewHolder(private val binding: ItemCardsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: CardsUI) {
             binding.itemNumberOfCards.text = absoluteAdapterPosition.plus(1).toString()
-            if (item.type != "card") {
-                binding.itemCardsImage.loadUrlWithCoil(item.url.toString())
-            }
+            binding.itemCardsImage.loadUrlWithCoil(item.url.toString())
         }
     }
 
@@ -33,6 +32,7 @@ class CardsAdapter : ListAdapter<CardsUI, CardsAdapter.ViewHolder>(DifferCards) 
         getItem(position)?.let { holder.onBind(it) }
     }
 
+
     object DifferCards : DiffUtil.ItemCallback<CardsUI>() {
         override fun areItemsTheSame(oldItem: CardsUI, newItem: CardsUI): Boolean {
             return oldItem.url == newItem.url
@@ -42,5 +42,6 @@ class CardsAdapter : ListAdapter<CardsUI, CardsAdapter.ViewHolder>(DifferCards) 
             return oldItem == newItem
         }
     }
+
 
 }
