@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     lateinit var localeHelper: LocaleHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Intellect_memort)
         super.onCreate(savedInstanceState)
         localeHelper.loadLocale(this)
         setUpNavigation()
