@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.playingcards.choose.InputTimeForAnswerFragment">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left_vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidLine_right_vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guid_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guid_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.19" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidLine2_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.79" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guid_bottom_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guid_top_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <TextView
+        android:id="@+id/txt_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="100"
+        android:minLines="1"
+        android:singleLine="false"
+        android:text="@string/set_time_to_remember"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="24sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_time"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_time" />
+
+
+    <TextView
+        android:id="@+id/txt_minuts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_minutes"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+        app:layout_constraintTop_toBottomOf="@id/et_time" />
+
+    <EditText
+        android:id="@+id/et_time"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@drawable/background_oval_for_edit_text"
+        android:hint="@string/_00"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_further"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFD156"
+        android:padding="20dp"
+        android:text="@string/text_start_game"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_left_vertical"
+        app:layout_constraintRight_toRightOf="@id/guidLine_right_vertical"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
