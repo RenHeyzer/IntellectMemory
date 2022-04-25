@@ -52,6 +52,8 @@
         <ImageView
             android:id="@+id/item_cards_image"
             android:layout_width="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:layout_height="match_parent" />
     </com.google.android.material.card.MaterialCardView>
 
