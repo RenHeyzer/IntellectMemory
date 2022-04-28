@@ -40,4 +40,11 @@
     <string name="timer_template">%1$s:%2$s</string>
     <string name="txt_finish">Завершить</string>
 
+    <string name="text_warning">Предупреждение!</string>
+    <string name="exit_text">Вы уверены, что хотите выйти? \n \nВсе ваши результаты будут обнулены!</string>
+    <string name="exit_text_short">Вы уверены, что хотите выйти?</string>
+    <string name="exit_description">Все ваши результаты будут обнулены!</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+
 </resources>

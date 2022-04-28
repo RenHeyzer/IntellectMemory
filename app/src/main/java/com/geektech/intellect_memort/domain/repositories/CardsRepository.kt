@@ -11,4 +11,12 @@ interface CardsRepository {
         typePiqui: String?,
         typeRedHeard: String?,
     ): Flow<Resource<List<CardsModel>>>
+
+    fun fetchImageBySorted(
+        typeClover: String?,
+        typeBrick: String?,
+        typePiqui: String?,
+        typeRedHeard: String?,
+    ): Flow<Resource<List<CardsModel>>>
+
 }

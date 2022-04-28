@@ -5,6 +5,22 @@
     android:id="@+id/main_graph"
     app:startDestination="@id/homeFragment">
 
+    <dialog
+        android:id="@+id/exitDialogFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.dialogs.ExitDialogFragment"
+        android:label="fragment_exit_dialog"
+        tools:layout="@layout/fragment_exit_dialog">
+        <action
+            android:id="@+id/action_exitDialogFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="withResults"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </dialog>
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.home.HomeFragment"
@@ -120,6 +136,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/main_nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_playingCardsGameFragment_to_exitDialogFragment"
+            app:destination="@id/exitDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/inputTimeForAnswerFragment"
@@ -158,6 +177,35 @@
         android:id="@+id/answerPlayingCardsFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.answer.AnswerPlayingCardsFragment"
         android:label="fragment_answer_playing_cards"
-        tools:layout="@layout/fragment_answer_playing_cards" />
+        tools:layout="@layout/fragment_answer_playing_cards">
+        <argument
+            android:name="time"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
+            android:name="timeForMemoryCard"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
+            android:name="numbersOfCards"
+            android:defaultValue="3"
+            app:argType="integer" />
+        <argument
+            android:name="isbrick"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="ispiqui"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isredHeart"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isClover"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 
 </navigation>

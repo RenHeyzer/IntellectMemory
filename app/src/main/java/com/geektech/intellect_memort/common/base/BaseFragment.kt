@@ -23,10 +23,10 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
+        setupViews()
         setupListeners()
         setupRequests()
         setupObserves()
-        setupViews()
     }
 
     protected open fun initialize() {}

@@ -41,5 +41,11 @@ for an answer</string>
     <string name="timer_template">%1$s:%2$s</string>
     <string name="txt_finish">Finish</string>
 
+    <string name="exit_text">Are you sure you want exit? \n \nAll your scores will be reset!</string>
+    <string name="exit_text_short">Are you sure you want exit?</string>
+    <string name="exit_description">All your scores will be reset!</string>
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
+    <string name="text_warning">Warning!</string>
 
 </resources>

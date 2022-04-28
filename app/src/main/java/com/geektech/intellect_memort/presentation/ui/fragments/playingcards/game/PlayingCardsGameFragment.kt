@@ -17,6 +17,7 @@ import com.geektech.intellect_memort.presentation.state.UIState
 import com.geektech.intellect_memort.presentation.ui.adapters.CardsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class PlayingCardsGameFragment :
     BaseFragment<FragmentPlayingCardsGameBinding, PlayingCardsGameViewModel>(
@@ -50,10 +51,29 @@ class PlayingCardsGameFragment :
             if (defaultPositionInOneCard != listForMemory.size && defaultPositionInOneCard != listForMemory.lastIndex) {
                 if (defaultPositionInOneCard > -1) {
                     itemCardsImageCenter.loadUrlWithCoil(listForMemory[defaultPositionInOneCard].url.toString())
+                } else {
+                    binding.btnFinish.visibility = View.VISIBLE
+                    binding.btnFinish.setOnSingleClickListener {
+                        findNavController().navigateSafely(
+                            PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                numbersOfCards = args.numbersOfCards,
+                                isClover = args.isClover,
+                                ispiqui = args.ispiqui,
+                                isredHeart = args.isredHeart,
+                                isbrick = args.isbrick,
+                                timeForMemoryCard = args.timeForMemoryCard,
+                                time = args.time
+                            )
+                        )
+                    }
                 }
             }
         } else {
             if (positionForCards.plus(2) != listForMemory.size && positionForCards != listForMemory.lastIndex) {
+                layoutItemCardsImageLeft.isVisible = true
+                layoutItemCardsImageRight.isVisible = true
+                itemCardsImageLeft.isVisible = true
+                itemCardsImageRight.isVisible = true
                 itemCardsImageLeft.loadUrlWithCoil(listForMemory[positionForCards].url.toString())
                 itemCardsImageRight.loadUrlWithCoil(listForMemory[positionForCards.plus(1)].url.toString())
                 itemCardsImageCenter.loadUrlWithCoil(listForMemory[positionForCards.plus(2)].url.toString())
@@ -95,7 +115,17 @@ class PlayingCardsGameFragment :
                 } else {
                     binding.btnFinish.visibility = View.VISIBLE
                     binding.btnFinish.setOnSingleClickListener {
-                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                        findNavController().navigateSafely(
+                            PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                numbersOfCards = args.numbersOfCards,
+                                isClover = args.isClover,
+                                ispiqui = args.ispiqui,
+                                isredHeart = args.isredHeart,
+                                isbrick = args.isbrick,
+                                timeForMemoryCard = args.timeForMemoryCard,
+                                time = args.time
+                            )
+                        )
                     }
                 }
             } else if (args.numbersOfCards == 3) {
@@ -121,13 +151,33 @@ class PlayingCardsGameFragment :
                         adapter.notifyItemChanged(listForMemory.lastIndex)
                         binding.btnFinish.visibility = View.VISIBLE
                         binding.btnFinish.setOnSingleClickListener {
-                            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                            findNavController().navigateSafely(
+                                PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                    numbersOfCards = args.numbersOfCards,
+                                    isClover = args.isClover,
+                                    ispiqui = args.ispiqui,
+                                    isredHeart = args.isredHeart,
+                                    isbrick = args.isbrick,
+                                    timeForMemoryCard = args.timeForMemoryCard,
+                                    time = args.time
+                                )
+                            )
                         }
                     }
                 } else {
                     binding.btnFinish.visibility = View.VISIBLE
                     binding.btnFinish.setOnSingleClickListener {
-                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                        findNavController().navigateSafely(
+                            PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                numbersOfCards = args.numbersOfCards,
+                                isClover = args.isClover,
+                                ispiqui = args.ispiqui,
+                                isredHeart = args.isredHeart,
+                                isbrick = args.isbrick,
+                                timeForMemoryCard = args.timeForMemoryCard,
+                                time = args.time
+                            )
+                        )
                     }
                 }
             }
@@ -138,10 +188,17 @@ class PlayingCardsGameFragment :
 
     private fun setUpBtnBack() {
         binding.btnBack.setOnSingleClickListener {
-            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_homeFragment)
+            findNavController().navigateSafely(
+                PlayingCardsGameFragmentDirections
+                    .actionPlayingCardsGameFragmentToExitDialogFragment(
+                        false
+                    ))
         }
         overrideOnBackPressed {
-            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_homeFragment)
+            findNavController().navigateSafely(PlayingCardsGameFragmentDirections
+                .actionPlayingCardsGameFragmentToExitDialogFragment(
+                    false
+                ))
         }
     }
 
@@ -188,6 +245,14 @@ class PlayingCardsGameFragment :
         arrayList: ArrayList<CardsUI>,
         uiState: UIState.Success<List<CardsUI>>,
     ) {
+        setUpClickListenerBtnNext(arrayList, uiState)
+        setUpClickListenerBtnPrevious(arrayList, uiState)
+    }
+
+    private fun setUpClickListenerBtnNext(
+        arrayList: ArrayList<CardsUI>,
+        uiState: UIState.Success<List<CardsUI>>,
+    ) {
         binding.btnNext.setOnSingleClickListener {
             if (args.numbersOfCards == 1) {
                 defaultPositionInOneCard++
@@ -204,9 +269,21 @@ class PlayingCardsGameFragment :
                         setUpTimer(arrayList, uiState, args.timeForMemoryCard)
                     }
                 } else {
+                    countDownTimer?.cancel()
+                    countDownTimer = null
                     binding.btnFinish.visibility = View.VISIBLE
                     binding.btnFinish.setOnSingleClickListener {
-                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                        findNavController().navigateSafely(
+                            PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                numbersOfCards = args.numbersOfCards,
+                                isClover = args.isClover,
+                                ispiqui = args.ispiqui,
+                                isredHeart = args.isredHeart,
+                                isbrick = args.isbrick,
+                                timeForMemoryCard = args.timeForMemoryCard,
+                                time = args.time
+                            )
+                        )
                     }
                 }
             } else if (args.numbersOfCards == 3) {
@@ -240,24 +317,50 @@ class PlayingCardsGameFragment :
                         adapter.notifyItemChanged(listForMemory.lastIndex)
                         binding.btnFinish.visibility = View.VISIBLE
                         binding.btnFinish.setOnSingleClickListener {
-                            findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                            findNavController().navigateSafely(
+                                PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                    numbersOfCards = args.numbersOfCards,
+                                    isClover = args.isClover,
+                                    ispiqui = args.ispiqui,
+                                    isredHeart = args.isredHeart,
+                                    isbrick = args.isbrick,
+                                    timeForMemoryCard = args.timeForMemoryCard,
+                                    time = args.time
+                                )
+                            )
                         }
                     }
                 } else {
                     binding.btnFinish.visibility = View.VISIBLE
                     binding.btnFinish.setOnSingleClickListener {
-                        findNavController().navigateSafely(R.id.action_playingCardsGameFragment_to_answerPlayingCardsFragment)
+                        findNavController().navigateSafely(
+                            PlayingCardsGameFragmentDirections.actionPlayingCardsGameFragmentToAnswerPlayingCardsFragment(
+                                numbersOfCards = args.numbersOfCards,
+                                isClover = args.isClover,
+                                ispiqui = args.ispiqui,
+                                isredHeart = args.isredHeart,
+                                isbrick = args.isbrick,
+                                timeForMemoryCard = args.timeForMemoryCard,
+                                time = args.time
+                            )
+                        )
                     }
                 }
             }
             setUpImageCards()
         }
+    }
+
+    private fun setUpClickListenerBtnPrevious(
+        arrayList: ArrayList<CardsUI>,
+        uiState: UIState.Success<List<CardsUI>>,
+    ) {
         binding.btnPrevious.setOnSingleClickListener {
             if (args.numbersOfCards == 1) {
                 if (defaultPositionInOneCard > -1) {
                     defaultPositionInOneCard--
                     arrayList[defaultPositionInOneCard] =
-                        CardsUI("", "", "")
+                        CardsUI("", 2, "")
                     adapter.submitList(arrayList)
                     adapter.notifyItemChanged(defaultPositionInOneCard)
                     countDownTimer?.cancel()
@@ -274,15 +377,15 @@ class PlayingCardsGameFragment :
                 }
             } else {
                 if (positionForCards.plus(2) != listForMemory.size && positionForCards != listForMemory.lastIndex) {
+                    positionForCards -= if (positionForCards > 0) -3 else 0
                     Log.e("anime",
                         "LAST INDEX ${listForMemory.lastIndex} LIST SIZE ${listForMemory.size} ADAPTER ITEM COUNT ${adapter.itemCount}")
-                    positionForCards += 3
                     arrayList[positionForCards.minus(1)] =
-                        CardsUI("", "", "")
+                        CardsUI("", 3, "")
                     arrayList[positionForCards.minus(2)] =
-                        CardsUI("", "", "")
+                        CardsUI("", 2, "")
                     arrayList[positionForCards.minus(3)] =
-                        CardsUI("", "", "")
+                        CardsUI("", 1, "")
                     adapter.submitList(arrayList)
                     adapter.notifyItemChanged(positionForCards.minus(1))
                     adapter.notifyItemChanged(positionForCards.minus(2))
@@ -302,6 +405,7 @@ class PlayingCardsGameFragment :
             setUpImageCards()
         }
     }
+
 
     override fun onStop() {
         super.onStop()

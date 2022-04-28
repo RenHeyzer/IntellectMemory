@@ -36,6 +36,7 @@
             app:layout_constraintRight_toRightOf="@id/guidLine2_right"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/layout_item_cards_image_center"
             android:layout_width="110dp"

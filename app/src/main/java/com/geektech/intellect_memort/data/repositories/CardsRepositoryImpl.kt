@@ -6,6 +6,7 @@ import com.geektech.intellect_memort.common.constants.Constants
 import com.geektech.intellect_memort.domain.models.CardsModel
 import com.geektech.intellect_memort.domain.repositories.CardsRepository
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import javax.inject.Inject
 
 
@@ -26,4 +27,18 @@ class CardsRepositoryImpl @Inject constructor(
         fetchListByQuery<CardsModel>(imagesCollection.whereIn("type",
             listOf(typeClover, typeBrick, typePiqui, typeRedHeard)))
     }
+
+    override fun fetchImageBySorted(
+        typeClover: String?,
+        typeBrick: String?,
+        typePiqui: String?,
+        typeRedHeard: String?,
+    ) = doRequest {
+        fetchListByQuery<CardsModel>(
+            imagesCollection.whereIn("type",
+                listOf(typeBrick, typeClover, typePiqui, typeRedHeard)
+            ).orderBy("id", Query.Direction.ASCENDING)
+        )
+    }
+
 }
