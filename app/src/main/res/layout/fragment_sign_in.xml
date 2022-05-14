@@ -46,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.24213406" />
 
     <TextView
         android:id="@+id/sign_in_title"
@@ -66,7 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.72" />
+        app:layout_constraintGuide_percent="0.7209302" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -74,6 +74,13 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.54" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.38987687" />
 
     <LinearLayout
         android:id="@+id/et_container"
@@ -83,35 +90,40 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline4">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_username"
+            style="@style/Widget.AppTheme.TextInputLayout.Outline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
             android:layout_marginBottom="25dp"
+            app:errorIconDrawable="@null"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_of_edittext"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/username_text_hint"
                 android:inputType="textPersonName"
-                android:padding="@dimen/fifteen_dp"
+                android:paddingHorizontal="@dimen/fifteen_dp"
+                android:paddingVertical="@dimen/twenty_dp"
                 android:textColorHint="@color/light_gray" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_password"
+            style="@style/Widget.AppTheme.TextInputLayout.Outline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
             app:endIconDrawable="@drawable/custom_password_eye"
             app:endIconTint="@color/black"
+            app:errorIconDrawable="@null"
             app:hintEnabled="false"
             app:passwordToggleEnabled="true">
 
@@ -119,11 +131,11 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_of_edittext"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/password_text_hint"
                 android:inputType="textPassword"
-                android:padding="@dimen/fifteen_dp"
+                android:paddingHorizontal="@dimen/fifteen_dp"
+                android:paddingVertical="@dimen/twenty_dp"
                 android:textColorHint="@color/light_gray" />
         </com.google.android.material.textfield.TextInputLayout>
 

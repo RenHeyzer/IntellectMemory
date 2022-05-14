@@ -5,4 +5,4 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class RandomNumbersViewModel @Inject constructor() : BaseViewModel()
+class InputCountOfNumbersViewModel @Inject constructor() : BaseViewModel()

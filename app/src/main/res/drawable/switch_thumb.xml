@@ -8,5 +8,5 @@
         android:color="@color/blue" />
     <size
         android:width="51dp"
-        android:height="40dp" />
+        android:height="48dp" />
 </shape>

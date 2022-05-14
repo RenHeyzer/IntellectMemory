@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.presentation.state.UIState
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
     @LayoutRes layoutId: Int,
@@ -43,7 +44,7 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
         state: Lifecycle.State = Lifecycle.State.STARTED,
         action: (UIState<T>) -> Unit,
     ) {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(state) {
                 this@subscribe.collect {
                     action(it)
@@ -59,6 +60,19 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewLifecycleOwner.repeatOnLifecycle(state) {
                 this@subscribePaging.collect {
+                    action(it)
+                }
+            }
+        }
+    }
+
+    protected fun <T> StateFlow<T>.subscribeIdle(
+        state: Lifecycle.State = Lifecycle.State.STARTED,
+        action: (T) -> Unit,
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state) {
+                this@subscribeIdle.collect {
                     action(it)
                 }
             }
