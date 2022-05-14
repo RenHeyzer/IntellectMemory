@@ -2,10 +2,9 @@ package com.geektech.intellect_memort.presentation.ui.fragments.playingcards.ans
 
 import android.os.CountDownTimer
 import android.util.Log
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
@@ -23,19 +22,10 @@ class AnswerPlayingCardsFragment :
     ), PlayingCardsAnsweringListener {
     private var listForPlayingCards = arrayListOf<CardsUI>()
     private var listForAnswering = arrayListOf<CardsUI>()
-    private val playingCardsAdapter = PlayingCardsAnsweringAdapter(listForPlayingCards, this, true)
-    private val answerPlayingCardsAdapter =
-        PlayingCardsAnsweringAdapter(listForAnswering, this, false)
     override val binding by viewBinding(FragmentAnswerPlayingCardsBinding::bind)
     override val viewModel: AnswerPlayingCardsViewModel by viewModels()
     private val args by navArgs<AnswerPlayingCardsFragmentArgs>()
-    private var countDownTimer: CountDownTimer? = null
-    override fun initialize() {
-
-    }
-
-    override fun setupListeners() {
-    }
+    private var countDwnTimer: CountDownTimer? = null
 
     override fun setupRequests() {
         viewModel.fetchCards(
@@ -61,9 +51,9 @@ class AnswerPlayingCardsFragment :
                 }
                 is UIState.Success -> {
                     Log.e("anime", "Success Fetch Cards Answer Fragment ${it.data}")
-                    it.data.forEach {
-                        listForAnswering.add(CardsUI("", 0, "", true))
-                        listForPlayingCards.add(CardsUI(it.url, it.id, it.type, false))
+                    it.data.forEach { card ->
+                        listForAnswering.add(CardsUI("", null, null, true))
+                        listForPlayingCards.add(CardsUI(card.url, card.id, card.type, false))
                     }
                     initializeAdapters()
                 }
@@ -72,19 +62,25 @@ class AnswerPlayingCardsFragment :
     }
 
     private fun initializeAdapters() {
+        val playingCardsAdapter =
+            PlayingCardsAnsweringAdapter(listForPlayingCards, this, this::showMistake)
+        val answeringAdapter =
+            PlayingCardsAnsweringAdapter(listForAnswering, this, this::showMistake)
         binding.rvCards.run {
             adapter = playingCardsAdapter
             setOnDragListener(playingCardsAdapter.dragInstance)
         }
         binding.rvCardsAnswering.run {
-            adapter = answerPlayingCardsAdapter
-            setOnDragListener(answerPlayingCardsAdapter.dragInstance)
+            adapter = answeringAdapter
+            setOnDragListener(answeringAdapter.dragInstance)
         }
     }
 
-    override fun setEmptyList(visibility: Int, recyclerView: Int, emptyTextView2: Int) {
-        requireActivity().findViewById<RecyclerView>(recyclerView).visibility = visibility
-        requireActivity().findViewById<TextView>(emptyTextView2).visibility = visibility
+    private fun showMistake() {
+        Toast.makeText(requireContext(), "Этот слот занят!", Toast.LENGTH_SHORT).show()
     }
 
+    override fun setEmptyList(visibility: Boolean) {
+
+    }
 }
