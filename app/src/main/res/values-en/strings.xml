@@ -47,5 +47,8 @@ for an answer</string>
     <string name="text_yes">Yes</string>
     <string name="text_no">No</string>
     <string name="text_warning">Warning!</string>
+    <string name="nothing">NOTHING</string>
+    <string name="txt_next">Next</string>
+    <string name="txt_previous">Previous</string>
 
 </resources>

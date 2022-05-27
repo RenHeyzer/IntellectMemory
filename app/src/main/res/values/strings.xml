@@ -46,5 +46,9 @@
     <string name="exit_description">Все ваши результаты будут обнулены!</string>
     <string name="text_yes">Да</string>
     <string name="text_no">Нет</string>
+    <string name="ic_card_back" translatable="false">https://firebasestorage.googleapis.com/v0/b/intellectgame-a6872.appspot.com/o/cards%2Fic_card_back.png?alt=media&amp;token=a3618216-3b6a-4baa-a919-6b9a412dca07</string>
+    <string name="nothing">NOTHING</string>
+    <string name="txt_next">Следующий</string>
+    <string name="txt_previous">Предыдущий</string>
 
 </resources>

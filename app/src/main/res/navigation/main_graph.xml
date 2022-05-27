@@ -172,6 +172,9 @@
         <action
             android:id="@+id/action_inputTimeForAnswerFragment_to_playingCardsGameFragment"
             app:destination="@id/playingCardsGameFragment" />
+        <action
+            android:id="@+id/action_inputTimeForAnswerFragment_to_timerCardsFragment"
+            app:destination="@id/timerCardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/answerPlayingCardsFragment"
@@ -206,6 +209,43 @@
             android:name="isClover"
             android:defaultValue=""
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerCardsFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.timer.TimerCardsFragment"
+        android:label="fragment_timer_cards"
+        tools:layout="@layout/fragment_timer_cards">
+        <argument
+            android:name="time"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
+            android:name="timeForMemoryCard"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <argument
+            android:name="numbersOfCards"
+            android:defaultValue="3"
+            app:argType="integer" />
+        <argument
+            android:name="isbrick"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="ispiqui"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isredHeart"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isClover"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_timerCardsFragment_to_playingCardsGameFragment"
+            app:destination="@id/playingCardsGameFragment" />
     </fragment>
 
 </navigation>

@@ -23,11 +23,16 @@ class PlayingCardsGameViewModel @Inject constructor(
         typePiqui: String,
         typeRedHeard: String,
     ) {
-        fetchCardsUseCase.invoke(typeClover, typeBrick, typePiqui, typeRedHeard)
-            .collectRequest(_fetchCardsState) {
-                it.shuffled().map {
-                    it.toUI()
-                }
+        fetchCardsUseCase(
+            typeClover,
+            typeBrick,
+            typePiqui,
+            typeRedHeard
+        ).collectRequest(_fetchCardsState) { it ->
+            it.shuffled().map {
+                it.toUI()
             }
+        }
     }
+
 }

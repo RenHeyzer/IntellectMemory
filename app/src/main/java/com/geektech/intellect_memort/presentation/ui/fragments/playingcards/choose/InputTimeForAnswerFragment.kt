@@ -48,14 +48,14 @@ class InputTimeForAnswerFragment : Fragment() {
                 else -> {
                     findNavController().navigateSafely(
                         InputTimeForAnswerFragmentDirections
-                            .actionInputTimeForAnswerFragmentToPlayingCardsGameFragment(
+                            .actionInputTimeForAnswerFragmentToTimerCardsFragment(
                                 time = etTime.text.toString().toInt(),
                                 timeForMemoryCard = args.timeForMemoryCards,
                                 isClover = args.isClover,
                                 ispiqui = args.ispiqui,
                                 isredHeart = args.isredHeart,
                                 isbrick = args.isbrick,
-                                numbersOfCards = args.numbersOfCards
+                                numbersOfCards = args.numbersOfCards,
                             ))
                 }
             }
