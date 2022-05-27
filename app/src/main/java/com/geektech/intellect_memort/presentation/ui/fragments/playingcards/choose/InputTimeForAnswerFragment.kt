@@ -45,7 +45,7 @@ class InputTimeForAnswerFragment : Fragment() {
                 etTime.text.toString().toInt() == 0 || etTime.text.toString().toInt() < 0 -> {
                     Toast.makeText(requireContext(), "Заполните Поле!", Toast.LENGTH_SHORT).show()
                 }
-                etTime.text.toString().toInt() <= 60 || etTime.text.toString().toInt() > 0 -> {
+                else -> {
                     findNavController().navigateSafely(
                         InputTimeForAnswerFragmentDirections
                             .actionInputTimeForAnswerFragmentToTimerCardsFragment(
@@ -57,9 +57,6 @@ class InputTimeForAnswerFragment : Fragment() {
                                 isbrick = args.isbrick,
                                 numbersOfCards = args.numbersOfCards,
                             ))
-                }
-                else -> {
-
                 }
             }
         }
