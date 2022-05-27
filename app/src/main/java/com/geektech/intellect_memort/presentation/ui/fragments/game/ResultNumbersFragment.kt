@@ -10,7 +10,7 @@ import com.geektech.intellect_memort.common.extension.doubleList
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentResultNumbersBinding
 import com.geektech.intellect_memort.domain.models.NumbersModel
-import com.geektech.intellect_memort.presentation.adapters.ResultNumbersAdapter
+import com.geektech.intellect_memort.presentation.ui.adapters.ResultNumbersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
