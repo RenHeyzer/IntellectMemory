@@ -5,7 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.MotionEvent
 import android.widget.Toast
-import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
@@ -22,7 +22,7 @@ class PlayingCardsFragment :
         R.layout.fragment_playing_cards
     ) {
     override val binding by viewBinding(FragmentPlayingCardsBinding::bind)
-    override val viewModel: PlayingCardsViewModel by viewModels()
+    override val viewModel: PlayingCardsViewModel by hiltNavGraphViewModels(R.id.main_graph)
     private var isClickedBtn1 = false
     private var isClickedBtn2 = false
     private var isClickedBtn3 = false
@@ -126,6 +126,12 @@ class PlayingCardsFragment :
     private fun setUpBtnChoose() {
         if (isClickedBtn1 || isClickedBtn2 || isClickedBtn3 || isClickedBtn4
         ) {
+            viewModel.fetchImageOfCards(
+                typeClover = clover,
+                typeBrick = redHeart,
+                typePiqui = piqui,
+                typeRedHeard = brick
+            )
             findNavController().navigateSafely(
                 PlayingCardsFragmentDirections
                     .actionPlayingCardsFragmentToChooseTheNumberOfCardsFragment(
