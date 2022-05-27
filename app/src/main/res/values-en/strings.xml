@@ -83,4 +83,18 @@
     <string name="text_no">No</string>
     <string name="text_warning">Warning!</string>
 
+    <string name="text_row">Row</string>
+    <string name="error_text_input_admissible_number">Input relevant number! From 1 to 1000!</string>
+    <string name="error_text_input_admissible_time">Input relevant time! With the maximum of 60 min.</string>
+    <string name="text_logout">Exit</string>
+    <string name="error_text_input_correct_password">Input correct password!</string>
+    <string name="error_input_correct_username">Input correct username!</string>
+
+    <string name="text_result">Result</string>
+    <string name="text_global_rating">Global rating</string>
+    <string name="text_school_rating">School rating</string>
+    <string name="text_time_to_remember">Time to remember:</string>
+    <string name="text_time_of_answers">Time to answer:</string>
+    <string name="con_des_search_students_by_name">Search by student\'s name</string>
+
 </resources>

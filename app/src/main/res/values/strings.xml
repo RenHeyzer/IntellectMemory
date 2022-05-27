@@ -89,14 +89,9 @@
     <string name="_00">00</string>
     <string name="text_seconds">Секунд</string>
     <string name="text_specify_time_to_memorize_one_card">Указать время для запоминания одной карты</string>
-    <string name="timer_template">%1$s:%2$s</string>
     <string name="txt_finish">Завершить</string>
-
-    <string name="text_warning">Предупреждение!</string>
-    <string name="exit_text">Вы уверены, что хотите выйти? \n \nВсе ваши результаты будут обнулены!</string>
-    <string name="exit_text_short">Вы уверены, что хотите выйти?</string>
-    <string name="exit_description">Все ваши результаты будут обнулены!</string>
-    <string name="text_yes">Да</string>
-    <string name="text_no">Нет</string>
+    <string name="text_global_rating">Глобальный рейтинг</string>
+    <string name="text_school_rating">Школьный рейтинг</string>
+    <string name="con_des_search_students_by_name">Поиск по имени ученика</string>
 
 </resources>
