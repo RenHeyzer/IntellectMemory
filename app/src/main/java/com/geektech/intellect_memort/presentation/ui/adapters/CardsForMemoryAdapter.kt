@@ -19,15 +19,15 @@ class CardsForMemoryAdapter(
 
     inner class MultipleItemCardsViewHolder(binding: ItemMultipleCardsBinding) :
         BaseRecyclerViewHolder<ItemMultipleCardsBinding, CardsUI>(binding) {
-        override fun onBind(item: CardsUI) {
-            binding.itemCardsImage.loadUrlWithCoil(item.url.toString())
+        override fun onBind(item: CardsUI?) {
+            binding.itemCardsImage.loadUrlWithCoil(item?.url.toString())
         }
     }
 
     inner class SingleItemCardsViewHolder(binding: ItemSingleCardsBinding) :
         BaseRecyclerViewHolder<ItemSingleCardsBinding, CardsUI>(binding) {
-        override fun onBind(item: CardsUI) {
-            binding.itemCardsImage.loadUrlWithCoil(item.url.toString())
+        override fun onBind(item: CardsUI?) {
+            binding.itemCardsImage.loadUrlWithCoil(item?.url.toString())
         }
     }
 
