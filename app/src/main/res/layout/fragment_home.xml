@@ -179,7 +179,7 @@
         app:layout_constraintGuide_percent="0.99" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_startr"
+        android:id="@+id/btn_rating"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
