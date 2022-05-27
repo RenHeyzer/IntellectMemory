@@ -32,7 +32,7 @@
         android:id="@+id/row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ряд"
+        android:text="@string/text_row"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
@@ -102,6 +102,7 @@
         android:text="@string/text_button_previous"
         android:textAllCaps="false"
         android:textStyle="normal"
+        android:visibility="gone"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -118,6 +119,7 @@
         android:text="@string/text_button_next"
         android:textAllCaps="false"
         android:textStyle="normal"
+        android:visibility="gone"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/guidLine2_center"
@@ -137,4 +139,37 @@
         app:cornerRadius="@dimen/ten_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_end_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/twenty_dp"
+        android:backgroundTint="#2FD9E6"
+        android:padding="15dp"
+        android:text="@string/text_button_next"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        android:visibility="gone"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+        app:layout_constraintRight_toRightOf="@id/guidLine2_right" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_end_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/twenty_dp"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/montserrat"
+        android:padding="18dp"
+        android:text="@string/Picture_btn_finish"
+        android:textSize="@dimen/twenty_one_sp"
+        app:cornerRadius="@dimen/ten_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
