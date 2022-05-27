@@ -1,4 +1,4 @@
-package com.geektech.intellect_memort.presentation.adapters
+package com.geektech.intellect_memort.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
