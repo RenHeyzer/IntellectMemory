@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import com.geektech.intellect_memort.R
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 fun Fragment.timer(
     textView: TextView,
@@ -57,4 +59,49 @@ fun Fragment.timer(
         }
     }
     return timer
+}
+
+fun Fragment.timerInSeconds(
+    textView: TextView,
+    millisInFuture: Long,
+    countDownInterval: Long,
+    getMillsUntilFinished: (seconds: Long) -> Unit,
+    funOnFinish: () -> Unit,
+): CountDownTimer {
+    return object : CountDownTimer(millisInFuture * 1000, countDownInterval) {
+        override fun onTick(millisUntilFinished: Long) {
+            val timeRemaining = timeString(millisUntilFinished)
+
+            val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+            getMillsUntilFinished(seconds)
+            textView.text = timeRemaining
+        }
+
+        override fun onFinish() {
+            textView.text = "00:00"
+            funOnFinish()
+        }
+    }
+}
+
+
+private fun timeString(millisUntilFinished: Long): String {
+    var millisUntilFinished: Long = millisUntilFinished
+    val days = TimeUnit.MILLISECONDS.toDays(millisUntilFinished)
+    millisUntilFinished -= TimeUnit.DAYS.toMillis(days)
+
+    val hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished)
+    millisUntilFinished -= TimeUnit.HOURS.toMillis(hours)
+
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+    millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes)
+
+    val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+
+    // Format the string
+    return String.format(
+        Locale.getDefault(),
+        "%02d:%02d",
+        minutes, seconds
+    )
 }
