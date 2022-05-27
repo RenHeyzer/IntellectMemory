@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.raiting.RatingFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/btn_global_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fifteen_dp"
+        android:background="@drawable/button_left_rating_selected"
+        android:button="@android:color/transparent"
+        android:fontFamily="@font/montserrat"
+        android:paddingVertical="@dimen/ten_dp"
+        android:text="@string/text_global_rating"
+        android:textAlignment="center"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="@dimen/twenty_one_sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline1"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline0" />
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/btn_school_rating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fifteen_dp"
+        android:background="@drawable/button_right_rating_selected"
+        android:button="@android:color/transparent"
+        android:fontFamily="@font/montserrat"
+        android:paddingVertical="@dimen/ten_dp"
+        android:text="@string/text_school_rating"
+        android:textAlignment="center"
+        android:textColor="@drawable/button_text_color"
+        android:textSize="@dimen/twenty_one_sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/guideline0" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/twelve_dp"
+        app:cardCornerRadius="@dimen/ten_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline1"
+        app:strokeColor="@color/blue"
+        app:strokeWidth="2dp">
+
+        <EditText
+            android:id="@+id/search_students"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_search"
+            android:paddingVertical="@dimen/twelve_dp"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="@dimen/twenty_dp"
+            android:contentDescription="@string/con_des_search_students_by_name"
+            android:paddingEnd="@dimen/ten_dp"
+            tools:ignore="LabelFor" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/categories_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/twelve_dp"
+        android:layout_marginTop="@dimen/fifteen_dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_search_view">
+
+        <TextView
+            android:id="@+id/category_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/category_number_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_one_sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_students"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/category_students_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_one_sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/category_number"
+            app:layout_constraintRight_toLeftOf="@id/category_school"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/category_school_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_one_sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/category_students"
+            app:layout_constraintRight_toLeftOf="@id/category_points"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/category_points_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twenty_one_sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/students_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/twelve_dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories_container"
+        tools:listitem="@layout/item_students" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/twelve_dp"
+        android:layout_marginTop="@dimen/ten_dp"
+        android:src="@drawable/ic_arrow_back_24"
+        app:layout_constraintBottom_toTopOf="@id/guideline0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
