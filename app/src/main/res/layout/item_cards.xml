@@ -3,31 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="100dp"
-    android:layout_height="140dp"
-    android:layout_margin="5dp"
+    android:layout_height="135dp"
+    android:layout_margin="3dp"
     android:id="@+id/cardView"
     android:background="@drawable/background_corner_for_item"
     app:cardBackgroundColor="#DADADA">
 
 
     <LinearLayout
-        android:layout_width="15dp"
+        android:layout_width="wrap_content"
         android:layout_height="22dp"
+        android:paddingHorizontal="3dp"
         android:background="#c4c4c4">
 
         <TextView
             android:id="@+id/itemNumberOfCards"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:textColor="@color/black"
             android:gravity="center"
-            tools:text="1" />
+            tools:text="12" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/item_cards_image"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:contentDescription="@string/nothing"
         android:scaleType="fitXY"

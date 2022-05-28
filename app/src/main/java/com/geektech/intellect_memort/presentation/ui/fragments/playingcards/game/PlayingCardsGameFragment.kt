@@ -35,6 +35,7 @@ class PlayingCardsGameFragment :
     override fun initialize() {
         bindItemCards()
         binding.rvCards.adapter = adapter
+        binding.rvCards.setHasFixedSize(true)
     }
 
     private fun bindItemCards() {
@@ -59,7 +60,7 @@ class PlayingCardsGameFragment :
                 }
             }
         } else if (args.numbersOfCards == 3) {
-            if (positionImageTwo < listForMemory.lastIndex && positionImageThree.toInt() != listForMemory.lastIndex && positionImageOne.toInt() <= listForMemory.lastIndex) {
+            if (positionImageTwo < listForMemory.lastIndex && positionImageThree != listForMemory.lastIndex && positionImageOne.toInt() <= listForMemory.lastIndex) {
                 layoutItemCardsImageLeft.isVisible = true
                 layoutItemCardsImageRight.isVisible = true
                 itemCardsImageLeft.isVisible = true
