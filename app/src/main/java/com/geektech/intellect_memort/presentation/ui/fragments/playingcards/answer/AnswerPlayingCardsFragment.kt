@@ -27,7 +27,7 @@ class AnswerPlayingCardsFragment :
     BaseFragment<FragmentAnswerPlayingCardsBinding, PlayingCardsViewModel>(
         R.layout.fragment_answer_playing_cards
     ), PlayingCardsAnsweringListener {
-    override val binding by viewBinding(FragmentAnswerPlayingCardsBinding::bind)
+     override val binding by viewBinding(FragmentAnswerPlayingCardsBinding::bind)
     private var scrollDistance = 0
     private var listForPlayingCards = arrayListOf<CardsUI>()
     private var listForAnswering = arrayListOf<CardsUI>()
@@ -95,11 +95,11 @@ class AnswerPlayingCardsFragment :
     }
 
     private fun setupScrollChecked() {
-        binding.autoScrollView.viewTreeObserver.addOnScrollChangedListener {
-            scrollDistance = binding.autoScrollView.scrollY
-            answeringCardsAdapter?.getScrollDistance(scrollDistance)
-            playingCardsAdapter?.getScrollDistance(scrollDistance)
-        }
+//        binding.autoScrollView.viewTreeObserver.addOnScrollChangedListener {
+//            scrollDistance = binding.autoScrollView.scrollY
+//            answeringCardsAdapter?.getScrollDistance(scrollDistance)
+//            playingCardsAdapter?.getScrollDistance(scrollDistance)
+//        }
     }
 
     private fun setupBack() {
@@ -195,6 +195,9 @@ class AnswerPlayingCardsFragment :
 
     override fun onDestroyView() {
         super.onDestroyView()
+        scrollDistance = 0
+        countDwnTimer?.cancel()
+        countDwnTimer = null
         Log.e("des", "destroy")
     }
 }
