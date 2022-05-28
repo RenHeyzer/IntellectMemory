@@ -12,6 +12,7 @@ fun ImageView.load(url: String) {
         .into(this)
 }
 
+
 fun ImageView.loadUrlWithCoil(url: String) {
     val imageLoader = ImageLoader.Builder(this.context)
         .componentRegistry { add(SvgDecoder(this@loadUrlWithCoil.context)) }
@@ -19,7 +20,7 @@ fun ImageView.loadUrlWithCoil(url: String) {
 
     val request = ImageRequest.Builder(this.context)
         .data(url)
-        .size(110,170)
+        .size(110, 170)
         .target(this)
         .build()
     imageLoader.enqueue(request)

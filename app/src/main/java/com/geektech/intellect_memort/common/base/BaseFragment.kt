@@ -53,6 +53,46 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
         }
     }
 
+    protected fun <T> StateFlow<UIState<T>>.collectUIState(
+        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
+        onSuccess: ((data: T) -> Unit)? = null,
+        onLoading: ((data: UIState.Loading<T>) -> Unit)? = null,
+        onError: ((error: String) -> Unit)? = null,
+        beforeUIState: ((state: UIState<T>) -> Unit)? = null,
+    ) {
+        collectSafelyStateFlow(lifecycleState) {
+            collect {
+                beforeUIState?.invoke(it)
+                when (it) {
+                    is UIState.Loading -> {
+                        onLoading?.invoke(it)
+                    }
+                    is UIState.Error -> {
+                        onError?.invoke(it.error)
+                    }
+                    is UIState.Success -> {
+                        onSuccess?.invoke(it.data)
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
+    private fun collectSafelyStateFlow(
+        lifecycleState: Lifecycle.State,
+        gather: suspend () -> Unit,
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
+                gather()
+            }
+        }
+    }
+
+
     protected fun <T : Any> StateFlow<PagingData<T>>.subscribePaging(
         state: Lifecycle.State = Lifecycle.State.STARTED,
         action: (PagingData<T>) -> Unit,

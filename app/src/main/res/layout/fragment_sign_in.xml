@@ -26,7 +26,8 @@
             android:button="@android:color/transparent"
             android:text="@string/switch_text_off"
             android:textAlignment="center"
-            android:textColor="@drawable/button_text_color" />
+            android:textColor="@drawable/button_text_color"
+            />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/btn_russian"

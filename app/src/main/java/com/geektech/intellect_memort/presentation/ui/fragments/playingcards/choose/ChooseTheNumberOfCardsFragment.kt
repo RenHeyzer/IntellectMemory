@@ -55,7 +55,7 @@ class ChooseTheNumberOfCardsFragment : Fragment() {
                 txtMinuts.visibility = VISIBLE
                 etTime.visibility = VISIBLE
                 firstClick = true
-            } else if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() < 61) {
+            } else if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() <= 60) {
                 time = etTime.text.toString().toInt()
                 etTime.hideKeyboard()
                 findNavController().navigateSafely(ChooseTheNumberOfCardsFragmentDirections.actionChooseTheNumberOfCardsFragmentToInputTimeForAnswerFragment(

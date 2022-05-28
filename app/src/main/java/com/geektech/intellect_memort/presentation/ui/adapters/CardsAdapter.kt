@@ -1,25 +1,25 @@
 package com.geektech.intellect_memort.presentation.ui.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.geektech.intellect_memort.common.extension.loadUrlWithCoil
+import com.geektech.intellect_memort.common.extension.load
 import com.geektech.intellect_memort.databinding.ItemCardsBinding
 import com.geektech.intellect_memort.presentation.models.CardsUI
 
 
 class CardsAdapter : ListAdapter<CardsUI, CardsAdapter.ViewHolder>(DifferCards) {
-
     inner class ViewHolder(private val binding: ItemCardsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: CardsUI) {
             binding.itemNumberOfCards.text = absoluteAdapterPosition.plus(1).toString()
-            binding.itemCardsImage.loadUrlWithCoil(item.url.toString())
+            binding.itemCardsImage.load(item.url.toString())
+            binding.cardView.strokeColor = Color.parseColor("#FF000000")
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemCardsBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -42,6 +42,4 @@ class CardsAdapter : ListAdapter<CardsUI, CardsAdapter.ViewHolder>(DifferCards) 
             return oldItem == newItem
         }
     }
-
-
 }

@@ -82,6 +82,9 @@
     <string name="text_yes">Yes</string>
     <string name="text_no">No</string>
     <string name="text_warning">Warning!</string>
+    <string name="nothing">NOTHING</string>
+    <string name="txt_next">Next</string>
+    <string name="txt_previous">Previous</string>
 
     <string name="text_row">Row</string>
     <string name="error_text_input_admissible_number">Input relevant number! From 1 to 1000!</string>

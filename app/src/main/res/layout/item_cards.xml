@@ -1,63 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardView"
     android:layout_width="100dp"
-    android:layout_height="150dp"
-    android:layout_margin="10dp">
+    android:layout_height="140dp"
+    android:layout_margin="5dp"
+    android:id="@+id/cardView"
+    android:background="@drawable/background_corner_for_item"
+    app:cardBackgroundColor="#DADADA">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.13" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.73" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/stroke"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardBackgroundColor="#DADADA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="3dp">
+    <LinearLayout
+        android:layout_width="15dp"
+        android:layout_height="22dp"
+        android:background="#c4c4c4">
 
         <TextView
-            android:id="@+id/item_number_of_cards"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C4C4C4"
+            android:id="@+id/itemNumberOfCards"
+            android:layout_width="15dp"
+            android:layout_height="22dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/guideline1"
-            app:layout_constraintEnd_toStartOf="@id/guideline3"
+            android:gravity="center"
             tools:text="1" />
+    </LinearLayout>
 
-        <ImageView
-            android:id="@+id/item_cards_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY" />
-    </com.google.android.material.card.MaterialCardView>
+    <ImageView
+        android:id="@+id/item_cards_image"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/nothing"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
