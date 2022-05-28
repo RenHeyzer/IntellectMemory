@@ -33,9 +33,9 @@ class CardsResultAdapter(
             item?.url?.let { itemCardsImage.load(it) }
 
             if (checkList[absoluteAdapterPosition]) {
-                binding.stroke.strokeColor = Color.GREEN
+                binding.cardView.strokeColor = Color.GREEN
             } else {
-                binding.stroke.strokeColor = Color.RED
+                binding.cardView.strokeColor = Color.RED
             }
         }
     }
