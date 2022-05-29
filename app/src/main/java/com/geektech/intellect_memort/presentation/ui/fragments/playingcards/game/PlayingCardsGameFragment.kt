@@ -61,7 +61,7 @@ class PlayingCardsGameFragment :
                 }
             }
         } else if (args.numbersOfCards == 3) {
-            if (positionImageTwo < listForMemory.lastIndex && positionImageThree != listForMemory.lastIndex && positionImageOne.toInt() <= listForMemory.lastIndex) {
+            if (positionImageTwo < listForMemory.lastIndex && positionImageThree != listForMemory.lastIndex && positionImageOne <= listForMemory.lastIndex) {
                 layoutItemCardsImageLeft.isVisible = true
                 layoutItemCardsImageRight.isVisible = true
                 itemCardsImageLeft.isVisible = true
@@ -171,10 +171,10 @@ class PlayingCardsGameFragment :
 
     private fun setUpBtnBack() {
         binding.btnBack.setOnSingleClickListener {
-            navigateToExitDialogFragment(false)
+            navigateToExitDialogFragment()
         }
         overrideOnBackPressed {
-            navigateToExitDialogFragment(false)
+            navigateToExitDialogFragment()
         }
     }
 
@@ -379,10 +379,10 @@ class PlayingCardsGameFragment :
         resetPositions()
     }
 
-    private fun navigateToExitDialogFragment(withResult: Boolean) {
+    private fun navigateToExitDialogFragment() {
         findNavController().navigateSafely(PlayingCardsGameFragmentDirections
             .actionPlayingCardsGameFragmentToExitDialogFragment(
-                withResult
+                false
             ))
     }
 
