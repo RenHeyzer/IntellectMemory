@@ -10,13 +10,10 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
-import com.geektech.intellect_memort.common.extension.correctNumber
-import com.geektech.intellect_memort.common.extension.navigateSafely
-import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
-import com.geektech.intellect_memort.common.extension.timer
+import com.geektech.intellect_memort.common.extension.*
 import com.geektech.intellect_memort.databinding.FragmentGameNumbersBinding
-import com.geektech.intellect_memort.presentation.ui.adapters.NumbersAdapter
 import com.geektech.intellect_memort.presentation.state.UIState
+import com.geektech.intellect_memort.presentation.ui.adapters.NumbersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,14 +32,28 @@ class GameNumbersFragment :
     private var countDownTimer: CountDownTimer? = null
 
     override fun initialize() {
+        setupTimerSplash()
         adapter = NumbersAdapter()
         binding.rvGameRandomNumber.adapter = adapter
+    }
+
+    private fun setupTimerSplash() {
+        val timer = object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.timerSplash.txtTimerSplash.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                binding.timerSplash.root.hide()
+            }
+        }
+        timer.start()
     }
 
     override fun setupViews() {
         binding.btnPrevious.isVisible = false
         binding.btnNext.isVisible = false
-        binding.btnEndPrevious.isVisible = false
+        binding.btnEndFinish.isVisible = false
         binding.btnEndNext.isVisible = true
     }
 
@@ -63,7 +74,7 @@ class GameNumbersFragment :
                 )
             )
         }
-        binding.btnEndPrevious.setOnSingleClickListener {
+        binding.btnEndFinish.setOnSingleClickListener {
             countDownTimer?.cancel()
             findNavController().navigateSafely(
                 GameNumbersFragmentDirections.actionGameNumbersFragmentToAnswerNumbersFragment(
@@ -161,21 +172,21 @@ class GameNumbersFragment :
                     btnPrevious.isVisible = true
                     btnNext.isVisible = true
                     btnEndNext.isVisible = false
-                    btnEndPrevious.isVisible = false
+                    btnEndFinish.isVisible = false
                 }
                 last != 6 && last > it -> {
                     btnPrevious.isVisible = false
                     btnNext.isVisible = false
                     Log.e("lasteed", "2")
                     btnEndNext.isVisible = false
-                    btnEndPrevious.isVisible = true
+                    btnEndFinish.isVisible = true
                 }
                 last == 6 && last < it -> {
                     Log.e("lasteed", "else")
                     btnPrevious.isVisible = false
                     btnNext.isVisible = false
                     btnEndNext.isVisible = true
-                    btnEndPrevious.isVisible = false
+                    btnEndFinish.isVisible = false
                 }
             }
         }
