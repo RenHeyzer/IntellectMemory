@@ -1,6 +1,5 @@
 package com.geektech.intellect_memort.presentation.ui.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -17,7 +16,6 @@ class CardsAdapter : ListAdapter<CardsUI, CardsAdapter.ViewHolder>(DifferCards) 
         fun onBind(item: CardsUI) {
             binding.itemNumberOfCards.text = absoluteAdapterPosition.plus(1).toString()
             binding.itemCardsImage.load(item.url.toString())
-            binding.cardView.strokeColor = Color.parseColor("#FF000000")
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
