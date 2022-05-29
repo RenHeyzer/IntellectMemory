@@ -65,10 +65,10 @@ class TimeToRememberFragment : Fragment() {
     private fun setUpBtnStartListener() {
         binding.btnStartr.setOnSingleClickListener {
             findNavController().navigate(
-                TimeToRememberFragmentDirections.actionTimeToRememberFragmentToTimerFragment(
-                    args.isBinary,
-                    args.quantityNumbers,
-                    time
+                TimeToRememberFragmentDirections.actionTimeToRememberFragmentToGameRandomNumbersFragment(
+                    isBinary = args.isBinary,
+                    quantitynumber = args.quantityNumbers,
+                    time = time
                 )
             )
         }
