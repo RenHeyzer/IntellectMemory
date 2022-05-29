@@ -27,7 +27,7 @@ class AnswerPlayingCardsFragment :
     BaseFragment<FragmentAnswerPlayingCardsBinding, PlayingCardsViewModel>(
         R.layout.fragment_answer_playing_cards
     ), PlayingCardsAnsweringListener {
-     override val binding by viewBinding(FragmentAnswerPlayingCardsBinding::bind)
+    override val binding by viewBinding(FragmentAnswerPlayingCardsBinding::bind)
     private var scrollDistance = 0
     private var listForPlayingCards = arrayListOf<CardsUI>()
     private var listForAnswering = arrayListOf<CardsUI>()
@@ -53,12 +53,10 @@ class AnswerPlayingCardsFragment :
     private fun setupAdapters() {
         playingCardsAdapter = PlayingCardsAnsweringAdapter(listForPlayingCards,
             this,
-            binding.autoScrollView,
             this::showMistake)
 
         answeringCardsAdapter = PlayingCardsAnsweringAdapter(listForAnswering,
             this,
-            binding.autoScrollView,
             this::showMistake)
     }
 
@@ -95,11 +93,15 @@ class AnswerPlayingCardsFragment :
     }
 
     private fun setupScrollChecked() {
-//        binding.autoScrollView.viewTreeObserver.addOnScrollChangedListener {
-//            scrollDistance = binding.autoScrollView.scrollY
-//            answeringCardsAdapter?.getScrollDistance(scrollDistance)
-//            playingCardsAdapter?.getScrollDistance(scrollDistance)
-//        }
+        playingCardsAdapter?.setOnScrollView(binding.autoScrollView)
+        answeringCardsAdapter?.setOnScrollView(binding.autoScrollView)
+        binding.autoScrollView.viewTreeObserver.addOnScrollChangedListener {
+            if (view != null) {
+                scrollDistance = binding.autoScrollView.scrollY
+                answeringCardsAdapter?.getScrollDistance(scrollDistance)
+                playingCardsAdapter?.getScrollDistance(scrollDistance)
+            }
+        }
     }
 
     private fun setupBack() {
@@ -142,7 +144,7 @@ class AnswerPlayingCardsFragment :
     }
 
     private fun setUpObserveFetchCards() {
-        viewModel.fetchCardsState.subscribe {
+        viewModel.fetchCardsByQueryState.subscribe {
             when (it) {
                 is UIState.Error -> {
                     Log.e("anime", "Error Fetch Cards Answer Fragment ${it.error}")
@@ -198,6 +200,7 @@ class AnswerPlayingCardsFragment :
         scrollDistance = 0
         countDwnTimer?.cancel()
         countDwnTimer = null
-        Log.e("des", "destroy")
+        playingCardsAdapter = null
+        answeringCardsAdapter = null
     }
 }
