@@ -2,6 +2,7 @@ package com.geektech.intellect_memort.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setTheme(R.style.Theme_Intellect_memort)
         super.onCreate(savedInstanceState)
         localeHelper.loadLocale(this)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setUpNavigation()
     }
 
