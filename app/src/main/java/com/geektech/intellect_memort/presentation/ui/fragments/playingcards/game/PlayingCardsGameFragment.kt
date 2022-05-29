@@ -32,6 +32,7 @@ class PlayingCardsGameFragment :
     private var positionImageOne = 0
     private var positionImageTwo = 1
     private var positionImageThree = 2
+    private var isStop = false
     override fun initialize() {
         bindItemCards()
         binding.rvCards.adapter = adapter
@@ -170,17 +171,10 @@ class PlayingCardsGameFragment :
 
     private fun setUpBtnBack() {
         binding.btnBack.setOnSingleClickListener {
-            findNavController().navigateSafely(
-                PlayingCardsGameFragmentDirections
-                    .actionPlayingCardsGameFragmentToExitDialogFragment(
-                        false
-                    ))
+            navigateToExitDialogFragment(false)
         }
         overrideOnBackPressed {
-            findNavController().navigateSafely(PlayingCardsGameFragmentDirections
-                .actionPlayingCardsGameFragmentToExitDialogFragment(
-                    false
-                ))
+            navigateToExitDialogFragment(false)
         }
     }
 
@@ -193,9 +187,8 @@ class PlayingCardsGameFragment :
         )
     }
 
-    override fun setupObserves() = with(binding) {
+    override fun setupObserves() {
         viewModel.fetchCardsState.subscribe { uiState ->
-            loaderCards.isVisible = uiState is UIState.Loading
             when (uiState) {
                 is UIState.Error -> {
                     Log.e("anime", "Error Cards: ${uiState.error}")
@@ -205,19 +198,21 @@ class PlayingCardsGameFragment :
                 }
                 is UIState.Success -> {
                     Log.e("anime", "Fetch Cards ${uiState.data}")
-                    val arrayList = ArrayList<CardsUI>()
-                    listForMemory.addAll(uiState.data)
-                    uiState.data.forEach {
-                        arrayList.add(CardsUI("", id = it.id, ""))
-                        adapter.submitList(arrayList)
+                    if (!isStop) {
+                        val arrayList = ArrayList<CardsUI>()
+                        listForMemory.addAll(uiState.data)
+                        uiState.data.forEach {
+                            arrayList.add(CardsUI("", id = it.id, ""))
+                            adapter.submitList(arrayList)
+                        }
+                        if (args.numbersOfCards == 3) {
+                            setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        } else {
+                            setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        }
+                        bindSetOnClickListenerBtnNextAndBtnPrevious(arrayList, uiState)
+                        setUpImageCards()
                     }
-                    if (args.numbersOfCards == 3) {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
-                    } else {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
-                    }
-                    bindSetOnClickListenerBtnNextAndBtnPrevious(arrayList, uiState)
-                    setUpImageCards()
                 }
             }
         }
@@ -374,12 +369,27 @@ class PlayingCardsGameFragment :
 
     override fun onStop() {
         super.onStop()
+        isStop = true
+        Log.e("tag", "ON STOP")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         cancelCountDownTimer()
+        resetPositions()
+    }
+
+    private fun navigateToExitDialogFragment(withResult: Boolean) {
+        findNavController().navigateSafely(PlayingCardsGameFragmentDirections
+            .actionPlayingCardsGameFragmentToExitDialogFragment(
+                withResult
+            ))
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         cancelCountDownTimer()
+        resetPositions()
     }
 
     private fun cancelCountDownTimer() {
@@ -408,6 +418,12 @@ class PlayingCardsGameFragment :
         }
     }
 
+    private fun resetPositions() {
+        positionImageOne = 0
+        positionImageTwo = 1
+        positionImageThree = 2
+        defaultPositionInOneCard = 0
+    }
 }
 
 
