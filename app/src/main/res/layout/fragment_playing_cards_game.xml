@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.fragments.playingcards.game.PlayingCardsGameFragment">
+
+    <include
+        android:id="@+id/timerSplash"
+        layout="@layout/fragment_timer"
+        tools:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_back_24"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_two_for_ic_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline1_left"
+            android:layout_marginTop="9dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Chronometer
+            android:id="@+id/txt_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:countDown="true"
+            android:format="00:00"
+            android:textColor="#CF0101"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_bottom_two"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_item_cards_image_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#DADADA"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_for_recycler"
+            app:layout_constraintEnd_toStartOf="@id/layout_item_cards_image_right"
+            app:layout_constraintStart_toEndOf="@id/layout_item_cards_image_left"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_for_recycler"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="140dp"
+                android:id="@+id/item_cards_image_center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_item_cards_image_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#DADADA"
+            app:cardCornerRadius="12dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/layout_item_cards_image_center"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_for_recycler"
+            app:layout_constraintStart_toStartOf="@id/guideline1_left"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_for_recycler"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+
+            <ImageView
+                android:id="@+id/item_cards_image_left"
+                android:layout_width="85dp"
+                android:layout_height="140dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/layout_item_cards_image_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#DADADA"
+            app:cardCornerRadius="12dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="@id/guidLine2_right"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_for_recycler"
+            app:layout_constraintStart_toEndOf="@id/layout_item_cards_image_center"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top_for_recycler"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp">
+
+
+            <ImageView
+                android:id="@+id/item_cards_image_right"
+                android:layout_width="85dp"
+                android:layout_height="140dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom_for_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.31" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine_right_for_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.93" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left_for_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine_left_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.36" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine_right_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.52" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom_two"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom_two_for_ic_back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top_for_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.09" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.10" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:text="@string/txt_next"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp"
+            android:maxLines="1"
+            app:layout_constraintLeft_toLeftOf="@id/guidLine2_center"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_previous"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:maxLines="1"
+            android:text="@string/txt_previous"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            app:cornerRadius="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_center"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_next">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cards"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="6"
+                tools:itemCount="300"
+                tools:listitem="@layout/item_cards" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_finish"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#5640D0"
+            android:text="@string/txt_finish"
+            android:visibility="gone"
+            app:cornerRadius="19dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidLine2_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

@@ -36,6 +36,27 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+    protected fun <T, S> Flow<Resource<T>>.collectRequest(
+        state: MutableStateFlow<UIState<S>>,
+        mappedData: (T) -> S,
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            this@collectRequest.collect {
+                when (it) {
+                    is Resource.Loading -> {
+                        state.value = UIState.Loading()
+                    }
+                    is Resource.Error -> it.message?.let { error ->
+                        state.value = UIState.Error(error)
+                    }
+                    is Resource.Success -> it.data?.let { data ->
+                        state.value = UIState.Success(mappedData(data))
+                    }
+                }
+            }
+        }
+    }
+
     protected fun <T> MutableStateFlow<UIState<T>>.subscribeTo(
         request: () -> Flow<Resource<T>>,
     ) {

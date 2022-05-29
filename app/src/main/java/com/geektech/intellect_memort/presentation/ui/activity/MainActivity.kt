@@ -2,6 +2,7 @@ package com.geektech.intellect_memort.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -9,6 +10,7 @@ import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.utils.LocaleHelper
 import com.geektech.intellect_memort.data.local.sharedpreferences.PreferencesHelper
 import com.geektech.intellect_memort.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,8 +27,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     lateinit var localeHelper: LocaleHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Intellect_memort)
         super.onCreate(savedInstanceState)
+        FirebaseAuth.getInstance().signInAnonymously()
         localeHelper.loadLocale(this)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setUpNavigation()
     }
 
@@ -42,7 +47,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 navGraph.startDestination = R.id.signFlowFragment
             }
             false -> {
-                navGraph.startDestination = R.id.mainFlowFragment2
+                navGraph.startDestination = R.id.mainFlowFragment
             }
         }
         navController.graph = navGraph

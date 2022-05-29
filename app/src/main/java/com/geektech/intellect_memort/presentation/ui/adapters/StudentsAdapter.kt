@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.viewbinding.ViewBinding
-import com.geektech.intellect_memort.common.base.BaseDiffUtilItemCallback
 import com.geektech.intellect_memort.common.base.BaseRecyclerViewHolder
+import com.geektech.intellect_memort.common.base.SBaseDiffUtilItemCallback
 import com.geektech.intellect_memort.databinding.ItemStudentsBinding
 import com.geektech.intellect_memort.domain.models.StudentsModel
 
 class StudentsAdapter :
     PagingDataAdapter<StudentsModel, BaseRecyclerViewHolder<ViewBinding, StudentsModel>>(
-        BaseDiffUtilItemCallback()
+        SBaseDiffUtilItemCallback()
     ) {
 
     override fun onBindViewHolder(
@@ -38,11 +38,11 @@ class StudentsAdapter :
         binding: ItemStudentsBinding,
     ) : BaseRecyclerViewHolder<ItemStudentsBinding, StudentsModel>(binding) {
 
-        override fun onBind(item: StudentsModel) = with(binding) {
+        override fun onBind(item: StudentsModel?) = with(binding) {
             itemNumber.text = absoluteAdapterPosition.plus(1).toString()
-            itemFullName.text = item.fullName
-            itemSchool.text = item.branch
-            itemPoint.text = item.points.toString()
+            itemFullName.text = item?.fullName
+            itemSchool.text = item?.branch
+            itemPoint.text = item?.points.toString()
         }
     }
 }

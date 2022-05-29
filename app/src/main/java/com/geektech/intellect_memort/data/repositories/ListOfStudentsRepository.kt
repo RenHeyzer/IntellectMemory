@@ -7,6 +7,7 @@ import com.geektech.intellect_memort.common.base.BaseRepository
 import com.geektech.intellect_memort.common.constants.Constants
 import com.geektech.intellect_memort.data.repositories.pagingsources.ListOfStudentsPagingSource
 import com.geektech.intellect_memort.domain.models.StudentsModel
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.flow.Flow
@@ -17,11 +18,45 @@ class ListOfStudentsRepository @Inject constructor(
 ) : BaseRepository() {
 
     val studentsCollection = fireStore.collection(Constants.COLLECTION_STUDENTS)
-        .orderBy("points", Query.Direction.DESCENDING)
     private val nextStudentsCollection = fireStore.collection(Constants.COLLECTION_STUDENTS)
-        .orderBy("points", Query.Direction.DESCENDING)
 
-    fun getListOfStudents(): Flow<PagingData<StudentsModel>> {
+    private val queryStudentsCollection =
+        fireStore.collection(Constants.COLLECTION_STUDENTS)
+    private val queryNextStudentsCollection =
+        fireStore.collection(Constants.COLLECTION_STUDENTS)
+
+    private fun notEmptySchoolField(
+        school: String?,
+        collectionReference: CollectionReference,
+    ): Query {
+        return if (!school.isNullOrEmpty()) {
+            collectionReference.whereEqualTo("branch", school)
+                .orderBy("points", Query.Direction.DESCENDING)
+        } else {
+            collectionReference
+                .orderBy("points", Query.Direction.DESCENDING)
+        }
+    }
+
+    private fun notEmptySchoolFieldBySearch(
+        school: String?,
+        fullName: String,
+        collectionReference: CollectionReference,
+    ): Query {
+        return if (!school.isNullOrEmpty()) {
+            collectionReference.whereEqualTo("branch", school)
+                .orderBy("fullName", Query.Direction.DESCENDING)
+                .whereGreaterThanOrEqualTo("fullName", fullName)
+                .whereLessThanOrEqualTo("fullName", "$fullName\uf8ff")
+        } else {
+            collectionReference
+                .orderBy("fullName", Query.Direction.DESCENDING)
+                .whereGreaterThanOrEqualTo("fullName", fullName)
+                .whereLessThanOrEqualTo("fullName", "$fullName\uf8ff")
+        }
+    }
+
+    fun getListOfStudents(school: String?): Flow<PagingData<StudentsModel>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -33,8 +68,27 @@ class ListOfStudentsRepository @Inject constructor(
             ),
             pagingSourceFactory = {
                 ListOfStudentsPagingSource(
-                    studentsCollection,
-                    nextStudentsCollection
+                    notEmptySchoolField(school, studentsCollection),
+                    notEmptySchoolField(school, nextStudentsCollection)
+                )
+            }
+        ).flow
+    }
+
+    fun searchStudents(fullName: String, school: String?): Flow<PagingData<StudentsModel>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 1,
+                prefetchDistance = 1,
+                enablePlaceholders = true,
+                initialLoadSize = 2,
+                maxSize = Int.MAX_VALUE,
+                jumpThreshold = Int.MIN_VALUE
+            ),
+            pagingSourceFactory = {
+                ListOfStudentsPagingSource(
+                    notEmptySchoolFieldBySearch(school, fullName, queryStudentsCollection),
+                    notEmptySchoolFieldBySearch(school, fullName, queryNextStudentsCollection)
                 )
             }
         ).flow

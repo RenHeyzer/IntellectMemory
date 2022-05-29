@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
-import com.geektech.intellect_memort.common.extension.mainNavController
+import com.geektech.intellect_memort.common.extension.navNavController
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.common.extension.showDialog
 import com.geektech.intellect_memort.common.utils.Localization
@@ -70,15 +70,24 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                         it.data.forEach { admin ->
                             when {
                                 password.isEmpty() && username.isEmpty() -> {
-                                    inputUsername.error = getString(R.string.edittext_error_message)
-                                    inputPassword.error = getString(R.string.edittext_error_message)
+                                    inputUsername.error =
+                                        getString(R.string.edittext_error_message)
+                                    inputPassword.error =
+                                        getString(R.string.edittext_error_message)
                                     dialogProgressbar?.dismiss()
                                 }
                                 username == admin?.fullName && password == admin.password -> {
                                     isAdmin()
                                     dialogProgressbar?.dismiss()
-                                    mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
+                                    navNavController().navigate(R.id.action_signFlowFragment_to_mainFlowFragment)
                                     wasOpen()
+                                }
+                                username != admin?.fullName || password != admin.password -> {
+                                    inputUsername.error =
+                                        getString(R.string.error_input_correct_username)
+                                    inputPassword.error =
+                                        getString(R.string.error_text_input_correct_password)
+                                    dialogProgressbar?.dismiss()
                                 }
                                 else -> {
                                     dialogProgressbar?.dismiss()
@@ -108,10 +117,21 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(
                                     dialogProgressbar?.dismiss()
                                 }
                                 username == student?.fullName && password == student.password -> {
+                                    Log.e("anime", "studentId: ${student.id}")
                                     notAdmin()
+                                    preferences.userId = student.id
+                                    preferences.school = student.branch
+                                    Log.e("anime", "userId: ${preferences.userId}")
                                     dialogProgressbar?.dismiss()
-                                    mainNavController().navigate(R.id.action_signInFragment_to_mainFlowFragment)
+                                    navNavController().navigate(R.id.action_signFlowFragment_to_mainFlowFragment)
                                     wasOpen()
+                                }
+                                username != student?.fullName || password != student.password -> {
+                                    inputUsername.error =
+                                        getString(R.string.error_input_correct_username)
+                                    inputPassword.error =
+                                        getString(R.string.error_text_input_correct_password)
+                                    dialogProgressbar?.dismiss()
                                 }
                                 else -> {
                                     dialogProgressbar?.dismiss()

@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.presentation.state.UIState
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
     @LayoutRes layoutId: Int,
@@ -23,10 +24,10 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
+        setupViews()
         setupListeners()
         setupRequests()
         setupObserves()
-        setupViews()
     }
 
     protected open fun initialize() {}
@@ -43,7 +44,7 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
         state: Lifecycle.State = Lifecycle.State.STARTED,
         action: (UIState<T>) -> Unit,
     ) {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(state) {
                 this@subscribe.collect {
                     action(it)
@@ -52,6 +53,46 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
         }
     }
 
+    protected fun <T> StateFlow<UIState<T>>.collectUIState(
+        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
+        onSuccess: ((data: T) -> Unit)? = null,
+        onLoading: ((data: UIState.Loading<T>) -> Unit)? = null,
+        onError: ((error: String) -> Unit)? = null,
+        beforeUIState: ((state: UIState<T>) -> Unit)? = null,
+    ) {
+        collectSafelyStateFlow(lifecycleState) {
+            collect {
+                beforeUIState?.invoke(it)
+                when (it) {
+                    is UIState.Loading -> {
+                        onLoading?.invoke(it)
+                    }
+                    is UIState.Error -> {
+                        onError?.invoke(it.error)
+                    }
+                    is UIState.Success -> {
+                        onSuccess?.invoke(it.data)
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
+    private fun collectSafelyStateFlow(
+        lifecycleState: Lifecycle.State,
+        gather: suspend () -> Unit,
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
+                gather()
+            }
+        }
+    }
+
+
     protected fun <T : Any> StateFlow<PagingData<T>>.subscribePaging(
         state: Lifecycle.State = Lifecycle.State.STARTED,
         action: (PagingData<T>) -> Unit,
@@ -59,6 +100,19 @@ abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewLifecycleOwner.repeatOnLifecycle(state) {
                 this@subscribePaging.collect {
+                    action(it)
+                }
+            }
+        }
+    }
+
+    protected fun <T> StateFlow<T>.subscribeIdle(
+        state: Lifecycle.State = Lifecycle.State.STARTED,
+        action: (T) -> Unit,
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state) {
+                this@subscribeIdle.collect {
                     action(it)
                 }
             }

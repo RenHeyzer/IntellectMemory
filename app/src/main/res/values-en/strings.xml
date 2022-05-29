@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">intellect_memort</string>
+    <string name="app_name">Intellect Memory</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_game_text">Choose a game</string>
@@ -8,7 +8,7 @@
     <string name="random_numbers">Random numbers</string>
     <string name="binary_numbers">Binary numbers</string>
     <string name="playing_cards">Playing cards</string>
-    <string name="switch_text_on">РУС</string>
+    <string name="switch_text_on">RU</string>
     <string name="switch_text_off">EN</string>
     <string name="sign_in_title_text">Login form</string>
     <string name="username_text_hint">Username</string>
@@ -26,4 +26,79 @@
     <string name="category_students_text">Participant</string>
     <string name="category_school_text">School</string>
     <string name="category_points_text">Points</string>
+    <string name="text_rating">Rating</string>
+    <string name="text_select_quantity_numbers">Choose numbers quantity</string>
+    <string name="hint_quantity_numbers">00</string>
+    <string name="time_to_remember_text">Set time to remember</string>
+    <string name="text_button_previous">Previous</string>
+    <string name="text_button_next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="start_text">START</string>
+    <string name="picture_play_button">Play</string>
+    <string name="picture_pao_button">PAO pictures</string>
+    <string name="picture_pao_amount_text">Choose pictures quantity</string>
+    <string name="picture_amount_hint">To</string>
+    <string name="picture_amount_start">START</string>
+    <string name="picture_pao_list_previous">Previous</string>
+    <string name="picture_pao_list_next">Next</string>
+    <string name="button_back">button back</string>
+    <string name="picture_play_game">Finish</string>
+    <string name="tt_mm">TT:MM</string>
+    <string name="picture_rv_item_imagfromlist">image from list</string>
+    <string name="picture_play_game_imageDesc">image for play fragment</string>
+    <string name="picture_play_time_text">Set time to remember</string>
+    <string name="picture_play_text_next">NEXT</string>
+    <string name="picture_play_amount_text">Choose quantity of pictures</string>
+    <string name="picture_answering_results">Proceed to results</string>
+    <string name="Picture_btn_finish">FINISH</string>
+    <string name="picture_textview_results">Result</string>
+    <string name="picture_results_tv_all_pictures">Total pictures:</string>
+    <string name="picture_results_tv_correct">Guessed:</string>
+    <string name="picture_results_tv_incorrect">Mistakes:</string>
+    <string name="picture_results_tv_time">Time:</string>
+    <string name="picture_play_btn_play">Play</string>
+    <string name="picture_play_time_start">START</string>
+    <string name="picture_pao_amount_from">From</string>
+    <string name="picture_play_hint_00">00</string>
+    <string name="picture_play_time_minutes">Minute</string>
+
+    <string name="text_choose">Select</string>
+    <string name="rating_text">Rating</string>
+    <string name="choose_playing_cards">Choose the cards type</string>
+    <string name="choose_the_numbers_of_cards">Select the number of cards</string>
+    <string name="txt_step">Continue</string>
+    <string name="text_start_game">To begin</string>
+    <string name="text_minutes">Minutes</string>
+    <string name="set_time_to_remember">Specify time to answer</string>
+    <string name="_00">00</string>
+    <string name="text_seconds">seconds</string>
+    <string name="text_specify_time_to_memorize_one_card">Specify time to remember one card</string>
+    <string name="timer_template">%1$s:%2$s</string>
+    <string name="txt_finish">Finish</string>
+
+    <string name="exit_text">Are you sure you want to exit? \n \nAll your scores will be reset!</string>
+    <string name="exit_text_short">Are you sure you want to exit?</string>
+    <string name="exit_description">All your scores will be reset!</string>
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
+    <string name="text_warning">Warning!</string>
+    <string name="nothing">NOTHING</string>
+    <string name="txt_next">Next</string>
+    <string name="txt_previous">Previous</string>
+
+    <string name="text_row">Row</string>
+    <string name="error_text_input_admissible_number">Input relevant number! From 1 to 1000!</string>
+    <string name="error_text_input_admissible_time">Input relevant time! With the maximum of 60 min.</string>
+    <string name="text_logout">Exit</string>
+    <string name="error_text_input_correct_password">Input correct password!</string>
+    <string name="error_input_correct_username">Input correct username!</string>
+
+    <string name="text_result">Result</string>
+    <string name="text_global_rating">Global rating</string>
+    <string name="text_school_rating">School rating</string>
+    <string name="text_time_to_remember">Time to remember:</string>
+    <string name="text_time_of_answers">Time to answer:</string>
+    <string name="con_des_search_students_by_name">Search by student\'s name</string>
+    <string name="text_score">Score</string>
+
 </resources>
