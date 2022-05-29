@@ -21,10 +21,18 @@ abstract class BaseRepository {
         )
     }
 
-    suspend inline fun <reified T> fetchList(collection: CollectionReference) =
-        collection.get().await().documents.mapNotNull { doc ->
-            doc.toObject(T::class.java)
-        }
+    suspend inline fun <reified T> fetchList(
+        collection: CollectionReference,
+    ) = collection.get().await().documents.mapNotNull { doc ->
+        doc.toObject(T::class.java)
+    }
+
+    suspend inline fun <reified T> fetchSortedList(
+        orderCollection: Query,
+    ) = orderCollection.get().await().documents.mapNotNull { query ->
+        query.toObject(T::class.java)
+    }
+
 
     suspend fun addDocument(
         collection: CollectionReference,
@@ -49,13 +57,69 @@ abstract class BaseRepository {
         }
     }
 
-    suspend fun getDocument(collection: CollectionReference, id: String): DocumentSnapshot =
-        collection
-            .document(id)
-            .get()
-            .await()
+    suspend fun updateDocument(
+        collection: CollectionReference,
+        hashMap: HashMap<String, Any>,
+        title: String? = null,
+    ): Boolean {
+        return try {
+            if (title != null) {
+                collection
+                    .document(title)
+                    .update(hashMap)
+                    .await()
+            } else {
+                collection
+                    .document()
+                    .update(hashMap)
+                    .await()
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 
+    suspend fun getDocument(collection: CollectionReference, id: String?): DocumentSnapshot =
+        if (id != null) {
+            collection
+                .document(id)
+                .get()
+                .await()
+        } else {
+            collection
+                .document()
+                .get()
+                .await()
+        }
 
+    suspend fun addChildDocument(
+        mainCollection: CollectionReference,
+        childCollection: String,
+        hashMap: HashMap<String, Any>,
+        id: String? = null,
+    ): Boolean {
+        return try {
+            if (id != null) {
+                mainCollection
+                    .document(id)
+                    .collection(childCollection)
+                    .document()
+                    .set(hashMap)
+                    .await()
+            } else {
+                mainCollection
+                    .document()
+                    .collection(childCollection)
+                    .document()
+                    .set(hashMap)
+                    .await()
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 
     suspend inline fun <reified T> fetchListByQuery(collection: Query) =
         collection.get().await().documents.mapNotNull { doc ->

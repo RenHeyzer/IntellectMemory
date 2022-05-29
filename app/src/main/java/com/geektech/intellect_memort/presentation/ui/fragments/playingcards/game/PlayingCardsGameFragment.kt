@@ -3,9 +3,10 @@ package com.geektech.intellect_memort.presentation.ui.fragments.playingcards.gam
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
@@ -14,16 +15,18 @@ import com.geektech.intellect_memort.databinding.FragmentPlayingCardsGameBinding
 import com.geektech.intellect_memort.presentation.models.CardsUI
 import com.geektech.intellect_memort.presentation.state.UIState
 import com.geektech.intellect_memort.presentation.ui.adapters.CardsAdapter
+import com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 
 @AndroidEntryPoint
 class PlayingCardsGameFragment :
-    BaseFragment<FragmentPlayingCardsGameBinding, PlayingCardsGameViewModel>(
+    BaseFragment<FragmentPlayingCardsGameBinding, PlayingCardsViewModel>(
         R.layout.fragment_playing_cards_game
     ) {
     override val binding by viewBinding(FragmentPlayingCardsGameBinding::bind)
-    override val viewModel: PlayingCardsGameViewModel by viewModels()
+    override val viewModel: PlayingCardsViewModel by hiltNavGraphViewModels(R.id.main_graph)
     private val args: PlayingCardsGameFragmentArgs by navArgs()
     private val adapter = CardsAdapter()
     private val listForMemory = ArrayList<CardsUI>()
@@ -32,11 +35,36 @@ class PlayingCardsGameFragment :
     private var positionImageOne = 0
     private var positionImageTwo = 1
     private var positionImageThree = 2
+    private var mSeconds: Long = 0
+    private var correctSeconds = 0
+    private var scoreSeconds: Long = 0
+
     private var isStop = false
     override fun initialize() {
+        setupTimerSplash()
         bindItemCards()
+        setupPrefetching()
         binding.rvCards.adapter = adapter
         binding.rvCards.setHasFixedSize(true)
+    }
+
+    private fun setupTimerSplash() {
+        val timer = object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.timerSplash.txtTimerSplash.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                binding.timerSplash.root.hide()
+            }
+        }
+        timer.start()
+    }
+
+    private fun setupPrefetching() {
+        val layoutManager = binding.rvCards.layoutManager as GridLayoutManager
+        layoutManager.isItemPrefetchEnabled = true
+        layoutManager.initialPrefetchItemCount = args.numbersOfCards
     }
 
     private fun bindItemCards() {
@@ -46,6 +74,14 @@ class PlayingCardsGameFragment :
         } else {
             binding.layoutItemCardsImageLeft.show()
             binding.layoutItemCardsImageRight.show()
+        }
+    }
+
+    override fun setupViews() {
+        correctSeconds = if (args.numbersOfCards == 1) {
+            args.timeForMemoryCard
+        } else {
+            args.timeForMemoryCard * 3
         }
     }
 
@@ -67,8 +103,8 @@ class PlayingCardsGameFragment :
                 itemCardsImageLeft.isVisible = true
                 itemCardsImageRight.isVisible = true
                 itemCardsImageLeft.load(listForMemory[positionImageOne].url.toString())
-                itemCardsImageRight.load(listForMemory[positionImageTwo].url.toString())
-                itemCardsImageCenter.load(listForMemory[positionImageThree].url.toString())
+                itemCardsImageRight.load(listForMemory[positionImageThree].url.toString())
+                itemCardsImageCenter.load(listForMemory[positionImageTwo].url.toString())
             } else if (positionImageTwo == listForMemory.lastIndex) {
                 layoutItemCardsImageLeft.isVisible = false
                 layoutItemCardsImageRight.isVisible = false
@@ -85,86 +121,86 @@ class PlayingCardsGameFragment :
         setUpBtnBack()
     }
 
-
     private fun setUpTimer(
         arrayList: ArrayList<CardsUI>,
         uiState: UIState.Success<List<CardsUI>>,
         time: Int,
     ) {
-
         countDownTimer = timerInSeconds(
             binding.txtTimer,
             time.toLong(),
-            1000
-        ) {
-            if (args.numbersOfCards == 1) {
-                defaultPositionInOneCard++
-                if (defaultPositionInOneCard <= listForMemory.lastIndex) {
-                    arrayList[defaultPositionInOneCard.minus(1)] =
-                        listForMemory[defaultPositionInOneCard.minus(1)]
-                    adapter.submitList(arrayList)
-                    adapter.notifyItemChanged(defaultPositionInOneCard.minus(1))
-                    countDownTimer?.start()
-                } else {
-                    arrayList[listForMemory.lastIndex] =
-                        listForMemory[listForMemory.lastIndex]
-                    adapter.submitList(arrayList)
-                    adapter.notifyItemChanged(listForMemory.lastIndex)
-                    binding.btnFinish.show()
-                    btnNextAndBtnPreviousDisableClickable()
-                    setOnClickListenerBtnFinishGame()
-                }
-            } else if (args.numbersOfCards == 3) {
-                if (positionImageTwo <= listForMemory.lastIndex && positionImageThree <= listForMemory.lastIndex && positionImageOne <= listForMemory.lastIndex) {
-                    arrayList[positionImageOne] =
-                        listForMemory[positionImageOne]
-                    arrayList[positionImageTwo] =
-                        listForMemory[positionImageTwo]
-                    arrayList[positionImageThree] =
-                        listForMemory[positionImageThree]
-                    adapter.submitList(arrayList)
-                    adapter.notifyItemChanged(positionImageOne)
-                    adapter.notifyItemChanged(positionImageTwo)
-                    adapter.notifyItemChanged(positionImageThree)
-                    positionImageOne += 3
-                    positionImageTwo += 3
-                    positionImageThree += 3
-                    if (args.numbersOfCards == 3) {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
-                    } else {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
-                    }
-                    setUpImageCards()
-                    countDownTimer?.start()
-                } else {
-                    binding.layoutItemCardsImageLeft.isVisible = false
-                    binding.layoutItemCardsImageRight.isVisible = false
-                    binding.itemCardsImageLeft.isVisible = false
-                    binding.itemCardsImageRight.isVisible = false
-                    Log.e("anime",
-                        "POSITION ONE: $positionImageOne    POSITION TWO: $positionImageTwo   POSITION THREE: $positionImageThree")
-                    if (positionImageTwo == listForMemory.lastIndex) {
-                        arrayList[positionImageOne] =
-                            listForMemory[positionImageOne]
+            1000,
+            getMillsUntilFinished = { seconds ->
+                mSeconds = seconds
+            }, funOnFinish = {
+                if (args.numbersOfCards == 1) {
+                    defaultPositionInOneCard++
+                    if (defaultPositionInOneCard <= listForMemory.lastIndex) {
+                        arrayList[defaultPositionInOneCard.minus(1)] =
+                            listForMemory[defaultPositionInOneCard.minus(1)]
                         adapter.submitList(arrayList)
-                        adapter.notifyItemChanged(positionImageOne)
-                        positionImageTwo++
-                        setUpImageCards()
+                        adapter.notifyItemChanged(defaultPositionInOneCard.minus(1))
                         countDownTimer?.start()
                     } else {
                         arrayList[listForMemory.lastIndex] =
                             listForMemory[listForMemory.lastIndex]
                         adapter.submitList(arrayList)
                         adapter.notifyItemChanged(listForMemory.lastIndex)
-                        binding.btnPrevious.disableClickable()
-                        binding.btnNext.disableClickable()
                         binding.btnFinish.show()
-                        cancelCountDownTimer()
+                        btnNextAndBtnPreviousDisableClickable()
                         setOnClickListenerBtnFinishGame()
                     }
+                } else if (args.numbersOfCards == 3) {
+                    if (positionImageTwo <= listForMemory.lastIndex && positionImageThree <= listForMemory.lastIndex && positionImageOne <= listForMemory.lastIndex) {
+                        arrayList[positionImageOne] =
+                            listForMemory[positionImageOne]
+                        arrayList[positionImageTwo] =
+                            listForMemory[positionImageTwo]
+                        arrayList[positionImageThree] =
+                            listForMemory[positionImageThree]
+                        adapter.submitList(arrayList)
+                        adapter.notifyItemChanged(positionImageOne)
+                        adapter.notifyItemChanged(positionImageTwo)
+                        adapter.notifyItemChanged(positionImageThree)
+                        positionImageOne += 3
+                        positionImageTwo += 3
+                        positionImageThree += 3
+                        if (args.numbersOfCards == 3) {
+                            setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        } else {
+                            setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        }
+                        setUpImageCards()
+                        countDownTimer?.start()
+                    } else {
+                        binding.layoutItemCardsImageLeft.isVisible = false
+                        binding.layoutItemCardsImageRight.isVisible = false
+                        binding.itemCardsImageLeft.isVisible = false
+                        binding.itemCardsImageRight.isVisible = false
+                        Log.e("anime",
+                            "POSITION ONE: $positionImageOne    POSITION TWO: $positionImageTwo   POSITION THREE: $positionImageThree")
+                        if (positionImageTwo == listForMemory.lastIndex) {
+                            arrayList[positionImageOne] =
+                                listForMemory[positionImageOne]
+                            adapter.submitList(arrayList)
+                            adapter.notifyItemChanged(positionImageOne)
+                            positionImageTwo++
+                            setUpImageCards()
+                            countDownTimer?.start()
+                        } else {
+                            arrayList[listForMemory.lastIndex] =
+                                listForMemory[listForMemory.lastIndex]
+                            adapter.submitList(arrayList)
+                            adapter.notifyItemChanged(listForMemory.lastIndex)
+                            binding.btnPrevious.disableClickable()
+                            binding.btnNext.disableClickable()
+                            binding.btnFinish.show()
+                            cancelCountDownTimer()
+                            setOnClickListenerBtnFinishGame()
+                        }
+                    }
                 }
-            }
-        }
+            })
         countDownTimer?.start()
     }
 
@@ -179,7 +215,7 @@ class PlayingCardsGameFragment :
     }
 
     override fun setupRequests() {
-        viewModel.fetchImageOfCards(
+        viewModel.fetchCards(
             typeClover = args.isClover,
             typeBrick = args.isbrick,
             typePiqui = args.ispiqui,
@@ -240,6 +276,7 @@ class PlayingCardsGameFragment :
                         listForMemory[defaultPositionInOneCard.minus(1)]
                     adapter.submitList(arrayList)
                     adapter.notifyItemChanged(defaultPositionInOneCard.minus(1))
+                    scoreSeconds += (correctSeconds - mSeconds)
                     countDownTimer?.cancel()
                     countDownTimer = null
                     if (args.numbersOfCards == 3) {
@@ -249,6 +286,7 @@ class PlayingCardsGameFragment :
                     }
                     setUpImageCards()
                 } else {
+                    scoreSeconds += (correctSeconds - mSeconds)
                     arrayList[listForMemory.lastIndex] =
                         listForMemory[listForMemory.lastIndex]
                     adapter.submitList(arrayList)
@@ -275,6 +313,7 @@ class PlayingCardsGameFragment :
                     positionImageOne += 3
                     positionImageTwo += 3
                     positionImageThree += 3
+                    scoreSeconds += (correctSeconds - mSeconds)
                     cancelCountDownTimer()
                     if (args.numbersOfCards == 3) {
                         setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
@@ -367,6 +406,7 @@ class PlayingCardsGameFragment :
         }
     }
 
+
     override fun onStop() {
         super.onStop()
         isStop = true
@@ -411,8 +451,14 @@ class PlayingCardsGameFragment :
                     ispiqui = args.ispiqui,
                     isredHeart = args.isredHeart,
                     isbrick = args.isbrick,
-                    timeForMemoryCard = args.timeForMemoryCard,
-                    time = args.time
+                    time = args.time,
+                    memoryList = listForMemory.toTypedArray(),
+                    memorizationTimeOfAllCards = String.format(
+                        Locale.getDefault(),
+                        "%02d:%02d",
+                        (scoreSeconds % 3600) / 60,
+                        scoreSeconds % 60
+                    )
                 )
             )
         }

@@ -1,6 +1,6 @@
 package com.geektech.intellect_memort.common.base
 
 interface IBaseDiffModel {
-    val password: String?
+    val id: Int?
     override fun equals(other: Any?): Boolean
 }

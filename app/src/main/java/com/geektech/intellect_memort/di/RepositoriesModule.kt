@@ -1,30 +1,48 @@
 package com.geektech.intellect_memort.di
 
-import com.geektech.intellect_memort.data.repositories.CardsRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.CreateStudentsRepositoryImpl
-import com.geektech.intellect_memort.data.repositories.SignRepositoryImpl
-import com.geektech.intellect_memort.domain.repositories.CardsRepository
-import com.geektech.intellect_memort.domain.repositories.CreateStudentsRepository
-import com.geektech.intellect_memort.domain.repositories.SignRepository
-import com.google.firebase.firestore.FirebaseFirestore
+import com.geektech.intellect_memort.data.repositories.*
+import com.geektech.intellect_memort.domain.repositories.*
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoriesModule {
+abstract class RepositoriesModule {
 
-    @Provides
-    fun provideSignInRepository(fireStore: FirebaseFirestore): SignRepository =
-        SignRepositoryImpl(fireStore)
+    @Binds
+    abstract fun provideRandomNumbersRepository(
+        repositoryImpl: NumbersRepositoryImpl,
+    ): NumbersRepository
 
-    @Provides
-    fun provideCreateStudentsRepository(fireStore: FirebaseFirestore): CreateStudentsRepository =
-        CreateStudentsRepositoryImpl(fireStore)
+    @Binds
+    abstract fun provideAnswerRandomNumbersRepository(
+        repositoryImpl: AnswerNumbersRepositoryImpl,
+    ): AnswerRandomRepository
 
-    @Provides
-    fun provideCardsRepository(fireStore: FirebaseFirestore): CardsRepository =
-        CardsRepositoryImpl(fireStore)
+    @Binds
+    abstract fun provideSignInRepository(
+        repositoryImpl: SignRepositoryImpl,
+    ): SignRepository
+
+    @Binds
+    abstract fun provideCreateStudentsRepository(
+        repositoryImpl: CreateStudentsRepositoryImpl,
+    ): CreateStudentsRepository
+
+    @Binds
+    abstract fun provideCardsRepository(
+        repositoryImpl: CardsRepositoryImpl
+    ): CardsRepository
+
+    @Binds
+    abstract fun providePictureRepository(
+        repositoryImpl: PictureRepositoryImpl,
+    ): PictureRepository
+
+    @Binds
+    abstract fun provideResultsRepository(
+        repositoryImpl: ResultsRepositoryImpl,
+    ): ResultsRepository
 }

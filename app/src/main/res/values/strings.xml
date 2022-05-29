@@ -7,6 +7,14 @@
     <string name="random_numbers">Случайные цифры</string>
     <string name="binary_numbers">Бинарные числа</string>
     <string name="playing_cards">Игральные карты</string>
+    <string name="text_rating">Рейтинг</string>
+    <string name="text_select_quantity_numbers">Выбрать кол-во цифр</string>
+    <string name="hint_quantity_numbers">00</string>
+    <string name="time_to_remember_text">Указать время для запоминания</string>
+    <string name="text_button_previous">Предыдущий</string>
+    <string name="text_button_next">Следующий</string>
+    <string name="finish">Finish</string>
+    <string name="start_text">НАЧАТЬ</string>
     <string name="switch_text_on">РУС</string>
     <string name="switch_text_off">EN</string>
     <string name="sign_in_title_text">Форма Входа</string>
@@ -25,6 +33,44 @@
     <string name="category_students_text">Участник</string>
     <string name="category_school_text">Школа</string>
     <string name="category_points_text">Баллы</string>
+    <string name="picture_play_button">Играть</string>
+    <string name="picture_pao_button">PAO картины</string>
+    <string name="picture_pao_amount_text">Выбрать кол-во картин</string>
+    <string name="picture_amount_hint">До</string>
+    <string name="picture_amount_start">Начать</string>
+    <string name="picture_pao_list_previous">Предыдущий</string>
+    <string name="picture_pao_list_next">Следущий</string>
+    <string name="button_back">button back</string>
+    <string name="picture_play_game">Finish</string>
+    <string name="tt_mm">TT:MM</string>
+    <string name="picture_rv_item_imagfromlist">image from list</string>
+    <string name="picture_play_game_imageDesc">image for play fragment</string>
+    <string name="picture_play_time_text">Указать время для запоминания</string>
+    <string name="picture_play_text_next">ДАЛЕЕ</string>
+    <string name="picture_play_amount_text">Выбрать количество картинок</string>
+    <string name="picture_answering_results">К результатам</string>
+    <string name="Picture_btn_finish">ЗАВЕРШИТЬ</string>
+    <string name="picture_textview_results">Результат</string>
+    <string name="picture_results_tv_all_pictures">Всего картинок:</string>
+    <string name="picture_results_tv_correct">Отгадано:</string>
+    <string name="picture_results_tv_incorrect">Ошибся:</string>
+    <string name="picture_results_tv_time">Время:</string>
+    <string name="picture_play_btn_play">Играть</string>
+    <string name="picture_play_time_start">НАЧАТЬ</string>
+    <string name="picture_pao_amount_from">От</string>
+    <string name="picture_play_hint_00">00</string>
+    <string name="picture_play_time_minutes">Минут</string>
+
+    <string name="timer_template">%1$s:%2$s</string>
+    <string name="text_result">Result</string>
+    <string name="text_time_to_remember">Время запоминания:</string>
+    <string name="text_time_of_answers">Время ответов:</string>
+    <string name="text_row">Ряд</string>
+    <string name="error_text_input_admissible_number">Введите допустимое число! От 1 до 1000!</string>
+    <string name="error_text_input_admissible_time">Введите допустимое время! До 60 мин.</string>
+    <string name="text_logout">Выход</string>
+    <string name="error_text_input_correct_password">Укажите верный пароль!</string>
+    <string name="error_input_correct_username">Укажите верное имя пользователя!</string>
     <string name="text_choose">Выбрать</string>
     <string name="rating_text">Рейтинг</string>
     <string name="choose_playing_cards">Выбрать вид карт</string>
@@ -37,7 +83,6 @@
     <string name="_00">00</string>
     <string name="text_seconds">Секунд</string>
     <string name="text_specify_time_to_memorize_one_card">Указать время для запоминания одной карты</string>
-    <string name="timer_template">%1$s:%2$s</string>
     <string name="txt_finish">Завершить</string>
 
     <string name="text_warning">Предупреждение!</string>
@@ -50,5 +95,8 @@
     <string name="nothing">NOTHING</string>
     <string name="txt_next">Следующий</string>
     <string name="txt_previous">Предыдущий</string>
+    <string name="text_global_rating">Глобальный рейтинг</string>
+    <string name="text_school_rating">Школьный рейтинг</string>
+    <string name="con_des_search_students_by_name">Поиск по имени ученика</string>
 
 </resources>

@@ -27,7 +27,7 @@ class ListOfStudentsViewModel @Inject constructor(
     }
 
     private fun getListOfStudents() = viewModelScope.launch {
-        repository.getListOfStudents().cachedIn(viewModelScope).collect {
+        repository.getListOfStudents(null).cachedIn(viewModelScope).collect {
             _studentsState.value = it
         }
     }

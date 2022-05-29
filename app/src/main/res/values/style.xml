@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">#727375</item>
+    </style>
+
+    <style name="Theme.Intellect_memort.SplashScreen">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+</resources>
