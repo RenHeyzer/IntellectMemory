@@ -3,7 +3,7 @@ package com.geektech.intellect_memort.presentation.ui.adapters.dradlistener
 import android.util.Log
 import android.view.DragEvent
 import android.view.View
-import android.widget.ScrollView
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.utils.PlayingCardsAnsweringListener
@@ -12,7 +12,7 @@ import com.geektech.intellect_memort.presentation.ui.adapters.PlayingCardsAnswer
 import kotlin.math.roundToInt
 
 class DragListener internal constructor(
-    private val scrollListener: ScrollView,
+    private val scrollListener: NestedScrollView,
     private val listener: PlayingCardsAnsweringListener,
     private val showMistake: () -> Unit,
 ) :
