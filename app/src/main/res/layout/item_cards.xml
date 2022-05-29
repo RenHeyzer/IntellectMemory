@@ -45,6 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#c4c4c4"
+            android:id="@+id/layout_in_number_of_card"
             app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_bottom"
             app:layout_constraintEnd_toStartOf="@id/guideline1"
             app:layout_constraintStart_toEndOf="@id/guideline3"

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.geektech.intellect_memort.common.base.BaseDiffUtilItemCallback
 import com.geektech.intellect_memort.common.base.BaseRecyclerViewHolder
+import com.geektech.intellect_memort.common.extension.hide
 import com.geektech.intellect_memort.common.extension.load
 import com.geektech.intellect_memort.databinding.ItemCardsBinding
 import com.geektech.intellect_memort.presentation.models.CardsUI
@@ -30,7 +31,7 @@ class CardsResultAdapter(
 
         override fun onBind(item: CardsUI?) = with(binding) {
             item?.url?.let { itemCardsImage.load(it) }
-
+            layoutInNumberOfCard.hide()
 //            if (checkList[absoluteAdapterPosition]) {
 //                binding.cardView.strokeColor = Color.GREEN
 //            } else {
