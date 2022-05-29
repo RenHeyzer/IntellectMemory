@@ -16,7 +16,8 @@
         android:id="@+id/btn_back"
         android:src="@drawable/ic_baseline_arrow_back_gray"
         app:layout_constraintRight_toRightOf="@id/guideline_left_vertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/nothing" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left_vertical"
@@ -112,70 +113,74 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cards_btn1"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/cards_btn2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/guidLine_center_with_left_vertical_card"
                 app:layout_constraintStart_toStartOf="@id/guideline_left_vertical_card"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeWidth="3dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/btn_cards1"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
+                    android:layout_width="85dp"
+                    android:layout_height="130dp"
                     android:src="@drawable/ic_jean_victor_balin_card_trefle" />
             </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cards_btn2"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/cards_btn3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guidLine_center_with_left_vertical_card"
+                app:layout_constraintStart_toEndOf="@id/cards_btn1"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeWidth="3dp">
 
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/btn_cards2"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
+                    android:layout_width="85dp"
+                    android:layout_height="130dp"
                     android:src="@drawable/ic_jean_victor_balin_card_coeur" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cards_btn3"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/cards_btn4"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guidLine_center_vertical_card"
+                app:layout_constraintStart_toEndOf="@id/cards_btn2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeWidth="3dp">
 
                 <ImageView
                     android:id="@+id/btn_cards3"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/ic_jean_victor_balin_card_pique" />
+                    android:layout_width="85dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_jean_victor_balin_card_pique"
+                    android:contentDescription="@string/nothing" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cards_btn4"
-                android:layout_width="110dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cards_btn3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guidLine_right_vertical_card"
-                app:layout_constraintStart_toStartOf="@id/guidLine_center_with_right_vertical_card"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeWidth="3dp">
 
                 <ImageView
                     android:id="@+id/btn_cards4"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/ic_jean_victor_balin_card_carreau" />
+                    android:layout_width="85dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_jean_victor_balin_card_carreau"
+                    android:contentDescription="@string/nothing" />
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
