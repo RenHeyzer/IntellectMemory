@@ -44,6 +44,16 @@
             app:destination="@id/picturePlayAmount" />
     </fragment>
     <fragment
+        android:id="@+id/picturePlayAmount"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.amount.PicturePlayAmount"
+        android:label="fragment_picture_play_amount"
+        tools:layout="@layout/fragment_picture_play_amount">
+
+        <action
+            android:id="@+id/action_picturePlayAmount_to_picturePlayTime"
+            app:destination="@id/picturePlayTime" />
+    </fragment>
+    <fragment
         android:id="@+id/playingCardsFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsFragment"
         android:label="fragment_playing_cards"
@@ -66,29 +76,6 @@
             android:name="isBinary"
             android:defaultValue="false"
             app:argType="boolean" />
-    </fragment>
-    <fragment
-        android:id="@+id/timerFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.timer.TimerFragment"
-        android:label="fragment_timer"
-        tools:layout="@layout/fragment_timer">
-        <action
-            android:id="@+id/action_timerFragment_to_gameRandomNumbersFragment"
-            app:destination="@id/gameNumbersFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
-        <argument
-            android:name="isBinary"
-            android:defaultValue="false"
-            app:argType="boolean" />
-        <argument
-            android:name="quantityNumbers"
-            android:defaultValue="-1"
-            app:argType="integer" />
-        <argument
-            android:name="time"
-            android:defaultValue="-1"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/gameNumbersFragment"
@@ -131,10 +118,9 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_timeToRememberFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
         <argument
             android:name="isBinary"
             android:defaultValue="false"
@@ -183,15 +169,6 @@
         <argument
             android:name="secondNumber"
             app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/randomNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.RandomNumbersFragment"
-        android:label="fragment_random_numbers"
-        tools:layout="@layout/fragment_random_numbers" >
-        <action
-            android:id="@+id/action_picturePlayAmount_to_picturePlayTime"
-            app:destination="@id/picturePlayTime" />
     </fragment>
     <fragment
         android:id="@+id/chooseTheNumberOfCardsFragment"
@@ -296,9 +273,6 @@
         <action
             android:id="@+id/action_inputTimeForAnswerFragment_to_playingCardsGameFragment"
             app:destination="@id/playingCardsGameFragment" />
-        <action
-            android:id="@+id/action_inputTimeForAnswerFragment_to_timerCardsFragment"
-            app:destination="@id/timerCardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/answerPlayingCardsFragment"
@@ -510,43 +484,7 @@
             android:defaultValue=""
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/timerCardsFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.timer.TimerCardsFragment"
-        android:label="fragment_timer_cards"
-        tools:layout="@layout/fragment_timer_cards">
-        <argument
-            android:name="time"
-            android:defaultValue="5"
-            app:argType="integer" />
-        <argument
-            android:name="timeForMemoryCard"
-            android:defaultValue="5"
-            app:argType="integer" />
-        <argument
-            android:name="numbersOfCards"
-            android:defaultValue="3"
-            app:argType="integer" />
-        <argument
-            android:name="isbrick"
-            android:defaultValue=""
-            app:argType="string" />
-        <argument
-            android:name="ispiqui"
-            android:defaultValue=""
-            app:argType="string" />
-        <argument
-            android:name="isredHeart"
-            android:defaultValue=""
-            app:argType="string" />
-        <argument
-            android:name="isClover"
-            android:defaultValue=""
-            app:argType="string" />
-        <action
-            android:id="@+id/action_timerCardsFragment_to_playingCardsGameFragment"
-            app:destination="@id/playingCardsGameFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/ratingFragment"
         android:name="com.geektech.intellect_memort.presentation.ui.fragments.raiting.RatingFragment"
