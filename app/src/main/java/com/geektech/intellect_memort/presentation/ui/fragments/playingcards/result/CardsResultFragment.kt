@@ -49,7 +49,7 @@ class CardsResultFragment : BaseFragment<FragmentResultCardsBinding, PlayingCard
 
     override fun setupViews() = with(binding) {
         timeToRemember.text = args.memorizationTimeOfAllCards
-        timeOfAnswers.text = args.time.toString()
+        timeOfAnswers.text = args.time
 
         memoryList.addAll(args.memoryList)
         answerList.addAll(args.anwerList)
