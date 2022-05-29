@@ -12,8 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentExitDialogBinding
-import com.geektech.intellect_memort.presentation.ui.dialogs.exit.ExitDialogFragmentArgs
-import com.geektech.intellect_memort.presentation.ui.dialogs.exit.ExitDialogFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

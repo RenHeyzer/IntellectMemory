@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="75dp"
-        android:layout_height="95dp">
+        android:layout_height="100dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -62,7 +62,7 @@
         <ImageView
             android:id="@+id/item_cards_image"
             android:layout_width="75dp"
-            android:layout_height="95dp"
+            android:layout_height="100dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/nothing"
             android:scaleType="fitXY"

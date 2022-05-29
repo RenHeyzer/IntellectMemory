@@ -1,6 +1,5 @@
 package com.geektech.intellect_memort.presentation.ui.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -32,11 +31,11 @@ class CardsResultAdapter(
         override fun onBind(item: CardsUI?) = with(binding) {
             item?.url?.let { itemCardsImage.load(it) }
 
-            if (checkList[absoluteAdapterPosition]) {
-                binding.cardView.strokeColor = Color.GREEN
-            } else {
-                binding.cardView.strokeColor = Color.RED
-            }
+//            if (checkList[absoluteAdapterPosition]) {
+//                binding.cardView.strokeColor = Color.GREEN
+//            } else {
+//                binding.cardView.strokeColor = Color.RED
+//            }
         }
     }
 

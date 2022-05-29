@@ -439,7 +439,7 @@
     </fragment>
     <dialog
         android:id="@+id/exitDialogFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.dialogs.exit.ExitDialogFragment"
+        android:name="com.geektech.intellect_memort.presentation.ui.fragments.dialogs.ExitDialogFragment"
         android:label="fragment_exit_dialog"
         tools:layout="@layout/fragment_exit_dialog">
         <action
