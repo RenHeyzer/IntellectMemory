@@ -91,7 +91,7 @@ class NumbersAdapter :
         }
 
         private fun setOnItemNextClickListener() {
-            if ((absoluteAdapterPosition + 6) == rowLastPosition - 1) {
+            if (absoluteAdapterPosition == rowLastPosition) {
                 binding.itemRow.setTextColor(Color.CYAN)
             } else {
                 binding.itemRow.setTextColor(Color.BLACK)

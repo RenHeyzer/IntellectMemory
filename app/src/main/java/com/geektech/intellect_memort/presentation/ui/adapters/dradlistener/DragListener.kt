@@ -72,14 +72,15 @@ class DragListener internal constructor(
                         adapterTarget.notifyItemRemoved(positionTarget)
                         cardListTarget.add(positionTarget, cardSource)
                         adapterTarget.notifyItemInserted(positionTarget)
+                        adapterTarget.updateList(cardListTarget)
                     } else {
                         showMistake()
                         cardListSource.removeAt(positionSource)
                         adapterSource.notifyItemRemoved(positionSource)
                         cardListSource.add(positionSource, cardSource)
                         adapterSource.notifyItemInserted(positionSource)
+                        adapterSource.updateList(cardListSource)
                     }
-                    adapterTarget.updateList(cardListTarget)
 
                     v.visibility = View.VISIBLE
                     if (source.id == R.id.rv_cards_answering

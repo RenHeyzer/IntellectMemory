@@ -11,6 +11,7 @@ import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
 import com.geektech.intellect_memort.common.extension.correctNumber
 import com.geektech.intellect_memort.common.extension.navigateSafely
+import com.geektech.intellect_memort.common.extension.overrideOnBackPressed
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentAnswerNumbersBinding
 import com.geektech.intellect_memort.domain.models.AnswerNumbersModel
@@ -54,6 +55,11 @@ class AnswerNumbersFragment :
 
     private fun setupBackClickListener() {
         binding.btnBack.setOnSingleClickListener {
+            findNavController().navigateSafely(
+                AnswerNumbersFragmentDirections.actionAnswerNumbersFragmentToExitDialogFragment(true)
+            )
+        }
+        overrideOnBackPressed {
             findNavController().navigateSafely(
                 AnswerNumbersFragmentDirections.actionAnswerNumbersFragmentToExitDialogFragment(true)
             )

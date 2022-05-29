@@ -30,6 +30,7 @@ class GameNumbersFragment :
     private var adapter: NumbersAdapter? = null
     private var ascendingTimerAsString = ""
     private var countDownTimer: CountDownTimer? = null
+    private var isStop = false
 
     override fun initialize() {
         setupTimerSplash()
@@ -45,6 +46,7 @@ class GameNumbersFragment :
 
             override fun onFinish() {
                 binding.timerSplash.root.hide()
+                setupTimer()
             }
         }
         timer.start()
@@ -126,7 +128,6 @@ class GameNumbersFragment :
                         viewModel.insertAllRandomNumbers(it.data)
                     }
                     viewModel.getAllRandomNumbers()
-                    setupTimer()
                 }
             }
         }
@@ -200,16 +201,22 @@ class GameNumbersFragment :
                 GameNumbersFragmentDirections.actionGameNumbersFragmentToExitDialogFragment(false)
             )
         }
+        overrideOnBackPressed {
+            findNavController().navigateSafely(
+                GameNumbersFragmentDirections.actionGameNumbersFragmentToExitDialogFragment(false)
+            )
+        }
     }
 
     override fun onStop() {
         super.onStop()
-        countDownTimer?.cancel()
+        isStop = true
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         adapter = null
         countDownTimer?.cancel()
+        countDownTimer = null
     }
 }

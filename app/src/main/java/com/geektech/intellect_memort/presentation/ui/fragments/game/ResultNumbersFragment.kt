@@ -7,6 +7,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
 import com.geektech.intellect_memort.common.extension.doubleList
+import com.geektech.intellect_memort.common.extension.navigateSafely
+import com.geektech.intellect_memort.common.extension.overrideOnBackPressed
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.databinding.FragmentResultNumbersBinding
 import com.geektech.intellect_memort.domain.models.NumbersModel
@@ -56,6 +58,12 @@ class ResultNumbersFragment : BaseFragment<FragmentResultNumbersBinding, ResultN
                     false
                 )
             )
+        }
+        overrideOnBackPressed {
+            findNavController().navigateSafely(
+                ResultNumbersFragmentDirections.actionResultNumbersFragmentToExitDialogFragment(
+                    false
+                ))
         }
     }
 

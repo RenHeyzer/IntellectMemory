@@ -95,7 +95,6 @@ class RatingFragment : BaseFragment<FragmentRatingBinding, RatingViewModel>(
         btnSchoolRating.setOnCheckedChangeListener { _, b ->
             if (b) {
                 btnSchoolRating.isChecked = true
-                Toast.makeText(requireContext(), "${preferences.school}", Toast.LENGTH_SHORT).show()
                 viewModel.getListOfStudents(preferences.school)
                 btnGlobalRating.isChecked = false
             }

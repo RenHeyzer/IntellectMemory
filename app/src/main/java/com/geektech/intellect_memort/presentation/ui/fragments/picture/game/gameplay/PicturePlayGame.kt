@@ -37,6 +37,7 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
     private var slicedImageList: List<PictureImageModel> = mutableListOf()
     private var ascendingTimerAsString: String = ""
     private var timer: CountDownTimer? = null
+    private var isStop = false
 
     override fun initialize() {
         super.initialize()
@@ -69,7 +70,6 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
     }
 
     override fun setupObserves() {
-        super.setupObserves()
         viewModel.picturesState.subscribe {
             when (it) {
                 is UIState.Error -> {
@@ -82,8 +82,10 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
                     Log.e("storage_load", "State loading}")
                 }
                 is UIState.Success -> {
-                    allImagesList = it.data
-                    imageAdapter?.submitList(sliceImageList(allImagesList))
+                    if (!isStop) {
+                        allImagesList = it.data
+                        imageAdapter?.submitList(sliceImageList(allImagesList))
+                    }
                 }
             }
         }
@@ -238,6 +240,11 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
     override fun onDestroyView() {
         super.onDestroyView()
         imageAdapter = null
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isStop = true
     }
 
     override fun onDestroy() {

@@ -8,7 +8,7 @@
     <string name="random_numbers">Random numbers</string>
     <string name="binary_numbers">Binary numbers</string>
     <string name="playing_cards">Playing cards</string>
-    <string name="switch_text_on">РУС</string>
+    <string name="switch_text_on">RU</string>
     <string name="switch_text_off">EN</string>
     <string name="sign_in_title_text">Login form</string>
     <string name="username_text_hint">Username</string>
@@ -99,5 +99,6 @@
     <string name="text_time_to_remember">Time to remember:</string>
     <string name="text_time_of_answers">Time to answer:</string>
     <string name="con_des_search_students_by_name">Search by student\'s name</string>
+    <string name="text_score">Score</string>
 
 </resources>

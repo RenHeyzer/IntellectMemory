@@ -20,6 +20,7 @@ class PictureListFragment : BaseFragment<FragmentPictureListBinding, PictureList
     override val viewModel: PictureListViewModel by viewModels()
     private var imageAdapter: PaoImageListAdapter? = null
     private val args: PictureListFragmentArgs by navArgs()
+    private var isStop = false
 
     override fun initialize() {
         super.initialize()
@@ -72,17 +73,16 @@ class PictureListFragment : BaseFragment<FragmentPictureListBinding, PictureList
         viewModel.picturesState.subscribe {
             when (it) {
                 is UIState.Error -> {
-                    Toast.makeText(requireContext(),
-                        "pictures error${it.error}",
-                        Toast.LENGTH_LONG).show()
                     Log.e("storage_load", "State Error: ${it.error}")
                 }
                 is UIState.Loading -> {
                     Log.e("storage_load", "State loading}")
                 }
                 is UIState.Success -> {
-                    val slicedList = it.data.subList(args.firstNumber, args.secondNumber + 1)
-                    imageAdapter?.submitList(slicedList)
+                    if (!isStop) {
+                        val slicedList = it.data.subList(args.firstNumber, args.secondNumber + 1)
+                        imageAdapter?.submitList(slicedList)
+                    }
                 }
             }
         }
@@ -91,5 +91,10 @@ class PictureListFragment : BaseFragment<FragmentPictureListBinding, PictureList
     override fun onDestroyView() {
         super.onDestroyView()
         imageAdapter = null
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isStop = true
     }
 }

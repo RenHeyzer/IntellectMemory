@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/montserrat"
-            android:text="Счёт"
+            android:text="@string/text_score"
             android:textColor="@color/red"
             android:textSize="@dimen/twenty_one_sp"
             app:layout_constraintEnd_toEndOf="parent"

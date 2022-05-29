@@ -74,7 +74,7 @@ class AnswerPlayingCardsFragment :
                 if (ascendingTimerAsString.isNotEmpty()) {
                     findNavController().navigateSafely(
                         AnswerPlayingCardsFragmentDirections.actionAnswerPlayingCardsFragmentToCardsResultFragment(
-                            binding.txtTimer.text.toString(),
+                            ascendingTimerAsString,
                             args.numbersOfCards,
                             args.memoryList,
                             listForAnswering.toTypedArray(),
@@ -128,7 +128,7 @@ class AnswerPlayingCardsFragment :
                 viewModel.showResults(it.getList() as List<CardsUI>)
                 findNavController().navigateSafely(
                     AnswerPlayingCardsFragmentDirections.actionAnswerPlayingCardsFragmentToCardsResultFragment(
-                        binding.txtTimer.text.toString(),
+                        ascendingTimerAsString,
                         args.numbersOfCards,
                         args.memoryList,
                         it.getList().toTypedArray(),
