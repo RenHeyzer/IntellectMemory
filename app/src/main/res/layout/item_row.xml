@@ -12,7 +12,7 @@
         android:textAlignment="center"
         android:fontFamily="@font/montserrat"
         android:textColor="@color/black"
-        android:textSize="35sp"
+        android:textSize="30sp"
         tools:text="4" />
 
     <View
