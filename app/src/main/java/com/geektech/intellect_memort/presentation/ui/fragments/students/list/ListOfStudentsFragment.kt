@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
-import com.geektech.intellect_memort.common.extension.mainNavController
+import com.geektech.intellect_memort.common.extension.navNavController
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
 import com.geektech.intellect_memort.data.local.sharedpreferences.PreferencesHelper
 import com.geektech.intellect_memort.databinding.FragmentListOfStudentsBinding
@@ -50,12 +50,9 @@ class ListOfStudentsFragment : BaseFragment<FragmentListOfStudentsBinding, ListO
     }
 
     private fun setupLogoutClickListener() {
-        binding.btnLogout.setOnClickListener {
-            preferences.isAdmin = false
-            preferences.isOpenSignUp = true
-            mainNavController().navigate(
-                ListOfStudentsFragmentDirections.actionListOfStudentsFragmentToSignFlowFragment2()
-            )
+        binding.btnLogout.setOnSingleClickListener {
+            preferences.clearFields()
+            navNavController().navigate(R.id.action_mainFlowFragment_to_signFlowFragment)
         }
     }
 
