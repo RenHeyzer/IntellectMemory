@@ -29,5 +29,4 @@ class RatingViewModel @Inject constructor(
 
     fun searchStudents(fullName: String, school: String?) =
         repository.searchStudents(fullName, school).cachedIn(viewModelScope)
-
 }
