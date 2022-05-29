@@ -6,22 +6,25 @@
     android:layout_height="140dp"
     android:layout_margin="5dp"
     android:id="@+id/cardView"
+    app:strokeWidth="3dp"
+    app:strokeColor="#DADADA"
     android:background="@drawable/background_corner_for_item"
     app:cardBackgroundColor="#DADADA">
 
 
     <LinearLayout
-        android:layout_width="15dp"
+        android:layout_width="wrap_content"
         android:layout_height="22dp"
+        android:paddingHorizontal="3dp"
         android:background="#c4c4c4">
 
         <TextView
             android:id="@+id/itemNumberOfCards"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:textColor="@color/black"
             android:gravity="center"
-            tools:text="1" />
+            tools:text="12" />
     </LinearLayout>
 
     <ImageView
