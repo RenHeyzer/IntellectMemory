@@ -3,6 +3,7 @@ package com.geektech.intellect_memort.presentation.ui.fragments.raiting
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -94,6 +95,7 @@ class RatingFragment : BaseFragment<FragmentRatingBinding, RatingViewModel>(
         btnSchoolRating.setOnCheckedChangeListener { _, b ->
             if (b) {
                 btnSchoolRating.isChecked = true
+                Toast.makeText(requireContext(), "${preferences.school}", Toast.LENGTH_SHORT).show()
                 viewModel.getListOfStudents(preferences.school)
                 btnGlobalRating.isChecked = false
             }
