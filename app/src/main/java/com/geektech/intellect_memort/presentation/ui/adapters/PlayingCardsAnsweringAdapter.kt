@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.intellect_memort.common.extension.load
 import com.geektech.intellect_memort.common.utils.PlayingCardsAnsweringListener
@@ -17,14 +17,18 @@ import com.geektech.intellect_memort.presentation.ui.adapters.dradlistener.DragL
 class PlayingCardsAnsweringAdapter(
     private var list: List<CardsUI>,
     private val listener: PlayingCardsAnsweringListener?,
-    private val scrollListener: ScrollView,
     private val showMistake: () -> Unit,
 ) : RecyclerView.Adapter<PlayingCardsAnsweringAdapter.PlayingCardsViewHolder>() {
 
     var scrollDistance: Int = 0
+    private lateinit var scrollListener: NestedScrollView
 
     fun getScrollDistance(scrollDistance: Int) {
         this.scrollDistance = scrollDistance
+    }
+
+    fun setOnScrollView(scrollListener: NestedScrollView) {
+        this.scrollListener = scrollListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayingCardsViewHolder {
