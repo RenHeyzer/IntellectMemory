@@ -1,174 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.game.randomnumbers.GameNumbersFragment">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_back_24"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/guideline1_left"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/red"
-        android:text="@string/finish"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Chronometer
-        android:id="@+id/txt_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:countDown="true"
-        android:format="00:00"
-        android:textColor="@color/red"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_top"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
-        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_row"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guideline1_left" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_game_random_number"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="13dp"
-        android:overScrollMode="never"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top"
-        app:spanCount="7"
-        tools:listitem="@layout/item_random_number" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1_left"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.11" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidLine2_right"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.89" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidLine2_center"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guid_bottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guid_top"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.14" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_previous"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="#2FD9E6"
-        android:padding="15dp"
-        android:text="@string/text_button_previous"
-        android:textAllCaps="false"
-        android:textStyle="normal"
-        android:visibility="gone"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guidLine2_center" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_next"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="#2FD9E6"
-        android:padding="15dp"
-        android:text="@string/text_button_next"
-        android:textAllCaps="false"
-        android:textStyle="normal"
-        android:visibility="gone"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/guidLine2_center"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_end_next"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/twenty_dp"
-        android:backgroundTint="#2FD9E6"
-        android:padding="15dp"
-        android:text="@string/text_button_next"
-        android:textAllCaps="false"
-        android:textStyle="normal"
-        android:visibility="gone"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
-        app:layout_constraintRight_toRightOf="@id/guidLine2_right" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_end_previous"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/twenty_dp"
-        android:backgroundTint="@color/blue"
-        android:fontFamily="@font/montserrat"
-        android:padding="18dp"
-        android:text="@string/Picture_btn_finish"
-        android:textSize="@dimen/twenty_one_sp"
-        app:cornerRadius="@dimen/ten_dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back_24"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline1_left"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="@string/finish"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Chronometer
+            android:id="@+id/txt_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:countDown="true"
+            android:format="00:00"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_top"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_row"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guideline1_left" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_game_random_number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="13dp"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top"
+            app:spanCount="7"
+            tools:itemCount="50"
+            tools:listitem="@layout/item_random_number" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.11" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.89" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_previous"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:text="@string/text_button_previous"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_center" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:text="@string/text_button_next"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guidLine2_center"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_end_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/twenty_dp"
+            android:backgroundTint="#2FD9E6"
+            android:padding="15dp"
+            android:text="@string/text_button_next"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_right" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_end_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/twenty_dp"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/montserrat"
+            android:padding="18dp"
+            android:text="@string/Picture_btn_finish"
+            android:textSize="@dimen/twenty_one_sp"
+            android:visibility="gone"
+            app:cornerRadius="@dimen/ten_dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/timerSplash"
+        layout="@layout/fragment_timer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>
