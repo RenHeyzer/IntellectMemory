@@ -27,6 +27,9 @@ class PlayingCardsViewModel @Inject constructor(
     private val _fetchCardsState = MutableStateFlow<UIState<List<CardsUI>>>(UIState.Loading())
     val fetchCardsState: StateFlow<UIState<List<CardsUI>>> = _fetchCardsState
 
+    private val _fetchCardsByQueryState = MutableStateFlow<UIState<List<CardsUI>>>(UIState.Loading())
+    val fetchCardsByQueryState: StateFlow<UIState<List<CardsUI>>> = _fetchCardsByQueryState
+
     private val _showAnswerCardsState = MutableStateFlow<List<CardsUI>>(emptyList())
     val showAnswerCardsState = _showAnswerCardsState.asStateFlow()
 
@@ -38,8 +41,8 @@ class PlayingCardsViewModel @Inject constructor(
     ) {
         fetchCardsUseCase.invoke(typeClover, typeBrick, typePiqui, typeRedHeard)
             .collectRequest(_fetchCardsState) {
-                it.shuffled().map {
-                    it.toUI()
+                it.shuffled().map { model ->
+                    model.toUI()
                 }
             }
     }
@@ -51,9 +54,9 @@ class PlayingCardsViewModel @Inject constructor(
         typeRedHeard: String,
     ) {
         fetchCardsByQueryUseCase.invoke(typeClover, typeBrick, typePiqui, typeRedHeard)
-            .collectRequest(_fetchCardsState) {
-                it.map {
-                    it.toUI()
+            .collectRequest(_fetchCardsByQueryState) {
+                it.map { model ->
+                    model.toUI()
                 }
 
             }
