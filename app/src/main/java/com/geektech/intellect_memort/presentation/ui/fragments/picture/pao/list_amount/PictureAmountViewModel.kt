@@ -2,5 +2,4 @@ package com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.list
 
 import com.geektech.intellect_memort.common.base.BaseViewModel
 
-class PictureAmountViewModel : BaseViewModel() {
-}
+class PictureAmountViewModel : BaseViewModel() {}

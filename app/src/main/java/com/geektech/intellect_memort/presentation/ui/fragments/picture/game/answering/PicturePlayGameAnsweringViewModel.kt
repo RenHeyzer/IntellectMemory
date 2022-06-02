@@ -6,8 +6,4 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PicturePlayGameAnsweringViewModel @Inject constructor
-    () : BaseViewModel() {
-
-
-
-}
+    () : BaseViewModel() {}

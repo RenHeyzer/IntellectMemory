@@ -7,6 +7,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
+import com.geektech.intellect_memort.common.extension.navigateSafely
 import com.geektech.intellect_memort.databinding.FragmentPictureGameResultsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +34,7 @@ class PictureGameResults :
         super.setupListeners()
 
         binding.btnFinish.setOnClickListener {
-            findNavController().navigate(PictureGameResultsDirections.actionPictureGameResultsToHomeFragment())
+            findNavController().navigateSafely(PictureGameResultsDirections.actionPictureGameResultsToHomeFragment())
         }
     }
 
@@ -45,7 +46,7 @@ class PictureGameResults :
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    findNavController().navigate(PictureGameResultsDirections.actionPictureGameResultsToHomeFragment())
+                    findNavController().navigateSafely(PictureGameResultsDirections.actionPictureGameResultsToHomeFragment())
                 }
             })
     }

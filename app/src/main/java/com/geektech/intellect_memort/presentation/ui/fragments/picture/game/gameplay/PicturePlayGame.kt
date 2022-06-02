@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
+import com.geektech.intellect_memort.common.extension.navigateSafely
 import com.geektech.intellect_memort.databinding.FragmentPicturePlayGameBinding
 import com.geektech.intellect_memort.domain.models.PictureImageModel
 import com.geektech.intellect_memort.domain.models.PictureImagesList
@@ -141,7 +142,7 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
                 ascendingTimerAsString.isNotEmpty()
             ) {
                 timer?.cancel()
-                findNavController().navigate(PicturePlayGameDirections.actionPicturePlayGameToPicturePlayGameAnswering(
+                findNavController().navigateSafely(PicturePlayGameDirections.actionPicturePlayGameToPicturePlayGameAnswering(
                     PictureImagesList(slicedImageList),
                     ascendingTimerAsString
                 ))
@@ -169,7 +170,7 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
 
 
     private fun showAlertDialog() {
-        findNavController().navigate(PicturePlayGameDirections
+        findNavController().navigateSafely(PicturePlayGameDirections
             .actionPicturePlayGameToExitDialogFragment())
     }
 
@@ -177,7 +178,7 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
         AlertDialog.Builder(requireContext()).setMessage("Начать квиз?")
             .setPositiveButton("Да") { _, _ ->
                 timer?.cancel()
-                findNavController().navigate(PicturePlayGameDirections
+                findNavController().navigateSafely(PicturePlayGameDirections
                     .actionPicturePlayGameToPicturePlayGameAnswering(
                         imagesList = PictureImagesList(slicedImageList),
                         passedTime = ascendingTimerAsString
@@ -224,7 +225,7 @@ class PicturePlayGame : BaseFragment<FragmentPicturePlayGameBinding, PicturePlay
                         decimal.format(secondsAscending).toString())
 
                 if (ascendingTimerAsString.isNotEmpty()) {
-                    findNavController().navigate(PicturePlayGameDirections
+                    findNavController().navigateSafely(PicturePlayGameDirections
                         .actionPicturePlayGameToPicturePlayGameAnswering(
                             PictureImagesList(slicedImageList),
                             ascendingTimerAsString
