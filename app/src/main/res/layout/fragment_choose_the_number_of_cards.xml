@@ -114,6 +114,7 @@
         android:layout_height="56dp"
         android:background="@drawable/background_oval_for_edit_text"
         android:hint="@string/_00"
+        android:maxLength="2"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:singleLine="true"
