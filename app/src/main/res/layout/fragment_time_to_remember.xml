@@ -5,7 +5,7 @@
     android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/blue"
     tools:context=".presentation.ui.fragments.randomnumbers.InputCountOfNumbersFragment">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:src="@drawable/ic_arrow_back_24"
+        android:src="@drawable/ic_arrow_back_white"
         app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +128,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_startr"
+        android:id="@+id/btn_start"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -139,7 +139,6 @@
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="normal"
-        android:visibility="gone"
         app:cornerRadius="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

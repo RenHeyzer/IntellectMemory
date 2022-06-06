@@ -99,4 +99,5 @@
     <string name="text_school_rating">Школьный рейтинг</string>
     <string name="con_des_search_students_by_name">Поиск по имени ученика</string>
     <string name="text_score">Счёт</string>
+    <string name="text_for_btn_further">ДАЛЕЕ</string>
 </resources>

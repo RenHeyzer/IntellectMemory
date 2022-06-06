@@ -51,6 +51,11 @@ class InputTimeForAnswerFragment : Fragment() {
                 etTime.text == null || etTime.text.toString() == " " -> {
                     toast("Введите время!")
                 }
+                etTime.text.first().toString().toInt() == 0 -> {
+                    toast("Введите Корректно!")
+
+
+                }
                 else -> {
                     findNavController().navigateSafely(
                         InputTimeForAnswerFragmentDirections

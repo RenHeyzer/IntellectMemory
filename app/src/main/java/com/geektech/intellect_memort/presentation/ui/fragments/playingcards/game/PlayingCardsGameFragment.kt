@@ -141,6 +141,7 @@ class PlayingCardsGameFragment :
                         adapter.submitList(arrayList)
                         adapter.notifyItemChanged(defaultPositionInOneCard.minus(1))
                         countDownTimer?.start()
+                        setUpImageCards()
                     } else {
                         arrayList[listForMemory.lastIndex] =
                             listForMemory[listForMemory.lastIndex]
@@ -149,6 +150,7 @@ class PlayingCardsGameFragment :
                         binding.btnFinish.show()
                         btnNextAndBtnPreviousDisableClickable()
                         setOnClickListenerBtnFinishGame()
+                        setUpImageCards()
                     }
                 } else if (args.numbersOfCards == 3) {
                     if (positionImageTwo <= listForMemory.lastIndex && positionImageThree <= listForMemory.lastIndex && positionImageOne <= listForMemory.lastIndex) {
@@ -197,6 +199,7 @@ class PlayingCardsGameFragment :
                             binding.btnFinish.show()
                             cancelCountDownTimer()
                             setOnClickListenerBtnFinishGame()
+                            setUpImageCards()
                         }
                     }
                 }

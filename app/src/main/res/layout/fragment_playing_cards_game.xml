@@ -286,6 +286,7 @@
             android:backgroundTint="#5640D0"
             android:text="@string/txt_finish"
             android:visibility="gone"
+            tools:visibility="visible"
             app:cornerRadius="19dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidLine2_end"

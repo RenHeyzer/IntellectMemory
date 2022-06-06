@@ -4,79 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context=".presentation.ui.fragments.randomnumbers.InputCountOfNumbersFragment">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_back_24"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/guideline1_left"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_oval_for_input_number"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back_24"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline1_left"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.19" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.79" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.26" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.10" />
+
+        <TextView
+            android:id="@+id/txt_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="100"
+            android:minLines="1"
+            android:singleLine="false"
+            android:text="@string/text_select_quantity_numbers"
+            android:textAlignment="center"
+            android:textColor="@color/black_65p"
+            android:textSize="24sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
+
+        <EditText
+            android:id="@+id/et_quantity_numbers"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:background="@drawable/background_oval_for_edit_text"
+            android:hint="@string/hint_quantity_numbers"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="4"
+            android:paddingHorizontal="@dimen/ten_dp"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
+            app:layout_constraintRight_toRightOf="@id/guidLine2_right"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1_left"
+        android:id="@+id/guidLine_end_parent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidLine2_right"
+        android:id="@+id/guideLine_start_parent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.79" />
+        app:layout_constraintGuide_percent="0.98" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guid_bottom"
+        android:id="@+id/horizontal_guid_bottom_parent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.26" />
+        app:layout_constraintGuide_percent="0.81" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guid_top"
+        android:id="@+id/horizontal_guid_top_parent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.02" />
 
-    <TextView
-        android:id="@+id/txt_text"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_further"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="100"
-        android:minLines="1"
-        android:singleLine="false"
-        android:text="@string/text_select_quantity_numbers"
-        android:textAlignment="center"
-        android:textColor="@color/black_65p"
-        android:textSize="24sp"
+        android:layout_margin="20dp"
+        android:backgroundTint="#FFD156"
+        android:padding="15dp"
+        android:text="@string/txt_step"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
-        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_top" />
-
-    <EditText
-        android:id="@+id/et_quantity_numbers"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="@drawable/background_oval_for_edit_text"
-        android:hint="@string/hint_quantity_numbers"
-        android:imeOptions="actionDone"
-        android:maxLength="4"
-        android:inputType="number"
-        android:paddingHorizontal="@dimen/ten_dp"
-        android:singleLine="true"
-        android:textAlignment="center"
-        android:textSize="35sp"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
-        app:layout_constraintRight_toRightOf="@id/guidLine2_right"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
-
-
+        app:cornerRadius="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom_parent"
+        app:strokeColor="#FFD156" />
 </androidx.constraintlayout.widget.ConstraintLayout>
