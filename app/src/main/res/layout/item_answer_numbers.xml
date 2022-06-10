@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:fontFamily="@font/montserrat"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="1"
             android:maxLines="1"
