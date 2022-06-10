@@ -87,18 +87,23 @@
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_answer_playing_cards.xml" value="0.14936708860759493" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_choose_the_number_of_cards.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_game_numbers.xml" value="0.15128205128205127" />
-        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_input_count_of_numbers.xml" value="0.22" />
-        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_input_time_for_answer.xml" value="0.18153846153846154" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_input_count_of_numbers.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_input_time_for_answer.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_picture_game_results.xml" value="0.1513467293715263" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_picture_play_game.xml" value="0.15128205128205127" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_picture_play_time.xml" value="0.18153846153846154" />
-        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_playing_cards.xml" value="0.1" />
-        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_playing_cards_game.xml" value="0.15128205128205127" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_playing_cards.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_playing_cards_game.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_result_numbers.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_time_to_remember.xml" value="0.15128205128205127" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_time_to_remember.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/fragment_timer.xml" value="0.1513467293715263" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_cards.xml" value="0.8333333333333334" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_empty_card.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_random_number.xml" value="0.184375" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_result_numbers_false.xml" value="0.1513467293715263" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_result_numbers_true.xml" value="0.1513467293715263" />
+        <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_result_numbers_unknown.xml" value="0.1513467293715263" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/item_row.xml" value="0.5" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/picture_rv_item.xml" value="0.184375" />
         <entry key="..\:/Users/Admin/StudioProjects/intellect_memory_fix/app/src/main/res/layout/sample_recycler_edit_text.xml" value="0.184375" />

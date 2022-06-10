@@ -167,13 +167,8 @@ class PlayingCardsGameFragment :
                         positionImageOne += 3
                         positionImageTwo += 3
                         positionImageThree += 3
-                        if (args.numbersOfCards == 3) {
-                            setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
-                        } else {
-                            setUpTimer(arrayList, uiState, args.timeForMemoryCard)
-                        }
-                        setUpImageCards()
                         countDownTimer?.start()
+                        setUpImageCards()
                     } else {
                         binding.layoutItemCardsImageLeft.isVisible = false
                         binding.layoutItemCardsImageRight.isVisible = false
