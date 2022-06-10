@@ -123,7 +123,6 @@ class PlayingCardsGameFragment :
 
     private fun setUpTimer(
         arrayList: ArrayList<CardsUI>,
-        uiState: UIState.Success<List<CardsUI>>,
         time: Int,
     ) {
         countDownTimer = timerInSeconds(
@@ -240,11 +239,11 @@ class PlayingCardsGameFragment :
                             adapter.submitList(arrayList)
                         }
                         if (args.numbersOfCards == 3) {
-                            setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                            setUpTimer(arrayList, args.timeForMemoryCard * 3)
                         } else {
-                            setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                            setUpTimer(arrayList, args.timeForMemoryCard)
                         }
-                        bindSetOnClickListenerBtnNextAndBtnPrevious(arrayList, uiState)
+                        bindSetOnClickListenerBtnNextAndBtnPrevious(arrayList)
                         setUpImageCards()
                     }
                 }
@@ -254,15 +253,13 @@ class PlayingCardsGameFragment :
 
     private fun bindSetOnClickListenerBtnNextAndBtnPrevious(
         arrayList: ArrayList<CardsUI>,
-        uiState: UIState.Success<List<CardsUI>>,
     ) {
-        setUpClickListenerBtnNext(arrayList, uiState)
-        setUpClickListenerBtnPrevious(arrayList, uiState)
+        setUpClickListenerBtnNext(arrayList)
+        setUpClickListenerBtnPrevious(arrayList)
     }
 
     private fun setUpClickListenerBtnNext(
         arrayList: ArrayList<CardsUI>,
-        uiState: UIState.Success<List<CardsUI>>,
     ) {
         binding.btnNext.setOnSingleClickListener {
             if (args.numbersOfCards == 1) {
@@ -278,9 +275,9 @@ class PlayingCardsGameFragment :
                     countDownTimer?.cancel()
                     countDownTimer = null
                     if (args.numbersOfCards == 3) {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        setUpTimer(arrayList, args.timeForMemoryCard * 3)
                     } else {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        setUpTimer(arrayList, args.timeForMemoryCard)
                     }
                     setUpImageCards()
                 } else {
@@ -314,9 +311,9 @@ class PlayingCardsGameFragment :
                     scoreSeconds += (correctSeconds - mSeconds)
                     cancelCountDownTimer()
                     if (args.numbersOfCards == 3) {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        setUpTimer(arrayList, args.timeForMemoryCard * 3)
                     } else {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        setUpTimer(arrayList, args.timeForMemoryCard)
                     }
                     setUpImageCards()
                 } else {
@@ -351,7 +348,6 @@ class PlayingCardsGameFragment :
 
     private fun setUpClickListenerBtnPrevious(
         arrayList: ArrayList<CardsUI>,
-        uiState: UIState.Success<List<CardsUI>>,
     ) {
         binding.btnPrevious.setOnSingleClickListener {
             if (args.numbersOfCards == 1) {
@@ -363,9 +359,9 @@ class PlayingCardsGameFragment :
                     adapter.notifyItemChanged(defaultPositionInOneCard)
                     cancelCountDownTimer()
                     if (args.numbersOfCards == 3) {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        setUpTimer(arrayList, args.timeForMemoryCard * 3)
                     } else {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        setUpTimer(arrayList, args.timeForMemoryCard)
                     }
                     binding.btnPrevious.isClickable = true
                 } else {
@@ -391,9 +387,9 @@ class PlayingCardsGameFragment :
                     adapter.notifyItemChanged(positionImageThree)
                     cancelCountDownTimer()
                     if (args.numbersOfCards == 3) {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard * 3)
+                        setUpTimer(arrayList, args.timeForMemoryCard * 3)
                     } else {
-                        setUpTimer(arrayList, uiState, args.timeForMemoryCard)
+                        setUpTimer(arrayList, args.timeForMemoryCard)
                     }
                     binding.btnPrevious.isClickable = true
                 } else {
