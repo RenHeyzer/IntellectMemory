@@ -27,6 +27,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/guideline1_left"
             android:layout_marginTop="9dp"
+            android:contentDescription="@string/nothing"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -42,7 +43,8 @@
             app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_bottom_two"
             app:layout_constraintLeft_toLeftOf="@id/guideline1_left"
             app:layout_constraintRight_toRightOf="@id/guidLine2_right"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="n" />
 
 
         <com.google.android.material.card.MaterialCardView
@@ -64,6 +66,7 @@
                 android:layout_height="140dp"
                 android:id="@+id/item_cards_image_center"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/nothing"
                 android:scaleType="fitXY" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -87,6 +90,7 @@
                 android:layout_width="85dp"
                 android:layout_height="140dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/nothing"
                 android:scaleType="fitXY" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -110,6 +114,7 @@
                 android:layout_width="85dp"
                 android:layout_height="140dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/nothing"
                 android:scaleType="fitXY" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -259,6 +264,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:id="@+id/layout_for_recyclerview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -286,12 +292,12 @@
             android:backgroundTint="#5640D0"
             android:text="@string/txt_finish"
             android:visibility="gone"
+            tools:visibility="visible"
             app:cornerRadius="19dp"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidLine2_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/horizontal_guid_bottom" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </LinearLayout>

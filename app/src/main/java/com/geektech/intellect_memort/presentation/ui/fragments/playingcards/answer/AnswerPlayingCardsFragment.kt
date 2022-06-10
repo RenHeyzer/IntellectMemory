@@ -72,15 +72,18 @@ class AnswerPlayingCardsFragment :
                 ascendingTimerAsString = it
             }, {
                 if (ascendingTimerAsString.isNotEmpty()) {
-                    findNavController().navigateSafely(
-                        AnswerPlayingCardsFragmentDirections.actionAnswerPlayingCardsFragmentToCardsResultFragment(
-                            ascendingTimerAsString,
-                            args.numbersOfCards,
-                            args.memoryList,
-                            listForAnswering.toTypedArray(),
-                            args.memorizationTimeOfAllCards
+                    answeringCardsAdapter?.let {
+                        viewModel.showResults(it.getList() as List<CardsUI>)
+                        findNavController().navigateSafely(
+                            AnswerPlayingCardsFragmentDirections.actionAnswerPlayingCardsFragmentToCardsResultFragment(
+                                ascendingTimerAsString,
+                                args.numbersOfCards,
+                                args.memoryList,
+                                it.getList().toTypedArray(),
+                                args.memorizationTimeOfAllCards
+                            )
                         )
-                    )
+                    }
                 }
             }
         )

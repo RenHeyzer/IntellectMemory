@@ -15,8 +15,7 @@ class DragListener internal constructor(
     private val scrollListener: NestedScrollView,
     private val listener: PlayingCardsAnsweringListener,
     private val showMistake: () -> Unit,
-) :
-    View.OnDragListener {
+) : View.OnDragListener {
 
     var isDropped = false
     override fun onDrag(v: View, event: DragEvent): Boolean {
