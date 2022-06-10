@@ -100,5 +100,6 @@
     <string name="text_time_of_answers">Time to answer:</string>
     <string name="con_des_search_students_by_name">Search by student\'s name</string>
     <string name="text_score">Score</string>
+    <string name="text_for_btn_further">ДАЛЕЕ</string>
 
 </resources>

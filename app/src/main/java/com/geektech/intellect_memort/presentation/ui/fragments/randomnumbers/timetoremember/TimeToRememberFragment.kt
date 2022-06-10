@@ -1,21 +1,19 @@
 package com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.timetoremember
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.extension.hideKeyboard
 import com.geektech.intellect_memort.common.extension.setOnSingleClickListener
-import com.geektech.intellect_memort.common.extension.visible
 import com.geektech.intellect_memort.databinding.FragmentTimeToRememberBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TimeToRememberFragment : Fragment() {
     private var _binding: FragmentTimeToRememberBinding? = null
     private val binding get() = _binding!!
@@ -37,21 +35,26 @@ class TimeToRememberFragment : Fragment() {
     }
 
     private fun setUpListeners() = with(binding) {
-        etTime.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (etTime.text?.isNotEmpty() == true && etTime.text.toString().toInt() < 61
-                    && etTime.text.toString().toInt() > 0 && etTime.text[0].code != 0
-                ) {
+        binding.btnStart.setOnSingleClickListener {
+            when {
+                etTime.text.toString().toInt() > 61 -> {
+                    etTime.error = getString(R.string.error_text_input_admissible_time)
+                }
+                etTime.text.toString().toInt() <= 0 -> {
+                    etTime.error = getString(R.string.error_text_input_admissible_time)
+                }
+                etTime.text.length > 2 -> {
+                    etTime.error = getString(R.string.error_text_input_admissible_time)
+                }
+                etTime.text == null || etTime.text.toString() == " " -> {
+                    etTime.error = getString(R.string.error_text_input_admissible_time)
+                }
+                else -> {
                     time = etTime.text.toString().toInt()
                     etTime.hideKeyboard()
                     setUpBtnStartListener()
-                    binding.parentLayout.setBackgroundColor(Color.parseColor("#4446AD"))
-                    binding.btnStartr.visible()
-                } else {
-                    etTime.error = getString(R.string.error_text_input_admissible_time)
                 }
             }
-            false
         }
         setupBtnBackClickListener()
     }
@@ -63,7 +66,6 @@ class TimeToRememberFragment : Fragment() {
     }
 
     private fun setUpBtnStartListener() {
-        binding.btnStartr.setOnSingleClickListener {
             findNavController().navigate(
                 TimeToRememberFragmentDirections.actionTimeToRememberFragmentToGameRandomNumbersFragment(
                     isBinary = args.isBinary,
@@ -71,7 +73,6 @@ class TimeToRememberFragment : Fragment() {
                     time = time
                 )
             )
-        }
     }
 
     override fun onDestroyView() {

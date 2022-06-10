@@ -1,148 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:overScrollMode="never"
     tools:context=".presentation.ui.fragments.playingcards.result.CardsResultFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/result_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FBEBD7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/eighteen_sp"
-            android:layout_marginTop="@dimen/fifteen_dp"
-            android:src="@drawable/ic_arrow_back_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/result_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FBEBD7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/text_results"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fifteen_dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/picture_textview_results"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/eighteen_sp"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:src="@drawable/ic_arrow_back_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/score_numbers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fifteen_dp"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/red"
-            android:textSize="@dimen/thirty_sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_results"
-            tools:text="100" />
+                <TextView
+                    android:id="@+id/text_results"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/picture_textview_results"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/text_score"
-            android:textColor="@color/red"
-            android:textSize="@dimen/twenty_one_sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/score_numbers" />
+                <TextView
+                    android:id="@+id/score_numbers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/thirty_sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_results"
+                    tools:text="100" />
 
-        <TextView
-            android:id="@+id/text_time_to_remember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/thirty_dp"
-            android:layout_marginTop="11dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/text_time_to_remember"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_score" />
+                <TextView
+                    android:id="@+id/text_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/text_score"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/twenty_one_sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/score_numbers" />
 
-        <TextView
-            android:id="@+id/text_time_of_answers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/thirty_dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginBottom="@dimen/fifteen_dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/text_time_of_answers"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_time_to_remember" />
+                <TextView
+                    android:id="@+id/text_time_to_remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/thirty_dp"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/text_time_to_remember"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_score" />
 
-        <TextView
-            android:id="@+id/time_to_remember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/thirty_dp"
-            android:layout_marginEnd="@dimen/thirty_dp"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/text_time_to_remember"
-            tools:text="60,74" />
+                <TextView
+                    android:id="@+id/text_time_of_answers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/thirty_dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginBottom="@dimen/fifteen_dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/text_time_of_answers"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_time_to_remember" />
 
-        <TextView
-            android:id="@+id/time_of_answers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/thirty_dp"
-            android:layout_marginEnd="@dimen/thirty_dp"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/text_time_of_answers"
-            tools:text="24,95" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/time_to_remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/thirty_dp"
+                    android:layout_marginEnd="@dimen/thirty_dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/text_time_to_remember"
+                    tools:text="60,74" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guid_bottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
+                <TextView
+                    android:id="@+id/time_of_answers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/thirty_dp"
+                    android:layout_marginEnd="@dimen/thirty_dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/text_time_of_answers"
+                    tools:text="24,95" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cards_result"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/twenty_dp"
-        android:layout_marginEnd="@dimen/ten_dp"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result_container"
-        app:spanCount="6"
-        tools:itemCount="56"
-        tools:listitem="@layout/item_cards" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horizontal_guid_bottom"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.90" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cards_result"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_marginEnd="@dimen/ten_dp"
+                android:orientation="vertical"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/horizontal_guid_bottom"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/result_container"
+                app:spanCount="6"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_cards" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_finish"
@@ -156,9 +164,6 @@
         app:cornerRadius="@dimen/ten_dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_cards_result" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

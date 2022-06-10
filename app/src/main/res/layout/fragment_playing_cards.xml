@@ -12,11 +12,13 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:id="@+id/btn_back"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
         android:src="@drawable/ic_baseline_arrow_back_gray"
-        app:layout_constraintRight_toRightOf="@id/guideline_left_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guideline_left_vertical_for_btn_back"
         android:contentDescription="@string/nothing" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -24,7 +26,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.09" />
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left_vertical_for_btn_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -32,7 +41,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.91" />
+        app:layout_constraintGuide_percent="0.94" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_guid_bottom"

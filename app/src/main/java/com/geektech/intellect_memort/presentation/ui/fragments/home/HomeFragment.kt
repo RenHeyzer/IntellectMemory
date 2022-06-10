@@ -17,10 +17,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupListeners() {
         binding.btnPicture.setOnTouchListenerClickable(R.id.action_homeFragment_to_pictureFragment)
-        binding.btnRandomNumbers.setOnTouchListenerClickable(direction = HomeFragmentDirections.actionHomeFragmentToRandomNumbersFragment(
-            false))
-        binding.btnBinaryRandomNumbers.setOnTouchListenerClickable(direction = HomeFragmentDirections.actionHomeFragmentToRandomNumbersFragment(
-            true))
+        binding.btnRandomNumbers.setOnTouchListenerClickable(direction = HomeFragmentDirections.actionHomeFragmentToRandomNumbersFragment(false))
+        binding.btnBinaryRandomNumbers.setOnTouchListenerClickable(direction = HomeFragmentDirections.actionHomeFragmentToRandomNumbersFragment(true))
         binding.btnPlayingCards.setOnTouchListenerClickable(R.id.action_homeFragment_to_playingCardsFragment)
         binding.btnRating.setOnTouchListenerClickable(R.id.action_homeFragment_to_ratingFragment)
     }
