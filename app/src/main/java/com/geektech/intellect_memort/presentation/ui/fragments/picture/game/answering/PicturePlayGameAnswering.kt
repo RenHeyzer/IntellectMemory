@@ -13,8 +13,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.geektech.intellect_memort.R
 import com.geektech.intellect_memort.common.base.BaseFragment
+import com.geektech.intellect_memort.common.extension.navigateSafely
 import com.geektech.intellect_memort.databinding.FragmentPicturePlayGameAnsweringBinding
-import com.geektech.intellect_memort.domain.models.PictureImageModel
 import com.geektech.intellect_memort.domain.models.PictureQuestionModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -75,13 +75,19 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
         }
         binding.btnSubmit.setOnClickListener {
             checkCorrectAnswer()
-            findNavController().navigate(PicturePlayGameAnsweringDirections
-                .actionPicturePlayGameAnsweringToPictureGameResults(
-                    totalPictures = listOfQuestions.size,
-                    correctAnswers = correctAnswers,
-                    incorrectAnswers = listOfQuestions.size - correctAnswers,
-                    totalTime = args.passedTime
-                ))
+            if (listOfQuestions.isNotEmpty() && listOfAnswers.isNotEmpty() &&
+                listOfAnswers.isNotEmpty()
+            ) {
+                findNavController().navigateSafely(
+                    PicturePlayGameAnsweringDirections
+                        .actionPicturePlayGameAnsweringToPictureGameResults(
+                            totalPictures = listOfQuestions.size,
+                            correctAnswers = correctAnswers,
+                            incorrectAnswers = listOfQuestions.size - correctAnswers,
+                            totalTime = args.passedTime
+                        )
+                )
+            }
         }
     }
 
@@ -89,22 +95,28 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_first -> {
-                selectedOptionView(binding.btnFirst,
+                selectedOptionView(
+                    binding.btnFirst,
                     listOfAnswersForViewRandomized[0]
                 )
             }
             R.id.btn_second -> {
-                selectedOptionView(binding.btnSecond,
-                    listOfAnswersForViewRandomized[1])
+                selectedOptionView(
+                    binding.btnSecond,
+                    listOfAnswersForViewRandomized[1]
+                )
             }
             R.id.btn_third -> {
-                selectedOptionView(binding.btnThird,
+                selectedOptionView(
+                    binding.btnThird,
                     listOfAnswersForViewRandomized[2]
                 )
             }
             R.id.btn_fourth -> {
-                selectedOptionView(binding.btnFourth,
-                    listOfAnswersForViewRandomized[3])
+                selectedOptionView(
+                    binding.btnFourth,
+                    listOfAnswersForViewRandomized[3]
+                )
             }
         }
     }
@@ -162,7 +174,8 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
         listOfAnswersForViewRandomized.add(currentImageModel.thirdAnswer)
         listOfAnswersForViewRandomized.add(currentImageModel.fourthAnswer)
 
-        listOfAnswersForViewRandomized = listOfAnswersForViewRandomized.shuffled() as MutableList<String?>
+        listOfAnswersForViewRandomized =
+            listOfAnswersForViewRandomized.shuffled() as MutableList<String?>
 
         binding.btnFirst.text = listOfAnswersForViewRandomized[0]
         binding.btnSecond.text = listOfAnswersForViewRandomized[1]
@@ -212,8 +225,10 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
         AlertDialog.Builder(requireContext()).setMessage("Выйти в главное меню?")
             .setPositiveButton("Да") { _, _ ->
                 Log.e("correct ", correctAnswers.toString())
-                findNavController().navigate(PicturePlayGameAnsweringDirections
-                    .actionPicturePlayGameAnsweringToHomeFragment())
+                findNavController().navigateSafely(
+                    PicturePlayGameAnsweringDirections
+                        .actionPicturePlayGameAnsweringToHomeFragment()
+                )
             }
             .setNegativeButton("Нет") { _, _ -> }
             .show()
@@ -228,6 +243,8 @@ class PicturePlayGameAnswering : BaseFragment<FragmentPicturePlayGameAnsweringBi
                 }
             })
     }
+
+
 
 }
 
