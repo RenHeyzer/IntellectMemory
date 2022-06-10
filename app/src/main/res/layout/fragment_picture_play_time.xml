@@ -106,7 +106,7 @@
                     android:gravity="center"
                     android:hint="@string/picture_play_hint_00"
                     android:inputType="number"
-                    android:maxLength="1"
+                    android:maxLength="2"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -39,9 +39,9 @@
     <string name="picture_amount_hint">До</string>
     <string name="picture_amount_start">Начать</string>
     <string name="picture_pao_list_previous">Предыдущий</string>
-    <string name="picture_pao_list_next">Следущий</string>
+    <string name="picture_pao_list_next">Следующий</string>
     <string name="button_back">button back</string>
-    <string name="picture_play_game">Finish</string>
+    <string name="picture_play_game">Финиш</string>
     <string name="tt_mm">TT:MM</string>
     <string name="picture_rv_item_imagfromlist">image from list</string>
     <string name="picture_play_game_imageDesc">image for play fragment</string>

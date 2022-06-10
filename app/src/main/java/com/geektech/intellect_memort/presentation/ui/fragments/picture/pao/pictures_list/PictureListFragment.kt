@@ -46,15 +46,19 @@ class PictureListFragment : BaseFragment<FragmentPictureListBinding, PictureList
 
         // button next
         binding.btnNext.setOnClickListener {
-            Log.e("if",
-                "${unscrollableGridLayout.findFirstVisibleItemPosition()} and ${unscrollableGridLayout.itemCount}")
-
             if (unscrollableGridLayout.findFirstVisibleItemPosition() + next < unscrollableGridLayout.itemCount) {
-                unscrollableGridLayout.scrollToPosition(unscrollableGridLayout.findFirstVisibleItemPosition() + next)
+                unscrollableGridLayout.scrollToPosition(
+                    unscrollableGridLayout.findFirstVisibleItemPosition() + next)
+            } else if (
+                unscrollableGridLayout.findLastVisibleItemPosition() == unscrollableGridLayout.itemCount ||
+                unscrollableGridLayout.findLastVisibleItemPosition() + 1 == unscrollableGridLayout.itemCount
+            ) {
+                unscrollableGridLayout.scrollToPosition(
+                    unscrollableGridLayout.itemCount - unscrollableGridLayout.itemCount + 1
+                )
             } else {
                 unscrollableGridLayout.scrollToPosition(unscrollableGridLayout.itemCount - 1)
             }
-
         }
 
         // button previous

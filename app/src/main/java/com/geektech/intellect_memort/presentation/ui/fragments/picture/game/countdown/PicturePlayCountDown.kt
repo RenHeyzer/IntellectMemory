@@ -17,7 +17,7 @@ class PicturePlayCountDown : Fragment(R.layout.fragment_picture_play_count_down)
     private val args: PicturePlayCountDownArgs by navArgs()
 
     // game vars
-    private val timeForCountDownInSec = 5
+    private val timeForCountDownInSec = 4
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
