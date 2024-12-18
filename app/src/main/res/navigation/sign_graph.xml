@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.registration.signin.SignInFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.registration.signin.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFlowFragment2"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.main.MainFlowFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.main.MainFlowFragment"
         android:label="fragment_main_flow"
         tools:layout="@layout/fragment_main_flow" />
 </navigation>

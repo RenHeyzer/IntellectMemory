@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.home.HomeFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/pictureFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.PictureFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.PictureFragment"
         android:label="fragment_picture"
         tools:layout="@layout/fragment_picture">
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/picturePlayAmount"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.amount.PicturePlayAmount"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.game.amount.PicturePlayAmount"
         android:label="fragment_picture_play_amount"
         tools:layout="@layout/fragment_picture_play_amount">
 
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/playingCardsFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.PlayingCardsFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.playingcards.PlayingCardsFragment"
         android:label="fragment_playing_cards"
         tools:layout="@layout/fragment_playing_cards">
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/inputCountOfNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.InputCountOfNumbersFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.randomnumbers.InputCountOfNumbersFragment"
         android:label="fragment_random_numbers"
         tools:layout="@layout/fragment_input_count_of_numbers">
         <action
@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.GameNumbersFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.game.randomnumbers.GameNumbersFragment"
         android:label="fragment_game_random_numbers"
         tools:layout="@layout/fragment_game_numbers">
         <argument
@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/timeToRememberFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.randomnumbers.timetoremember.TimeToRememberFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.randomnumbers.timetoremember.TimeToRememberFragment"
         android:label="fragment_time_to_remember"
         tools:layout="@layout/fragment_time_to_remember">
         <argument
@@ -128,7 +128,7 @@
     </fragment>
     <fragment
         android:id="@+id/answerNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.randomnumbers.answer.AnswerNumbersFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.game.randomnumbers.answer.AnswerNumbersFragment"
         android:label="fragment_answer_random_numbers"
         tools:layout="@layout/fragment_answer_numbers">
         <argument
@@ -150,7 +150,7 @@
     </fragment>
     <fragment
         android:id="@+id/pictureAmountFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.list_amount.PictureAmountFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.pao.list_amount.PictureAmountFragment"
         android:label="fragment_picture_amount"
         tools:layout="@layout/fragment_picture_amount">
         <action
@@ -159,7 +159,7 @@
     </fragment>
     <fragment
         android:id="@+id/pictureListFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.pao.pictures_list.PictureListFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.pao.pictures_list.PictureListFragment"
         android:label="fragment_picture_list"
         tools:layout="@layout/fragment_picture_list">
 
@@ -172,7 +172,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseTheNumberOfCardsFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.choose.ChooseTheNumberOfCardsFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.playingcards.choose.ChooseTheNumberOfCardsFragment"
         android:label="fragment_choose_the_number_of_cards"
         tools:layout="@layout/fragment_choose_the_number_of_cards">
         <argument
@@ -198,7 +198,7 @@
     </fragment>
     <fragment
         android:id="@+id/playingCardsGameFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.game.PlayingCardsGameFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.playingcards.game.PlayingCardsGameFragment"
         android:label="fragment_playing_cards_game"
         tools:layout="@layout/fragment_playing_cards_game">
         <argument
@@ -243,7 +243,7 @@
     </fragment>
     <fragment
         android:id="@+id/inputTimeForAnswerFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.choose.InputTimeForAnswerFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.playingcards.choose.InputTimeForAnswerFragment"
         android:label="fragment_input_time_for_answer"
         tools:layout="@layout/fragment_input_time_for_answer">
         <argument
@@ -276,7 +276,7 @@
     </fragment>
     <fragment
         android:id="@+id/answerPlayingCardsFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.answer.AnswerPlayingCardsFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.playingcards.answer.AnswerPlayingCardsFragment"
         android:label="fragment_answer_playing_cards"
         tools:layout="@layout/fragment_answer_playing_cards">
         <argument
@@ -305,7 +305,7 @@
             app:argType="string" />
         <argument
             android:name="memoryList"
-            app:argType="com.geektech.intellect_memort.presentation.models.CardsUI[]" />
+            app:argType="com.geektech.intellect_memory.presentation.models.CardsUI[]" />
         <action
             android:id="@+id/action_answerPlayingCardsFragment_to_cardsResultFragment"
             app:destination="@id/cardsResultFragment" />
@@ -320,7 +320,7 @@
 
     <fragment
         android:id="@+id/picturePlayCountDown"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.countdown.PicturePlayCountDown"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.game.countdown.PicturePlayCountDown"
         android:label="fragment_picture_play_count_down"
         tools:layout="@layout/fragment_picture_play_count_down">
         <action
@@ -336,7 +336,7 @@
     </fragment>
     <fragment
         android:id="@+id/picturePlayGame"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.gameplay.PicturePlayGame"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.game.gameplay.PicturePlayGame"
         android:label="fragment_picture_play_game"
         tools:layout="@layout/fragment_picture_play_game">
         <action
@@ -361,12 +361,12 @@
 
     <fragment
         android:id="@+id/picturePlayGameAnswering"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.answering.PicturePlayGameAnswering"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.game.answering.PicturePlayGameAnswering"
         android:label="fragment_picture_play_game_answering"
         tools:layout="@layout/fragment_picture_play_game_answering">
         <argument
             android:name="imagesList"
-            app:argType="com.geektech.intellect_memort.domain.models.PictureImagesList" />
+            app:argType="com.geektech.intellect_memory.domain.models.PictureImagesList" />
         <action
             android:id="@+id/action_picturePlayGameAnswering_to_pictureGameResults"
             app:destination="@id/pictureGameResults" />
@@ -381,7 +381,7 @@
     </fragment>
     <fragment
         android:id="@+id/picturePlayTime"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.time.PicturePlayTime"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.game.time.PicturePlayTime"
         android:label="fragment_picture_play_time"
         tools:layout="@layout/fragment_picture_play_time">
         <action
@@ -393,7 +393,7 @@
     </fragment>
     <fragment
         android:id="@+id/pictureGameResults"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.picture.game.results.PictureGameResults"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.picture.game.results.PictureGameResults"
         android:label="fragment_picture_game_results"
         tools:layout="@layout/fragment_picture_game_results">
         <action
@@ -417,7 +417,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultNumbersFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.game.ResultNumbersFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.game.ResultNumbersFragment"
         android:label="fragment_result_numbers"
         tools:layout="@layout/fragment_result_numbers">
         <argument
@@ -439,7 +439,7 @@
     </fragment>
     <dialog
         android:id="@+id/exitDialogFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.dialogs.ExitDialogFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.dialogs.ExitDialogFragment"
         android:label="fragment_exit_dialog"
         tools:layout="@layout/fragment_exit_dialog">
         <action
@@ -454,7 +454,7 @@
     </dialog>
     <fragment
         android:id="@+id/cardsResultFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.playingcards.result.CardsResultFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.playingcards.result.CardsResultFragment"
         android:label="fragment_result_cards"
         tools:layout="@layout/fragment_result_cards">
         <argument
@@ -467,10 +467,10 @@
             app:argType="integer" />
         <argument
             android:name="memoryList"
-            app:argType="com.geektech.intellect_memort.presentation.models.CardsUI[]" />
+            app:argType="com.geektech.intellect_memory.presentation.models.CardsUI[]" />
         <argument
             android:name="anwerList"
-            app:argType="com.geektech.intellect_memort.presentation.models.CardsUI[]" />
+            app:argType="com.geektech.intellect_memory.presentation.models.CardsUI[]" />
         <action
             android:id="@+id/action_cardsResultFragment_to_exitDialogFragment"
             app:destination="@id/exitDialogFragment" />
@@ -487,7 +487,7 @@
 
     <fragment
         android:id="@+id/ratingFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.raiting.RatingFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.raiting.RatingFragment"
         android:label="fragment_rating"
         tools:layout="@layout/fragment_rating" />
 </navigation>

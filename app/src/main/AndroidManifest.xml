@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.geektech.intellect_memort">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
-        android:name=".App"
+        android:name="com.geektech.intellect_memory.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_memory"
         android:label="@string/app_name"
@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Intellect_memort">
         <activity
-            android:theme="@style/Theme.Intellect_memort.SplashScreen"
-            android:name="com.geektech.intellect_memort.presentation.ui.activity.MainActivity"
-            android:exported="true">
+            android:name="com.geektech.intellect_memory.presentation.ui.activity.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Intellect_memort.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

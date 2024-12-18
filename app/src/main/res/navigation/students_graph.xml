@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listOfStudentsFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.students.list.ListOfStudentsFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.students.list.ListOfStudentsFragment"
         android:label="fragment_list_of_students"
         tools:layout="@layout/fragment_list_of_students">
         <action
@@ -21,12 +21,12 @@
     </fragment>
     <fragment
         android:id="@+id/createStudentsFragment"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.students.create.CreateStudentsFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.students.create.CreateStudentsFragment"
         android:label="fragment_create_students"
         tools:layout="@layout/fragment_create_students"></fragment>
     <fragment
         android:id="@+id/signFlowFragment2"
-        android:name="com.geektech.intellect_memort.presentation.ui.fragments.registration.SignFlowFragment"
+        android:name="com.geektech.intellect_memory.presentation.ui.fragments.registration.SignFlowFragment"
         android:label="fragment_sign_flow"
         tools:layout="@layout/fragment_sign_flow" />
 </navigation>
